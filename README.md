@@ -36,24 +36,17 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
    ```bash
    git clone https://github.com/ueberproduct-lab/aristo-m64.git
    ```
-3. **Installieren:**
-   ```bash
-   cd aristo-m64
-   npm install
-   npx playwright install chromium
-   ```
-4. **Prüfen, ob alles läuft** (optional, ca. 30 Sekunden, keine Tokens):
-   ```bash
-   npm run eval
-   ```
-   Am Ende steht „106/106 grün“.
-5. **Claude Code in diesem Ordner öffnen** und eine frische Session starten.
-6. **Erst den Überblick holen, ohne zu bauen:**
+3. **Claude Code in diesem Ordner öffnen** und eine frische Session starten.
+4. **Erst den Überblick holen, ohne zu bauen:**
    ```
    /aristo-experience nur-tour
    ```
-   Die Tutorial-Seite öffnet sich unter http://localhost:4191 und zeigt die vier Bauweisen mit ihren Ergebnissen.
-7. **Bei Bedarf selbst bauen:**
+   Beim ersten Start richtet Claude das Repo selbst ein: `npm install`, `npx playwright install chromium` und einmal
+   `npm run eval` als Kurzcheck (ca. 30 Sekunden, keine Tokens, am Ende „106/106 grün“). Wer das lieber selbst macht, führt
+   diese drei Befehle vorher im Ordner aus.
+
+   Danach öffnet sich die Tutorial-Seite unter http://localhost:4191 und zeigt die vier Bauweisen mit ihren Ergebnissen.
+5. **Bei Bedarf selbst bauen:**
    ```
    /aristo-experience
    ```

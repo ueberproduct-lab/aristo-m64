@@ -44,6 +44,10 @@ Frage 2 „Umfang“: „Beide Stufen (empfohlen, F1–F15)“ → `run.mjs scop
 Die Spec liegt immer vollständig im Bau-Ordner; geprüft und gebaut wird der gewählte Umfang.
 
 ## 1. Server bereitstellen
+**Einrichtung beim ersten Start:** Fehlt `W/node_modules`, dann sag in einem Satz, dass du einmalig einrichtest, und führe in W aus:
+`npm install`, `npx playwright install chromium`, `npm run eval`. Das Eval muss mit „106/106“ enden; sonst die letzte
+Ausgabe zeigen und hier aufhören. Danach weiter.
+
 Prüfe mit `curl -s -o /dev/null -w "%{http_code}" http://localhost:<port>/` und starte Fehlendes über `.claude/launch.json` (preview_start):
 - `experience` auf 4191 (Pflicht). Läuft er schon, prüfe, ob er die neue Seite kennt:
   `curl -s http://localhost:4191/api/state | grep -q '"listening":'`. Sonst `lsof -ti tcp:4191 -sTCP:LISTEN | xargs -r kill` und neu starten.

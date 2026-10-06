@@ -1,0 +1,8 @@
+{
+  "F0": { "title": "Gerüst", "ids": ["E-00"] },
+  "F1": { "title": "Einlesen", "ids": ["P-01", "P-02", "P-03", "P-04"] },
+  "F2": { "title": "Summen", "ids": ["S-01", "S-02", "S-03"] },
+  "F3": { "title": "Ausgabe", "ids": ["R-01", "R-02", "R-03", "G-01"] },
+  "F4": { "title": "Kategorien", "ids": ["K-01", "K-02", "K-03"] },
+  "F5": { "title": "Gruppierte Ausgabe", "ids": ["R-04", "R-05"] }
+}

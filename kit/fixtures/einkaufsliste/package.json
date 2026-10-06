@@ -1,0 +1,9 @@
+{
+  "name": "einkaufsliste",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "eval": "node eval/run-eval.mjs",
+    "eval:golden": "node eval/golden.mjs"
+  }
+}

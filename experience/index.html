@@ -1,0 +1,732 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aristo M 64 · überproduct</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@400;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css?v=35">
+</head>
+<body>
+
+<nav class="topbar">
+  <a class="brand" href="#ziel" aria-label="überproduct">
+    <span class="upmark">üp</span><span class="wordmark">überproduct</span>
+    <span class="brand-sep"></span><span class="brand-sub">Aristo M 64 · Agentic-Loop-Tutorial</span>
+  </a>
+  <ol class="chapters">
+    <li><a href="#ziel"><b>§ 01</b> Ziel</a></li>
+    <li><a href="#briefing"><b>§ 02</b> Briefing</a></li>
+    <li><a href="#bootstrap"><b>§ 03</b> Bauplan</a></li>
+    <li><a href="#bauweisen" class="live-link"><b>§ 04</b> Bauweisen <span id="navLive" class="led off"></span></a></li>
+    <li><a href="#prinzip"><b>§ 05</b> Prinzip</a></li>
+    <li><a href="#loop"><b>§ 06</b> Schleife</a></li>
+    <li><a href="#workflow"><b>§ 07</b> Workflow</a></li>
+    <li><a href="#kern"><b>§ 08</b> Kern</a></li>
+    <li><a href="#gelernt"><b>§ 09</b> Gelernt</a></li>
+    <li><a href="#vergleich"><b>§ 10</b> Vergleich</a></li>
+    <li><a href="#kolumne"><b>§ 11</b> Kolumne</a></li>
+  </ol>
+</nav>
+
+<!-- § 01 ──────────────────────────────────────────────────────────── -->
+<header id="ziel" class="section hero">
+  <div class="eyebrow"><span class="num">§ 01</span><span>Das Ziel</span><span class="rule"></span><span>Ein Projekt von überproduct</span></div>
+  <div class="hero-grid">
+    <div class="hero-text">
+      <h1>Ein Taschenrechner von 1974. Gebaut von <span class="accent">KI-Agenten.</span></h1>
+      <p class="lede">
+        Der <strong>Aristo M 64</strong> war ein Taschenrechner aus Hamburg: mattschwarz, mit cremefarbener Schutzhülle,
+        roter LED-Anzeige und satt klackenden Tasten. Wir haben ihn als Liebhaber-Nachbau für den Browser gebaut.
+        Er läuft nur auf diesem Rechner (<code>localhost</code>), kann die vier Grundrechenarten, Wurzel und Prozent und
+        sieht aus, klingt und fühlt sich an wie das Original.
+      </p>
+      <p class="body">
+        Spannender als der Rechner ist, <strong>wie</strong> er entstanden ist. Kein Mensch hat eine Zeile Code geschrieben.
+        Ein Mensch hat beschrieben, was er will, und entschieden, wenn es Zielkonflikte gab. Gebaut, geprüft und
+        aufgeräumt haben <strong>Agenten in einer Schleife</strong>. Dieses Tutorial erklärt das ohne Vorwissen und lässt
+        den Rechner am Ende vor deinen Augen noch einmal von null entstehen.
+      </p>
+      <dl class="facts">
+        <div><dt>Anforderungen</dt><dd data-n="ids">–</dd></div>
+        <div><dt>Prüfungen</dt><dd data-n="tests">–</dd></div>
+        <div><dt>Features</dt><dd data-n="features">–</dd></div>
+        <div><dt>Spec-Version</dt><dd data-n="specVersion">–</dd></div>
+      </dl>
+    </div>
+    <figure class="hero-device">
+      <div class="photo-pair">
+        <div class="ph"><img src="/img/reference/m64-front-detail.jpg" alt="Das Original: Aristo M 64"><span class="cap">Original · 1974</span></div>
+        <div class="ph clone"><img src="/img/finished/current-device.png" alt="Der Nachbau im Browser"><span class="cap">Fertiger Nachbau · <a href="http://localhost:4173" target="_blank">localhost:4173 ↗</a></span></div>
+      </div>
+    </figure>
+  </div>
+</header>
+
+<!-- § 02 ──────────────────────────────────────────────────────────── -->
+<section id="briefing" class="section">
+  <div class="eyebrow"><span class="num">§ 02</span><span>Alles beginnt mit einem Briefing</span><span class="rule"></span><span>briefing/BRIEFING.md</span></div>
+  <div class="split">
+    <h2>Neun Sätze. <span class="accent">Mit Tippfehlern.</span></h2>
+    <p class="lede">Der gesamte Bau ist aus diesem einen Prompt hervorgegangen, wörtlich so, wie er geschrieben wurde. Dazu kamen in den
+      ersten Minuten vier kurze Rückfragen. Mehr Vorgabe gab es nicht.</p>
+  </div>
+  <div class="briefing">
+    <blockquote class="prompt">
+      <span class="prompt-meta">Prompt · Samstag, 3. Oktober 2026 · 09:53</span>
+      <p>Lass uns eine WebApp Taschenrechner bauen. Im spec evel pattern. Schreibe eine Spec und eine Eval.</p>
+      <p>Der Calc soll lediglich die 4 Grundrechenarten können, plus Wurzel und Prozentrechnung.</p>
+      <p>Das Wichtigste: IM Look and Feel solle r aussehen udn wirken wie der klassische Aristo M 85 S:</p>
+      <p>Baue die Agenten, die sowohl den Code generieren als auch die jenigen die ihn testen. mache eine explizite loop daraus.
+        baue feature für feature bis die webapp fertig ist und der Eval entspricht. die app muss nut local auf local host laufen.</p>
+      <p>wichtig ist, dass das look and feel auch spezifiziert und testbar ist.</p>
+    </blockquote>
+    <ol class="numbered">
+      <li><span class="n">01</span><div><b>„Das M 85 S hat gar keine %-Taste?“</b><p>Dann nehmen wir das einfachere <strong>M 64</strong>, das hat genau diese Tasten.</p></div></li>
+      <li><span class="n">02</span><div><b>„Was ist mit Schaltern ohne Funktion?“</b><p>Sichtbar lassen, mit einem <strong>ganz leichten Grauschleier</strong>.</p></div></li>
+      <li><span class="n">03</span><div><b>„Kann man die Prüfungen jederzeit wiederholen?“</b><p>Ja, jede Prüfung ist eine Datei, ein Befehl startet alle.</p></div></li>
+      <li><span class="n">04</span><div><b>„Wird die Schleife wirklich gebaut?“</b><p>Ja, als kleines Programm (Dynamic Workflow), nicht nur als Anweisung.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<!-- § 03 ──────────────────────────────────────────────────────────── -->
+<section id="bootstrap" class="section">
+  <div class="eyebrow"><span class="num">§ 03</span><span>Vom Briefing zum Bauplan</span><span class="rule"></span><span>Bootstrap in sechs Schritten</span></div>
+  <div class="split">
+    <h2>Erst festlegen, was <span class="accent">„fertig“</span> heißt. Dann bauen.</h2>
+    <p class="lede">Bevor eine einzige Taste gebaut wurde, sind aus dem Briefing sechs Dinge entstanden. Der wichtigste Trick: <strong>Die Prüfung steht
+      fest, bevor jemand baut.</strong> So kann niemand, auch keine KI, sich das Ergebnis schönreden.</p>
+  </div>
+  <div class="tiles">
+    <article class="tile-card artifact" data-file="SPEC.md">
+      <span class="n">01</span><h3>Der Bauplan</h3><span class="tech">Spec · SPEC.md</span>
+      <p>Alles, was der Rechner können und wie er aussehen soll, als nummerierte Liste. Nicht „schön rot“, sondern
+        „LED-Rot, Helligkeit mindestens so und so“. Jede Zeile hat eine Nummer wie <code>L-19</code>.</p>
+      <button class="corner-btn" aria-label="Bauplan ansehen">↗</button>
+    </article>
+    <article class="tile-card artifact" data-file="spec/tokens.json">
+      <span class="n">02</span><h3>Maße &amp; Farben</h3><span class="tech">Tokens · spec/tokens.json</span>
+      <p>Jede Farbe, jedes Maß, jede Toleranz steht an genau einer Stelle. Fotos des Originals liegen als Referenz daneben.</p>
+      <button class="corner-btn" aria-label="Maße ansehen">↗</button>
+    </article>
+    <article class="tile-card artifact" data-file="EVAL.md">
+      <span class="n">03</span><h3>Die Prüfung</h3><span class="tech">Eval · EVAL.md, eval/</span>
+      <p>Über 200 automatische Prüfungen: Rechnet „200 + 15 %“ richtig? Ist das Gehäuse doppelt so hoch wie breit? Leuchtet die
+        LED rot genug? Klingt der Klick satt?</p>
+      <button class="corner-btn" aria-label="Prüfung ansehen">↗</button>
+    </article>
+    <article class="tile-card artifact" data-file="eval/eval.lock">
+      <span class="n">04</span><h3>Das Siegel</h3><span class="tech">eval.lock</span>
+      <p>Von jeder Prüfdatei ist ein digitaler Fingerabdruck gespeichert. Ändert jemand heimlich eine Prüfung, um sie zu bestehen,
+        fällt das sofort auf.</p>
+      <button class="corner-btn" aria-label="Siegel ansehen">↗</button>
+    </article>
+    <article class="tile-card artifact" data-file=".claude/agents/loop-builder.md">
+      <span class="n">05</span><h3>Das Team</h3><span class="tech">Agenten · .claude/agents/</span>
+      <p>Vier KI-Rollen mit klaren Regeln. Wer baut, darf nicht prüfen, und wer prüft, darf nichts am Rechner ändern.</p>
+      <button class="corner-btn" aria-label="Rollen ansehen">↗</button>
+    </article>
+    <article class="tile-card artifact" data-file=".claude/workflows/agentic-loop.js">
+      <span class="n">06</span><h3>Der Takt</h3><span class="tech">Workflow · agentic-loop.js</span>
+      <p>Ein kleines Programm, das die Agenten der Reihe nach einsetzt: bauen, prüfen, nachbessern, Feature für Feature.
+        Bei Problemen notiert es einen offenen Punkt für den Menschen und macht vorsichtig weiter.</p>
+      <button class="corner-btn" aria-label="Takt ansehen">↗</button>
+    </article>
+  </div>
+
+  <div class="leeway">
+    <div class="split">
+      <h3>Jeder Lauf baut einen anderen Rechner. <span class="accent">Jeder besteht dieselbe Prüfung.</span></h3>
+      <p>Lässt man die Werkstatt zweimal bauen, kommen zwei verschiedene Rechner heraus: anderer Code, andere Details. Das Prinzip stellt
+        aber sicher, dass beide dem Paar aus Bauplan und Prüfung entsprechen. Wie ähnlich sie sich sind, hängt davon ab, wie dicht dieses
+        Paar ist. Wo es eng ist, bleibt kaum Spielraum. Wo es lose ist, entscheidet die KI.</p>
+    </div>
+    <div class="leeway-scale">
+      <div class="end tight"><span class="tech">dicht · wenig Spielraum</span>
+        <ul><li>„LED-Rot, Farbabstand höchstens 6“</li><li>„Gehäuse doppelt so hoch wie breit, ± 1,5 %“</li><li>„200 + 15 % = 230“</li><li>„Klick: Höhenanteil über 3 kHz höchstens 1,5 %“</li></ul></div>
+      <div class="bar"><span></span></div>
+      <div class="end loose"><span class="tech">lose · viel Spielraum</span>
+        <ul><li>wie der Code in Dateien aufgeteilt ist</li><li>wie der Klick-Ton erzeugt wird, solange er so klingt</li><li>Details, die nur der Gutachter nach Augenmaß bewertet</li><li>alles, worüber der Bauplan schweigt</li></ul></div>
+    </div>
+    <p class="aside">Das ist eine Stellschraube, kein Fehler. Ein dichter Bauplan macht Ergebnisse gleich und überprüfbar, kostet aber Arbeit beim Schreiben.
+      Ein loser lässt der KI Raum für eigene Lösungen. Was wirklich zählt, gehört in die Prüfung, alles andere darf variieren.</p>
+  </div>
+</section>
+
+<!-- § 04 ──────────────────────────────────────────────────────────── -->
+<section id="bauweisen" class="section workshop">
+  <div class="eyebrow on-ink"><span class="num">§ 04</span><span>Vier Bauweisen</span><span class="rule"></span><span>derselbe Rechner, vier Wege</span></div>
+  <div class="split">
+    <h2>Vom Zuruf bis zur Werkstatt: <span class="accent">vier Arten, ihn bauen zu lassen.</span></h2>
+    <p class="lede">Alle vier bauen denselben Rechner mit denselben Modellen. Sie unterscheiden sich darin, was die KI vorher bekommt und ob
+      unterwegs geprüft wird. Am Ende muss jeder Rechner durch dieselbe versiegelte Prüfung, und derselbe Gutachter und derselbe Aufräumer
+      bewerten Aussehen und Code, ohne zu wissen, wie er entstanden ist.</p>
+  </div>
+  <div class="table-wrap matrix-wrap">
+    <table class="matrix">
+      <thead><tr><th></th><th>One Shot</th><th>Direktbau</th><th>Agentic Loop</th><th>Graph</th></tr></thead>
+      <tbody>
+        <tr><td>Briefing und Fotos</td><td>●</td><td>●</td><td>●</td><td>●</td></tr>
+        <tr><td>Spec mit Anforderungen, Maßen, Features</td><td>–</td><td>●</td><td>●</td><td>●</td></tr>
+        <tr><td>Prüfung nach jedem Schritt</td><td>–</td><td>–</td><td>●</td><td>●</td></tr>
+        <tr><td>Gutachter mit den Fotos, Nachbessern</td><td>–</td><td>–</td><td>●</td><td>●</td></tr>
+        <tr><td>Regelmäßiges Aufräumen</td><td>–</td><td>–</td><td>●</td><td>●</td></tr>
+        <tr><td>Architekt und parallele Spuren</td><td>–</td><td>–</td><td>–</td><td>●</td></tr>
+        <tr><td>Agenten im Einsatz</td><td>1</td><td>1</td><td>viele, nacheinander</td><td>viele, gleichzeitig</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="tabs" role="tablist">
+    <button role="tab" data-tab="oneshot"><b>One Shot</b><small>Vibe Coding</small><span class="chip" data-chip="oneshot"></span></button>
+    <button role="tab" data-tab="direct"><b>Direktbau</b><small>Spec, ein Durchgang</small><span class="chip" data-chip="direct"></span></button>
+    <button role="tab" data-tab="loop"><b>Agentic Loop</b><small>sequenziell</small><span class="chip" data-chip="loop"></span></button>
+    <button role="tab" data-tab="graph"><b>Graph</b><small>parallel</small><span class="chip" data-chip="graph"></span></button>
+  </div>
+  <section class="tab-panel" id="tab-oneshot" data-variant="oneshot" role="tabpanel" hidden>
+    <div class="tab-intro">
+      <div><span class="tech">Vibe-Coding One Shot</span><h3>Ein Auftrag, ein Agent, ein Wurf.</h3></div>
+      <div class="tab-how"><b>So arbeitet sie</b><ol><li>liest den Auftrag und die Fotos</li><li>baut alles in einem Durchgang</li><li>meldet, wo er unsicher war</li></ol></div>
+      <div class="tab-gets"><b>Was sie bekommt</b><ul><li>das Briefing wörtlich und die zwei Klarstellungen</li><li>die Referenzfotos</li><li>sonst nichts: keine Spec, keine Maße, keine Rechenregeln, keine Prüf-Schnittstelle</li><li><a class="file" data-file="briefing/ONESHOT-PROMPT.md">Den Prompt ansehen</a></li></ul></div>
+    </div>
+    <div class="result" data-result="oneshot"></div>
+    <details class="course" data-course="oneshot" open>
+      <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
+      <div class="course-body"></div>
+    </details>
+    <div class="trigger" data-trigger="oneshot"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 10–20 Minuten. Bewertet wird von Gutachtern: Treue zu den Fotos, Funktion von Hand, Code. Die versiegelte Prüfung passt nicht, er kennt ihre Schnittstelle nicht.</p></div>
+    <div class="tab-live" data-live="oneshot"></div>
+  </section>
+  <section class="tab-panel" id="tab-direct" data-variant="direct" role="tabpanel" hidden>
+    <div class="tab-intro">
+      <div><span class="tech">Direktbau</span><h3>Präziser Bauplan, aber kein Prüfen unterwegs.</h3></div>
+      <div class="tab-how"><b>So arbeitet sie</b><ol><li>liest Spec, Maße und Fotos</li><li>baut alles in einem Durchgang</li><li>liest den eigenen Code einmal kritisch durch</li></ol></div>
+      <div class="tab-gets"><b>Was sie bekommt</b><ul><li>Briefing und Fotos</li><li>die komplette Spec mit Anforderungen, Maßen und Feature-Liste</li><li>keine Prüfungen beim Bauen, kein Gutachter, kein Aufräumer</li></ul></div>
+    </div>
+    <div class="result" data-result="direct"></div>
+    <details class="course" data-course="direct" open>
+      <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
+      <div class="course-body"></div>
+    </details>
+    <div class="trigger" data-trigger="direct"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 20–30 Minuten.</p></div>
+    <div class="tab-live" data-live="direct"></div>
+  </section>
+  <section class="tab-panel" id="tab-loop" data-variant="loop" role="tabpanel" hidden>
+    <div class="tab-intro">
+      <div><span class="tech">Agentic Loop Engineering</span><h3>Feature für Feature, jeder Schritt geprüft.</h3></div>
+      <div class="tab-how"><b>So arbeitet sie</b><ol><li>baut ein Feature</li><li>Prüfer und Gutachter kontrollieren</li><li>rot heißt nachbessern, grün heißt festhalten</li><li>alle drei Features wird aufgeräumt</li><li>in zwei Stufen: erst der grobe Rechner, dann die verfeinerte Spec</li></ol></div>
+      <div class="tab-gets"><b>Was sie bekommt</b><ul><li>Briefing, Fotos und die komplette Spec</li><li>die versiegelte Prüfung nach jedem Schritt</li><li>Gutachter, Nachbessern mit Fehlerbericht, Aufräumer</li></ul></div>
+    </div>
+    <div class="result" data-result="loop"></div>
+    <details class="course" data-course="loop" open>
+      <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
+      <div class="course-body"></div>
+    </details>
+    <div class="trigger" data-trigger="loop"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Beide Stufen etwa 2–3 Stunden und einige Millionen Tokens, nur Stufe 1 etwa eine Stunde.</p></div>
+    <div class="tab-live" data-live="loop"></div>
+  </section>
+  <section class="tab-panel" id="tab-graph" data-variant="graph" role="tabpanel" hidden>
+    <div class="tab-intro">
+      <div><span class="tech">Agentic Loop Engineering, Graph</span><h3>Erst schneiden, dann gleichzeitig bauen.</h3></div>
+      <div class="tab-how"><b>So arbeitet sie</b><ol><li>der Architekt schneidet Einheiten und plant die Abhängigkeiten</li><li>der Takt prüft den Plan und bildet Wellen</li><li>in jeder Welle bauen bis zu drei Spuren gleichzeitig, geprüft wird nur, was betroffen ist</li><li>zusammenführen, dann alles prüfen</li></ol></div>
+      <div class="tab-gets"><b>Was sie bekommt</b><ul><li>alles, was die Schleife bekommt</li><li>dazu einen Architekten, der den Rechner selbst in Einheiten schneidet</li><li>parallele Spuren mit eigener Arbeitskopie</li></ul></div>
+    </div>
+    <div class="result" data-result="graph"></div>
+    <details class="course" data-course="graph" open>
+      <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
+      <div class="course-body"></div>
+    </details>
+    <div class="trigger" data-trigger="graph"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Noch nicht gemessen. Erwartet: deutlich kürzer als die Schleife, bei gleicher Prüfung.</p></div>
+    <div class="tab-live" data-live="graph"></div>
+  </section>
+  <div id="liveHolder" hidden>
+    <div id="liveArea" class="live-area">
+      <div class="live-head"><span class="led" id="liveLed"></span><b id="liveTitle">Live-Werkstatt</b><span class="hint" id="startHint"></span></div>
+      <ol class="phase-steps" id="phaseSteps"></ol>
+      <p class="phase-now" id="phaseNow"></p>
+  <div class="stages">
+    <div class="stage" id="stage1"><span class="big">1</span><div><b>Der grobe Rechner</b><p>Bauplan Stufe 1: Gehäuse, LED-Anzeige, Tasten, Rechnen, Bedienung (F1–F7).</p></div><span class="stage-state"></span></div>
+    <div class="stage" id="stage2"><span class="big">2</span><div><b>Die verfeinerte Spec</b><p>Bessere Optik, Flackern, Klang und die beiden Easter Eggs für Hülle und Ton (F8–F15).</p></div><span class="stage-state"></span></div>
+  </div>
+  <div class="ws-grid">
+    <div class="ws-loop panel">
+      <div class="panel-h"><span class="n">A</span>Wo die Schleife gerade steht</div>
+      <svg class="loop-svg live" viewBox="0 0 520 520" aria-label="Live-Schleife">
+        <circle cx="260" cy="260" r="178" class="ring"/>
+        <g class="loop-nodes"></g>
+        <text x="260" y="248" class="ring-center" id="liveFeature">–</text>
+        <text x="260" y="276" class="ring-center small" id="liveIter"></text>
+      </svg>
+    </div>
+    <div class="ws-agents panel">
+      <div class="panel-h"><span class="n">B</span>Wer gerade woran arbeitet</div>
+      <div id="agents" class="agents"></div>
+    </div>
+    <div class="ws-plan panel plan-panel" hidden>
+      <div class="panel-h"><span class="n">P</span>Der Plan des Architekten · parallele Bauweise</div>
+      <p class="plan-why"></p>
+      <div class="plan-units"></div>
+      <div class="plan-waves"></div>
+    </div>
+    <div class="ws-track panel">
+      <div class="panel-h"><span class="n">C</span>Feature für Feature</div>
+      <div class="track" id="track"></div>
+      <div class="counters">
+        <div><span id="cIds" class="blue">–</span><small>Anforderungen grün</small></div>
+        <div><span id="cTests" class="red">–</span><small>Prüfungen bestanden</small></div>
+        <div><span id="cCommits" class="blue">–</span><small>Meilensteine</small></div>
+        <div><span id="cRefactors" class="red">–</span><small>Aufräumrunden</small></div>
+      </div>
+    </div>
+    <div class="ws-spec panel" id="specRefine" hidden>
+      <div class="panel-h"><span class="n">D</span>Die Spec wird verfeinert</div>
+      <p>Stufe 1 ist abgenommen. Jetzt passiert, was im echten Projekt über einen Tag verteilt passiert ist: Der Mensch schaut hin,
+        hört hin und schärft den Bauplan nach. Neue Zeilen, neue Prüfungen, neues Siegel. Dann baut die Schleife weiter.</p>
+      <ul id="specAdds"></ul>
+    </div>
+    <div class="ws-tidy panel">
+      <div class="panel-h"><span class="n">R</span>Was das Aufräumen gebracht hat</div>
+      <p class="tidy-intro">Der Aufräumer misst den Code nach festen Ordnungsregeln: keine ungenutzten Teile, keine überlangen Funktionen,
+        wenig Doppeltes, nichts zu Verschachteltes. Jede Abweichung ist ein Regelverstoß. Er räumt auf, bis die Ziele erreicht sind, und
+        die Prüfung muss danach genauso grün sein wie vorher. Was er getan hat, steht hier nach jeder Runde.</p>
+      <div class="tidy-sum"></div>
+      <div class="tidy-rounds"></div>
+      <div class="tidy-targets"></div>
+    </div>
+    <div class="ws-log panel">
+      <div class="panel-h"><span class="n">E</span>Logbuch</div>
+      <ol id="log" class="log"></ol>
+    </div>
+  </div>
+    </div>
+  </div>
+</section>
+
+<!-- § 05 ──────────────────────────────────────────────────────────── -->
+<section id="prinzip" class="section">
+  <div class="eyebrow"><span class="num">§ 05</span><span>Das Grundprinzip</span><span class="rule"></span><span>Erzeugen · Prüfen · Aufräumen</span></div>
+  <div class="split">
+    <h2>Kleine Schritte. <span class="accent">Jeder wird geprüft.</span></h2>
+    <p class="lede">Alles Weitere baut auf einer einfachen Idee auf: Die KI erzeugt nie alles auf einmal, sondern immer ein kleines Stück.
+      Danach entscheidet eine feste Prüfung, ob es sitzt. Regelmäßig wird aufgeräumt, damit der nächste Schritt so leicht bleibt wie der erste.
+      Wie beim Kochen nach Rezept: abschmecken nach jedem Schritt, nicht erst, wenn alles auf dem Teller liegt.</p>
+  </div>
+  <div class="cycle">
+    <article><span class="key white">1</span><h3>Erzeugen</h3><span class="tech">generate</span>
+      <p>Ein Agent baut genau ein kleines Stück, ein Feature. Er bekommt den Bauplan und, wenn es beim letzten Versuch nicht gepasst hat,
+        den genauen Fehlerbericht.</p></article>
+    <article><span class="key yellow">2</span><h3>Prüfen</h3><span class="tech">test</span>
+      <p>Ob es fertig ist, sagt nicht die KI, sondern die versiegelte Prüfung. Sie prüft das Neue und alles Alte mit. Rot heißt:
+        zurück zu Schritt 1, mit Fehlerbericht.</p></article>
+    <article><span class="key red">3</span><h3>Aufräumen</h3><span class="tech">refactor</span>
+      <p>Alle paar Schritte wird der Code geordnet, ohne dass sich etwas ändert, was man sieht oder hört. Die Prüfung wacht darüber.</p></article>
+    <div class="cycle-next">→ nächstes Stück</div>
+  </div>
+  <div class="why">
+    <h3>Warum so klein?</h3>
+    <ul>
+      <li><b>Fehler bleiben klein.</b> Was rot wird, ist gerade erst entstanden und schnell gefunden.</li>
+      <li><b>Fortschritt ist sichtbar.</b> Feature für Feature wird grün, statt „fast fertig“ über Wochen.</li>
+      <li><b>KI-Arbeit wird überprüft, nicht geglaubt.</b> Jeder Schritt muss die Prüfung bestehen.</li>
+      <li><b>Ordnung entsteht laufend.</b> Wer nur am Ende aufräumen will, räumt nie auf.</li>
+    </ul>
+    <p class="aside">Und wenn man alles auf einmal baut? Das geht schneller, aber ob es stimmt, weiß dann niemand. Genau das probieren wir am
+      Schluss aus: Unter den <a href="#bauweisen">vier Bauweisen (§ 04)</a> baut im Direktbau ein einziger Agent den ganzen Rechner in einem Rutsch, mit demselben
+      Bauplan. Dann muss er durch dieselbe Prüfung.</p>
+  </div>
+</section>
+
+<!-- § 06 ──────────────────────────────────────────────────────────── -->
+<section id="loop" class="section">
+  <div class="eyebrow"><span class="num">§ 06</span><span>Was ist Agentic Loop Engineering?</span><span class="rule"></span><span>Rollen · Takt · Regeln</span></div>
+  <div class="split">
+    <h2>Eine Werkstatt, in der KI-Agenten <span class="accent">bauen, prüfen, aufräumen.</span></h2>
+    <p class="lede">Statt eine KI zu bitten, „mal eben einen Rechner zu bauen“, und zu hoffen, dass es passt, wird die Arbeit verteilt.
+      Jede Rolle macht eine Sache gut, und eine feste Prüfung entscheidet. Der Mensch gibt das Ziel vor und entscheidet, wenn
+      Bauplan und Wirklichkeit auseinanderlaufen.</p>
+  </div>
+  <div class="loop-explain">
+    <svg class="loop-svg" viewBox="0 0 520 520" aria-label="Die Schleife">
+      <defs><marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs>
+      <circle cx="260" cy="260" r="178" class="ring"/>
+      <g class="loop-nodes"></g>
+      <text x="260" y="250" class="ring-center">EIN FEATURE</text>
+      <text x="260" y="276" class="ring-center small">nach dem anderen</text>
+    </svg>
+    <ol class="numbered roles">
+      <li><span class="key white">B</span><div><b>Der Handwerker</b> <span class="tech">Builder</span><p>Liest den Bauplan und baut genau ein Feature. Er darf nur am Rechner arbeiten, nie an der Prüfung.</p></div></li>
+      <li><span class="key yellow">T</span><div><b>Der Prüfer</b> <span class="tech">Tester</span><p>Kontrolliert zuerst das Siegel, lässt dann alle Prüfungen laufen, auch die alten, damit nichts kaputtgeht. Er ändert nie etwas.</p></div></li>
+      <li><span class="key yellow">J</span><div><b>Der Gutachter</b> <span class="tech">Visual Judge</span><p>Vergleicht Fotos des Rechners mit Fotos vom Original und vergibt Punkte. Er darf keine festgelegten Maße übersteuern. Hält er den Bauplan für falsch, meldet er das dem Menschen.</p></div></li>
+      <li><span class="key white">G</span><div><b>Das Referenzfoto</b> <span class="tech">Golden Screenshot</span><p>Ist das Aussehen abgenommen, wird ein Foto eingefroren. Ab dann fällt jede ungewollte Pixel-Änderung auf.</p></div></li>
+      <li><span class="key white">C</span><div><b>Das Logbuch</b> <span class="tech">Commit</span><p>Jeder abgenommene Stand wird festgehalten. So lässt sich messen, wie viel Arbeit jedes neue Feature macht.</p></div></li>
+      <li><span class="key red">R</span><div><b>Der Aufräumer</b> <span class="tech">Refactorer</span><p>Nach jeweils drei Features räumt er den Code auf, ohne Verhalten oder Aussehen zu ändern. Nach jedem Schritt wird geprüft, und er hört nach festen Regeln auf.</p></div></li>
+    </ol>
+  </div>
+  <div class="rules">
+    <div class="eyebrow on-ink"><span class="num">§</span><span>Die Spielregeln</span><span class="rule"></span><span>damit das Ganze verlässlich ist</span></div>
+    <ul>
+      <li><b>Grün ist grün.</b> Ein Feature gilt erst als fertig, wenn alle Prüfungen bestehen, die neuen und die alten.</li>
+      <li><b>Die Prüfung ist versiegelt.</b> Wer baut, darf sie nicht anfassen. Hält der Handwerker eine Prüfung für falsch, muss er es melden.</li>
+      <li><b>Der Gutachter streut, die Prüfung nicht.</b> Was der Gutachter findet und was korrigiert wird, wird zu einer festen Prüfung.</li>
+      <li><b>Der Mensch bleibt Auftraggeber.</b> Widersprüche zwischen Bauplan und Original entscheidet er, nicht die KI.</li>
+      <li><b>Jedes Mal ein bisschen Ordnung.</b> Aufgeräumt wird regelmäßig, begrenzt und messbar, nicht irgendwann einmal.</li>
+    </ul>
+  </div>
+
+  <div class="whois">
+    <div class="eyebrow"><span class="num">§ 06.1</span><span>Wer ist wer</span><span class="rule"></span><span>Rollen und echte Agenten</span></div>
+    <div class="split">
+      <h3>Eine Rolle ist eine Stellenbeschreibung. <span class="accent">Jeder Einsatz ist ein frischer Agent.</span></h3>
+      <p>Ein Agent ist hier kein dauerhaftes Wesen. Für jeden Arbeitsschritt startet Claude Code einen neuen Agenten mit genau einem
+        Auftrag, und nach seiner Antwort endet er. Seine Rolle bekommt er aus einer Textdatei in <code>.claude/agents/</code>: was er tun soll
+        und welche Werkzeuge er überhaupt hat. Zwei Dinge in der Werkstatt sind gar keine Agenten, sondern Programme: der Takt und die Prüfung.</p>
+    </div>
+    <div class="table-wrap">
+      <table class="roles-table">
+        <thead><tr><th>Rolle</th><th>Wer das wirklich ist</th><th>Modell</th><th>Darf</th><th>Im Fortschritt zu sehen als</th></tr></thead>
+        <tbody>
+          <tr><td><b>Werkstattleiter</b></td><td>Deine Claude-Code-Session, die den Skill <code>/aristo-experience</code> ausführt</td><td>wie die Session</td><td>startet den Takt, schaltet die Stufen, fragt dich</td><td>der Chat der Werkstatt</td></tr>
+          <tr class="prog"><td><b>Der Takt</b></td><td>kein Agent: das Programm <code>agentic-loop.js</code>, ein Dynamic Workflow</td><td>–</td><td>setzt Agenten ein, entscheidet nach festen Regeln</td><td>der Fortschrittsbaum</td></tr>
+          <tr><td><b>Architekt</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-architect.md">loop-architect</a>, nur in der parallelen Bauweise</td><td data-model="builder">opus</td><td>lesen, <em>nichts schreiben</em></td><td><code>architektur #1</code></td></tr>
+          <tr><td><b>Handwerker</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-builder.md">loop-builder</a>, je Bauversuch ein neuer</td><td data-model="builder">opus</td><td>lesen, schreiben, Befehle</td><td><code>build F3 #2</code></td></tr>
+          <tr><td><b>Integrator</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-integrator.md">loop-integrator</a>, nur in der parallelen Bauweise: der Merger mit Überblick über Plan, Verträge und beide Features</td><td data-model="builder">opus</td><td>lesen, schreiben, Befehle, <em>nur in der Spur</em></td><td><code>integrator F11</code></td></tr>
+          <tr><td><b>Prüfer</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-tester.md">loop-tester</a></td><td data-model="tester">haiku</td><td>lesen, Befehle, <em>nichts schreiben</em></td><td><code>test F3 #2</code></td></tr>
+          <tr><td><b>Gutachter</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-judge.md">loop-judge</a></td><td data-model="judge">opus</td><td>lesen, fotografieren, <em>nichts schreiben</em></td><td><code>judge F3 #2</code></td></tr>
+          <tr><td><b>Aufräumer</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-refactorer.md">loop-refactorer</a></td><td data-model="refactor">sonnet</td><td>lesen, schreiben, messen</td><td><code>refactor nach F3</code></td></tr>
+          <tr><td><b>Gehilfe</b></td><td>Agent ohne eigene Rolle, mit kurzem, genauem Auftrag</td><td data-model="helper">haiku</td><td>Logbuch-Einträge, Referenzfoto, Spuren synchronisieren und zusammenführen</td><td><code>commit …</code>, <code>golden F3</code>, <code>sync F11</code>, <code>merge F11</code></td></tr>
+          <tr class="prog"><td><b>Die Prüfung</b></td><td>kein Agent: Testprogramme, die immer gleich messen</td><td>–</td><td>entscheidet grün oder rot</td><td>der Bericht des Prüfers</td></tr>
+          <tr><td><b>Code-Gutachter</b></td><td>Agent vom Typ <a class="file" data-file=".claude/agents/loop-reviewer.md">loop-reviewer</a>, nur in der Gegenprobe</td><td data-model="refactor">sonnet</td><td>lesen, messen, <em>nichts schreiben</em></td><td><code>gutachten</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="see">
+      <b>Selbst ansehen in Claude Code</b>
+      <ul>
+        <li><code>/agents</code> listet im Terminal alle Rollen mit Werkzeugen und Modell.</li>
+        <li><code>/workflows</code> zeigt den laufenden Takt: jede Phase, jeden einzelnen Agenten, sein Ergebnis.</li>
+        <li>In der Desktop-App erscheint derselbe Fortschrittsbaum direkt im Chat der Werkstatt. Ein Klick auf einen Agenten zeigt, was er gelesen, getan und geantwortet hat.</li>
+        <li>Die Rollen selbst sind einfache Textdateien in <code>.claude/agents/</code>. Ein Klick auf einen Namen in der Tabelle öffnet sie.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- § 07 ──────────────────────────────────────────────────────────── -->
+<section id="workflow" class="section">
+  <div class="eyebrow"><span class="num">§ 07</span><span>Der Takt ist ein Programm</span><span class="rule"></span><span>Dynamic Workflow</span></div>
+  <div class="split">
+    <h2>Kein Gespräch, sondern <span class="accent">ein Programm, das Agenten einsetzt.</span></h2>
+    <p class="lede">Normalerweise chattet man mit einer KI: Frage, Antwort, nächste Frage. Für eine Werkstatt mit hunderten Arbeitsschritten
+      über Stunden reicht das nicht. Claude Code kann dafür einen <strong>Dynamic Workflow</strong> ausführen: ein kleines Programm, das
+      Claude schreibt und das dann die Agenten einsetzt. Ab da hält das Programm den Takt, nicht die Laune des Gesprächs.</p>
+  </div>
+
+  <div class="compare">
+    <div class="compare-h"><span></span><span>Im Chat</span><span>Im Dynamic Workflow</span></div>
+    <div><b>Wer bestimmt den nächsten Schritt?</b><p>Die KI, jedes Mal neu. Manchmal vergisst sie einen.</p><p>Das Programm, jedes Mal gleich.</p></div>
+    <div><b>Wann wird geprüft?</b><p>Wenn jemand daran denkt.</p><p>Nach jedem Bauschritt, ausnahmslos.</p></div>
+    <div><b>Wann ist Schluss?</b><p>Wenn die KI „fertig“ sagt.</p><p>Wenn die Prüfung grün ist. Was nach festen Grenzen offen bleibt, sammelt es für den Menschen.</p></div>
+    <div><b>Wie viel passt hinein?</b><p>Ein Gedächtnis, das irgendwann voll ist.</p><p>Jeder Agent startet frisch, mit genau seinem Auftrag.</p></div>
+  </div>
+
+  <div class="annotated">
+    <div class="code-card artifact" data-file=".claude/workflows/agentic-loop.js">
+      <div class="code-h"><span>agentic-loop.js</span><span class="tech">vereinfacht</span><button class="corner-btn" aria-label="Ganzes Programm ansehen">↗</button></div>
+<pre><code><span class="m">1</span>for (const F of features) {
+  for (let iter = 1; iter &lt;= maxIter; iter++) {
+<span class="m">2</span>    await agent(builder(F, fehlerbericht))
+<span class="m">3</span>    const [test, judge] = await parallel([
+      () =&gt; agent(tester(F)),
+      () =&gt; F.look ? agent(gutachter(F)) : null,
+    ])
+<span class="m">4</span>    if (test.pass &amp;&amp; judgeOk(judge)) break
+    fehlerbericht = bericht(test, judge)
+  }
+<span class="m">5</span>  if (!gruen) offenerPunkt(F)  // weiter, der Mensch entscheidet
+  await agent(commit(F))
+<span class="m">6</span>  if (fertig % 3 === 0) await aufraeumen()
+}</code></pre>
+    </div>
+    <ol class="numbered notes">
+      <li><span class="n">1</span><div><b>Wiederholen</b><p>Feature für Feature, jeweils mehrere Anläufe. Nichts wird übersprungen.</p></div></li>
+      <li><span class="n">2</span><div><b>Beauftragen</b><p><code>agent()</code> startet einen frischen Agenten mit einem genauen Auftrag und einer Rolle aus <code>.claude/agents/</code>.</p></div></li>
+      <li><span class="n">3</span><div><b>Gleichzeitig</b><p>Prüfer und Gutachter arbeiten parallel und wissen nichts voneinander.</p></div></li>
+      <li><span class="n">4</span><div><b>Verzweigen</b><p>Nur Grün geht weiter. Sonst wandert der Fehlerbericht zurück zum Handwerker.</p></div></li>
+      <li><span class="n">5</span><div><b>Offene Punkte</b><p>Klappt etwas nach festen Grenzen nicht, hält das Programm das fest und macht vorsichtig weiter.
+        Was rot bleibt, ist markiert und darf nichts anderes verdecken. Der Mensch entscheidet am Ende über jeden Punkt.
+        Hart angehalten wird nur bei gebrochenem Siegel oder wenn sich zu viele Punkte sammeln.</p></div></li>
+      <li><span class="n">6</span><div><b>Aufräumen im Takt</b><p>Alle drei Features kommt der Aufräumer, mit eigenen Stoppregeln.</p></div></li>
+    </ol>
+  </div>
+
+  <div class="tiles props">
+    <article class="tile-card"><span class="n">+</span><h3>Fortsetzen</h3><span class="tech">resumeFromRunId</span>
+      <p>Bricht ein Lauf ab, setzt man ihn fort. Bereits erledigte Schritte liefern ihr Ergebnis sofort aus dem Gedächtnis, und
+        nur der Rest läuft neu.</p></article>
+    <article class="tile-card"><span class="n">+</span><h3>Zuschauen</h3><span class="tech">/workflows · diese Seite</span>
+      <p>Jeder Agent, jede Phase und jedes Ergebnis wird mitgeschrieben. Diese Seite liest genau dieses Protokoll mit.</p></article>
+    <article class="tile-card"><span class="n">+</span><h3>Modell pro Rolle</h3><span class="tech">opts.model</span>
+      <p>Der Handwerker kann ein großes Modell sein und der Prüfer, der nur Befehle ausführt, ein kleines und schnelles.</p></article>
+  </div>
+
+  <div class="modes">
+    <div class="split">
+      <h3>Nacheinander oder <span class="accent">gleichzeitig?</span></h3>
+      <p>Beim Start wählst du die Bauweise. Beide nutzen denselben Bauplan, dieselbe Prüfung und dieselben Rollen. Wer beide einmal
+        laufen lässt, sieht den Unterschied in Dauer, Prüfminuten und Reibung.</p>
+    </div>
+    <div class="mode-cards">
+      <article><span class="tech">Sequenziell</span><h4>Ein Feature nach dem anderen</h4>
+        <p>Ein Handwerker, ein Feature, danach die ganze Prüfung bis hierhin. Langsam, aber leicht zu verfolgen, und nichts kommt sich in die Quere.</p></article>
+      <article><span class="tech">Parallel</span><h4>Erst schneiden, dann in Wellen bauen</h4>
+        <p>Ein <b>Architekt</b> liest Bauplan und Prüfung und schneidet das Produkt selbst in kleine Einheiten mit klaren Schnittstellen. Der Takt
+          prüft den Schnitt mechanisch: keine Datei doppelt vergeben, keine Kreise in den Abhängigkeiten. Danach bauen bis zu drei Handwerker
+          gleichzeitig, jeder in seiner eigenen Arbeitskopie. Geprüft wird in der Spur nur, was betroffen sein kann.
+          Dann die <b>Merge-Queue</b>: Spur für Spur holt sich den neuesten Stand, ein <b>Integrator</b> löst Konflikte mit Blick auf Plan
+          und beide Features, erst dann wird zusammengeführt und <b>alles</b> geprüft. Ist das Tor rot, wird der Schritt zurückgenommen.</p></article>
+    </div>
+    <p class="aside">Den Schnitt bekommt der Architekt nicht vorgegeben, er leitet ihn aus jeder Spec neu ab. Darum funktioniert die parallele
+      Bauweise auch für ein ganz anderes Projekt, nicht nur für diesen Rechner.</p>
+  </div>
+
+  <div class="rules voice">
+    <div class="eyebrow on-ink"><span class="num">!</span><span>Die Stimme im Raum</span><span class="rule"></span><span>eine Lektion aus diesem Projekt</span></div>
+    <p>Das Programm gibt jedem Agenten die Chat-Nachricht mit, die den Lauf gestartet hat, und zwar mit Vorrang. Als im Chat gerade über
+      den Klang gesprochen wurde, hat ein Handwerker deshalb auf eigene Faust am Ton gebastelt, statt sein Feature zu bauen.
+      Seitdem gibt es drei Gegenmittel:</p>
+    <ul>
+      <li><b>Eigene Session</b>Der Live-Bau läuft in einem frischen Chat. Dort stehen nur Steuerbefehle wie „fortsetzen“, alles andere gehört in einen anderen Chat.</li>
+      <li><b>Geltungsbereich</b>Jeder Auftrag beginnt damit, was den Agenten angeht und was er nur melden darf.</li>
+      <li><b>Feste Werkzeuge</b>Prüfer und Gutachter haben technisch gar kein Werkzeug zum Schreiben.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- § 08 ──────────────────────────────────────────────────────────── -->
+<section id="kern" class="section">
+  <div class="eyebrow"><span class="num">§ 08</span><span>Der Kern ist allgemein</span><span class="rule"></span><span>bauen · testen · begutachten · aufräumen</span></div>
+  <div class="split">
+    <h2>Der Rechner ist nur das Beispiel. <span class="accent">Die Werkstatt baut alles, was sich prüfen lässt.</span></h2>
+    <p class="lede">Takt und Rollen wissen nichts von Taschenrechnern. Alles Projektspezifische steht in einer einzigen Anschlussdatei.
+      Jedes Paar aus Bauplan und Prüfung lässt sich dort einstecken.</p>
+  </div>
+
+  <div class="plug">
+    <div class="plug-col">
+      <span class="tech">Das Projekt bringt mit</span>
+      <ul><li><b>Briefing</b>was entstehen soll</li><li><b>Spec</b>nummerierte, prüfbare Anforderungen</li><li><b>Eval</b>Prüfungen, versiegelt</li></ul>
+    </div>
+    <div class="plug-col plug-mid artifact" data-file="loop.config.json">
+      <span class="tech">Der Anschluss</span>
+      <h3>loop.config.json</h3>
+      <p>Befehle zum Prüfen, Reihenfolge der Features, was geschrieben werden darf, Hinweise an die Rollen.</p>
+      <button class="corner-btn" aria-label="Anschluss ansehen">↗</button>
+    </div>
+    <div class="plug-col plug-core">
+      <span class="tech">Der Kern bleibt gleich</span>
+      <ul><li><b>Takt</b>agentic-loop.js</li><li><b>Vier Rollen</b>loop-builder · tester · judge · refactorer</li><li><b>Ordnung</b>Aufräum-Regeln und Messung</li></ul>
+    </div>
+  </div>
+
+  <div class="contract">
+    <h3>Was der Kern vom Projekt braucht: drei Dinge.</h3>
+    <ol>
+      <li><span><b>Einen Befehl</b> „prüfe alles bis Feature X“.</span></li>
+      <li><span><b>Einen Bericht</b> in festem Format: was grün ist, was rot ist und warum.</span></li>
+      <li><span><b>Ein Siegel</b>, das jede Änderung an der Prüfung verrät.</span></li>
+    </ol>
+    <p>Mit welcher Technik geprüft wird, ist egal: Programmtests, Browser, Schnittstellen-Aufrufe oder ein Gutachter mit Rubrik für alles,
+      was sich nicht in Zahlen fassen lässt.</p>
+  </div>
+
+  <div class="examples">
+    <article><span class="tech">Beispiel</span><h3>Eine Buchungs-Schnittstelle</h3><p><b>Prüfung</b>Anfragen mit festgelegten Antworten, Fehlerfälle, Antwortzeit.</p><p><b>Gutachter</b>nicht nötig</p></article>
+    <article><span class="tech">Beispiel</span><h3>Ein Angebots-Generator</h3><p><b>Prüfung</b>Pflichtangaben, Rechenwerte, Länge.</p><p><b>Gutachter</b>Ton und Verständlichkeit nach Rubrik</p></article>
+    <article><span class="tech">Beispiel</span><h3>Eine Landingpage</h3><p><b>Prüfung</b>Aufbau, Ladezeit, Barrierefreiheit.</p><p><b>Gutachter</b>Wirkung im Vergleich zu Referenz-Designs</p></article>
+    <article><span class="tech">Beispiel</span><h3>Ein Daten-Import</h3><p><b>Prüfung</b>Beispieldateien rein, erwartete Tabellen raus.</p><p><b>Gutachter</b>nicht nötig</p></article>
+  </div>
+
+  <div class="tiles commands">
+    <article class="tile-card artifact" data-file=".claude/skills/agentic-loop/SKILL.md"><span class="n">01</span><h3>Neu aufsetzen</h3><span class="tech">/agentic-loop neu &lt;Ordner&gt;</span>
+      <p>Vom Briefing über Rückfragen zu Spec, Eval, Siegel und Anschluss. Am Ende ist alles rot, und genau so soll es sein.</p>
+      <button class="corner-btn" aria-label="Skill ansehen">↗</button></article>
+    <article class="tile-card artifact" data-file=".claude/skills/agentic-loop/SKILL.md"><span class="n">02</span><h3>Bauen lassen</h3><span class="tech">/agentic-loop bauen &lt;Ordner&gt;</span>
+      <p>In einer eigenen Session: Modelle wählen, dann läuft die Schleife Feature für Feature, bis alles grün ist.</p>
+      <button class="corner-btn" aria-label="Skill ansehen">↗</button></article>
+    <article class="tile-card artifact" data-file="kit/README.md"><span class="n">03</span><h3>Aufräumen</h3><span class="tech">/agentic-loop aufräumen &lt;Ordner&gt;</span>
+      <p>Ein gründlicher Aufräumlauf gegen die Tests, mit Messung vorher und nachher. Der Bausatz in <code>kit/</code> erklärt den Rest.</p>
+      <button class="corner-btn" aria-label="Bausatz ansehen">↗</button></article>
+  </div>
+</section>
+
+<!-- § 09 ──────────────────────────────────────────────────────────── -->
+<section id="gelernt" class="section">
+  <div class="eyebrow"><span class="num">§ 09</span><span>Was unterwegs passiert ist</span><span class="rule"></span><span>Spec 1.0 → <span data-n="specVersion">2.1</span></span></div>
+  <div class="split">
+    <h2>Der Bauplan ist <span class="accent">gewachsen.</span></h2>
+    <p class="lede">Nichts davon stand im Briefing. Es kam durch Hinsehen, Hinhören und Fehler dazu. Jeder Punkt wurde zuerst zu einer neuen
+      Zeile im Bauplan und einer neuen Prüfung, erst dann hat die Schleife ihn gebaut.</p>
+  </div>
+  <div class="accordion">
+    <details open><summary><span class="n">1.0</span><b>Der Grundrechner</b><span class="mk"></span></summary><p>Gehäuse, LED-Anzeige, Tasten, Rechnen, Bedienung. Der Gutachter widersprach sich anfangs selbst. Seitdem bekommt er seine letzte Bewertung mit und darf sie nicht ins Gegenteil drehen.</p></details>
+    <details><summary><span class="n">1.1</span><b>Das Weiße ist eine Schutzhülle</b><span class="mk"></span></summary><p>Ein Foto zeigte es. Die „Ohren“ an den Ecken, die der Gutachter weggemacht haben wollte, waren echt. Die Prüfung hatte nur einen Pixel in der Mitte angeschaut, das war eine Lücke im Test. Seitdem gilt: Was der Gutachter findet, wird zu einer festen Prüfung.</p></details>
+    <details><summary><span class="n">1.3</span><b>Easter Egg: die Hülle</b><span class="mk"></span></summary><p>Ein Klick auf „MADE IN GERMANY“ nimmt die Hülle ab und setzt sie wieder auf.</p></details>
+    <details><summary><span class="n">1.4</span><b>Die Anzeige flackert</b><span class="mk"></span></summary><p>Beim Tastendruck flackert sie ganz leicht und sehr kurz, wie eine echte LED der Zeit.</p></details>
+    <details><summary><span class="n">1.5–1.6</span><b>Ein satter Klick-Ton</b><span class="mk"></span></summary><p>Erst zu laut, dann leiser. Easter Egg: Ein Klick auf das Logo schaltet stumm.</p></details>
+    <details><summary><span class="n">1.8</span><b>Proportionen nach Foto</b><span class="mk"></span></summary><p>Auf den Pixel genau vermessen. Ein Agent hatte in dieser Runde auf eigene Faust am Klang gebastelt. Seitdem haben alle Agenten feste Grenzen.</p></details>
+    <details><summary><span class="n">1.9</span><b>Safari war stumm</b><span class="mk"></span></summary><p>Safari lässt Ton erst nach einem echten Klick zu. Dafür gibt es jetzt eine eigene Prüfung.</p></details>
+    <details><summary><span class="n">2.0</span><b>Schieber wie am Original</b><span class="mk"></span></summary><p>Cremeklötze, harte Kante, Schatten. Der Gutachter vergab 20 von 20 Punkten.</p></details>
+    <details><summary><span class="n">2.1</span><b>Jede Tastenreihe klingt höher</b><span class="mk"></span></summary><p>Jede Reihe klingt ein wenig höher als die darunter. Dazu kam der Aufräumer mit Messwerten, Stoppregeln und einem Logbuch.</p></details>
+  </div>
+</section>
+
+<!-- § 10 ──────────────────────────────────────────────────────────── -->
+<section id="vergleich" class="section workshop">
+  <div class="eyebrow on-ink"><span class="num">§ 10</span><span>Vergleich und Fazit</span><span class="rule"></span><span>vier Wege nebeneinander</span></div>
+  <div class="split">
+    <h2>Was kostet Sorgfalt, <span class="accent">und was bringt sie?</span></h2>
+    <p class="lede">Die Zahlen stammen aus echten Läufen und werden nach jedem neuen Lauf ersetzt. Alle Rechner werden gleich bewertet:
+      dieselbe versiegelte Prüfung, derselbe Gutachter, derselbe Aufräumer. Dass die Rechner verschieden aussehen, ist erwartet (<a href="#bootstrap">§ 03</a>).</p>
+  </div>
+  <div class="panel compare-panel">
+    <div class="vs vs4" id="compareTable"></div>
+    <div class="shots shots4" id="compareShots"></div>
+  </div>
+  <div class="fazit-row"><button id="fazitBtn" class="btn-primary">Fazit zeigen</button><p class="hint" id="fazitHint"></p></div>
+  <div class="fazit" id="fazit" hidden>
+    <p class="fazit-numbers" id="fazitNumbers"></p>
+    <ol>
+      <li><b>Sorgfalt hat einen Preis.</b> Die Schleife braucht ein Vielfaches an Zeit und Tokens. Was sie dafür liefert, ist vor allem
+        Absicherung und Struktur: Jeder Schritt ist geprüft, der Code bleibt aufgeräumt.</li>
+      <li><b>Eine gute Spec macht schon viel.</b> Schon der Direktbau mit präzisem Bauplan kommt weit. Im One Shot ohne Bauplan entscheidet die KI
+        alles selbst. Gemessen wird, wie nah sie trotzdem kommt.</li>
+      <li><b>Bessere Modelle verkleinern den Abstand, er verschwindet aber nicht.</b> Ungeprüfte Annahmen stapeln sich, und große Brocken im Code
+        verzinsen sich mit jedem weiteren Feature.</li>
+      <li><b>Je größer die Codebasis, desto wichtiger die Schleife.</b> Bei einem Rechner mit tausend Zeilen ist sie teuer. Bei einem großen System
+        ist sie die Methode, die skaliert.</li>
+      <li><b>Der Graph hat hier fast nichts besser gemacht, und genau das ist lehrreich.</b> Gleiche Noten, gleiche Tokens, 136 statt
+        148 Minuten. Warum, zeigt erst die Zeitanalyse: Das Bauen selbst lief 1,65-mal so schnell, 124 Minuten Bauarbeit in 75 Minuten.
+        Fast genau diese Ersparnis hat die Koordination wieder aufgezehrt: Architekt und Gerüst, Zusammenführen und Tore, zusammen
+        48 Minuten. Für einen Graphen ist das Aristo-Beispiel zu einfach und zu schmal: ein Bildschirm, ein eingefrorenes Gesamtbild,
+        eine Rechenkette.</li>
+      <li><b>Graphen lohnen sich im großen Kontext, nicht im kleinen Projekt.</b> So arbeitet Boris Cherny, der Claude Code baut:
+        kleine Features in einem großen, bestehenden Kontext. Ein typischer Auftrag von ihm beschreibt in wenigen Sätzen eine kleine
+        Verbesserung an der Kommandozeile, etwa dass eine gesendete Nachricht grau bleibt, bis das Modell sie angenommen hat, und
+        verweist auf das, was das Produkt an anderer Stelle schon kann. Was unser Graph jedes Mal neu leisten musste, also Schnitt,
+        Verträge, Prüfungen und Werkzeuge, steckt dort längst im Kontext. Dann rechnet sich die Schleife, und dann auch der Graph.</li>
+      <li><b>Je höher auf der Leiter, desto ausbaubarer.</b> Am Code selbst sieht man das kaum: One Shot und Graph bekamen dieselbe
+        Code-Note, 7,5. Der Unterschied ist das Netz darunter: beim One Shot 1,5 von 10, bei allen anderen 6 bis 6,5, weil es einen
+        Bauplan mit Nummern und versiegelte Prüfungen gibt. Der Wert entsteht in den Iterationen danach, hier acht Verfeinerungen in
+        Stufe 2 bei durchgehend grünen Prüfungen. Viele Iterationen werden erst mit den höheren Vorgehensweisen möglich und wartbar.</li>
+      <li><b>In Loops und Graphen wird nicht gevibecodet.</b> Wer sie für einen schnellen Wurf nimmt, trifft die unökonomischste aller
+        Entscheidungen. Gebaut sind sie für das Gegenteil: für Arbeit, die bleiben, wachsen und geprüft sein soll.</li>
+      <li><b>Wie man das bewertet, hängt am Qualitätsanspruch.</b> So albern das Beispiel mit dem Aristo sein mag: Wer daran etwas
+        wertig und emotional haben will, findet den Wert in den Verfeinerungen, und es kämen noch viele weitere. Für echtes
+        Produktmanagement heißt das: Man kann nur hoffen, dass die Engineers sich bis zu den höheren Stufen weiterentwickeln dürfen.
+        Erst dann ist man in der Lage, solche Verbesserungen an Produkten immer wieder vorzunehmen.</li>
+      <li><b>Für Vorstufen der One Shot, für Zwischenstufen der Direktbau.</b> Wahnsinn, welche Prototypen man inzwischen selbst bauen
+        kann. Und für Zwischenstufen, die noch nicht deployed werden müssen, ist der Direktbau unschlagbar im Verhältnis von Qualität,
+        Kosten und Zeit: 22 Minuten, 0,36 Millionen Tokens, 17 von 20 Punkten beim Aussehen.</li>
+      <li><b>Im Großen zählt das Gerüst, nicht der Bauende.</b> Wenn 20 Agenten in 20 Repos Dinge bauen müssen, die zusammenpassen, entscheiden
+        vier Dinge: klare Verträge zwischen den Einheiten, Prüfungen an jeder Grenze, Tore beim Zusammenführen und ein Mensch, der Konflikte
+        entscheidet. Ist dieses Gerüst stabil, darf das Innere einer kleinen Einheit sogar in einem Wurf entstehen. Der One Shot fällt dann
+        nicht weg, er rückt eine Ebene nach innen. Ohne Gerüst ist er im Großen nicht nachhaltig, das zeigt seine Absicherung von 1,5 von 10.
+        Das nächste Experiment wäre ein Graph mit One-Shot-Spuren.</li>
+    </ol>
+    <div class="human">
+      <h3>Gedankenspiel: und der Mensch?</h3>
+      <p>148 Minuten und 4,2 Millionen Tokens für gut tausend Zeilen klingt unanständig. Aber wie lange hätte ein Mensch gebraucht, was hätte
+        es gekostet, und wie gut wäre sein erster Anlauf geworden? Wir wissen es nicht, deshalb steht in der Tabelle „???“. Die spannendere
+        Frage ist, auf welcher Ebene der Mensch heute noch vorn ist und in welcher Hinsicht.</p>
+      <div class="table-wrap"><table class="levels">
+        <thead><tr><th>Ebene</th><th>heute vorn</th><th>woran man es in diesem Projekt sieht</th></tr></thead>
+        <tbody>
+          <tr><td><b>Wollen</b> · Ziel, Briefing, „fertig heißt …“</td><td>Mensch</td><td>Alles begann mit einem kurzen Briefing. Wofür der Rechner da ist, wusste nur sein Auftraggeber.</td></tr>
+          <tr><td><b>Hinsehen</b> · Treue, Geschmack</td><td>Mensch, Agenten als Messgerät</td><td>Die prägenden Verfeinerungen kamen aus menschlichem Hinsehen: „Das Weiße ist eine Hülle“, der satte Klang, die erhabenen Schieber. Gutachter streuen: 19 und 20 von 20 für denselben Stand.</td></tr>
+          <tr><td><b>Entscheiden</b> · Konflikte, Unklarheiten</td><td>Mensch</td><td>Der Direktbau fand fünf Unklarheiten in der Spec. Er konnte sie benennen, aber nicht entscheiden.</td></tr>
+          <tr><td><b>Schneiden</b> · Architektur</td><td>offen</td><td>Der Architekt fand für zwei verschiedene Projekte allein einen gültigen Schnitt. Im Kleinen, wohlgemerkt.</td></tr>
+          <tr><td><b>Bauen</b></td><td>Agent</td><td>Ein ganzer Rechner in 11 bis 22 Minuten, ohne Ermüdung, jederzeit wiederholbar.</td></tr>
+          <tr><td><b>Prüfen</b></td><td>Agent</td><td>233 Prüfungen in 27 Sekunden, nach jedem Schritt, ohne eine auszulassen.</td></tr>
+          <tr><td><b>Verantworten</b></td><td>Mensch</td><td>Wer steht dafür ein, wenn der Rechner falsch rechnet? Das kann keine Prüfung abnehmen.</td></tr>
+        </tbody>
+      </table></div>
+    </div>
+  </div>
+  <div class="takeaway">
+    <div class="eyebrow on-ink"><span class="num">§</span><span>Zum Mitnehmen</span><span class="rule"></span><span>die Struktur in vier Sätzen</span></div>
+    <ol>
+      <li><b>Kleine Schritte.</b> Erzeugen, prüfen, aufräumen, und dann das nächste Stück.</li>
+      <li><b>Die Prüfung entscheidet.</b> Sie steht vor dem Bau fest, ist versiegelt und gilt für alles, auch für das Alte.</li>
+      <li><b>Rollen sind Stellenbeschreibungen.</b> Jeder Einsatz ist ein frischer Agent mit festen Werkzeugen. Der Takt ist ein Programm, kein Gespräch.</li>
+      <li><b>Der Mensch bleibt Auftraggeber.</b> Er schreibt das Briefing, gibt den Bauplan frei und entscheidet, wenn Plan und Wirklichkeit auseinanderlaufen.</li>
+    </ol>
+  </div>
+</section>
+
+
+<!-- § 11 ──────────────────────────────────────────────────────────── -->
+<section id="kolumne" class="section column">
+  <div class="eyebrow"><span class="num">§ 11</span><span>Kolumne</span><span class="rule"></span><span>Markus Andrezak · überproduct · 4. Oktober 2026</span></div>
+  <h2>Ich wollte eine Methode testen. <span class="accent">Gelernt habe ich, wo mein Wert liegt.</span></h2>
+  <div class="column-body">
+    <p class="kicker">Ich dachte, ich teste Agentic Loop Engineering. Das Experiment hat mir mehr gezeigt.</p>
+    <p>Der Versuchsaufbau war einfach: ein Taschenrechner von 1974, ein kurzes Briefing, ein paar Fotos. Daraus haben Agenten den Rechner
+      auf vier Arten gebaut. Im One Shot gab es einen Wurf ohne Bauplan, im Direktbau einen Wurf mit Bauplan. Die Schleife baute Feature
+      für Feature, mit Prüfung, Gutachter und Aufräumer. Im Graph baute dieselbe Schleife parallel. Am Ende wurde alles gleich bewertet,
+      und die Gutachter wussten nicht, wer was gebaut hatte.</p>
+    <p>Die Zahlen sind deutlich. Der One Shot war nach elf Minuten fertig, die Schleife nach fast zweieinhalb Stunden, mit dem Zwölffachen
+      an Tokens. Gut tausend Zeilen Code für über vier Millionen Tokens: Das ist, ehrlich gesagt, unanständig. Und trotzdem gewinnt die
+      Schleife bei allem, was zählt, wenn man länger mit einem Produkt leben will: Treue zum Vorbild, Absicherung, Struktur. Der Graph,
+      der dasselbe parallel baute, war kaum schneller, genauso teuer und genauso gut.</p>
+    <p>Die eigentliche Erkenntnis steckt aber nicht in den Zahlen. Sie steckt darin, woher die Qualität kam. Dass das Weiße eine abnehmbare
+      Hülle ist, dass der Klick satt klingen muss, aber leise, dass die Schieber erhaben sind: Nichts davon stand im Briefing. Es kam, weil
+      ich hingesehen und hingehört habe und dann gesagt habe, so nicht. Kent Beck hat beschrieben, dass der Wert von neunzig Prozent seiner
+      Fähigkeiten auf null gefallen ist, während die Hebelwirkung der übrigen zehn Prozent um ein Vielfaches gestiegen ist. In diesem
+      Projekt kann man sehen, was diese zehn Prozent sind: hinsehen, entscheiden, verantworten. Das, was erst einmal bleibt.</p>
+    <p>Damit erklärt sich auch der Unterschied zwischen den Bauweisen. Der One Shot bekommt mein Urteil einmal, vorher, und nie wieder.
+      Die iterierenden Bauweisen haben einen Kanal, über den es in jeden weiteren Schritt fließt und dort bleibt: Bauplan mit Nummern,
+      versiegelte Prüfung, Gutachter, Schleife. Möglich macht das Engineering-Struktur, nicht das Modell. Ab dem Moment, in dem mein
+      Urteil festgehalten ist, können die Agenten fast alles, was ich kann, oft mehr, schneller und billiger.</p>
+    <p>Was das wert ist, entscheidet jeder selbst. Wer billig ausprobieren will, ist mit dem One Shot unschlagbar schnell, und die guten
+      Modelle machen das im Kleinen erstaunlich gut. Wer ein Produkt über Jahre betreiben will, wer zwanzig Agenten in zwanzig Repos
+      Dinge bauen lässt, die zusammenpassen müssen, braucht das Gerüst. Dann rückt der One Shot eine Ebene nach innen und wird zum
+      Arbeitsschritt in einer abgesicherten Spur.</p>
+    <p>Am meisten überrascht hat mich der Graph. Er hat fast nichts besser gemacht, und erst die Zeitanalyse zeigt, warum: Das Bauen
+      selbst lief deutlich schneller, aber die Koordination hat die Ersparnis fast vollständig wieder aufgezehrt. Schneiden, Verträge,
+      Zusammenführen, Tore, all das musste für einen kleinen Rechner jedes Mal neu entstehen. Für dieses Beispiel ist der Graph zu viel
+      Maschine. Seinen Platz hat er im großen Kontext, so wie Boris Cherny an Claude Code arbeitet: kleine Features in einem großen
+      Produkt, in dem Schnitt, Verträge und Prüfungen längst da sind und nicht bei jedem Auftrag neu gebaut werden.</p>
+    <p>Es gibt den Verdacht, dass die großen KI-Labore so viel über Loops und Graphen reden, weil sie Tokens verkaufen wollen. Kann sein.
+      Aber hier sieht man etwas anderes: Mit jeder Engineering-Technik wird das Spektrum breiter. Es reicht vom Wurf für elf Minuten über
+      den präzisen Bauplan und die geprüfte Schleife bis zum parallelen Graphen und, ganz am anderen Ende, zu gar keinen Tokens, weil ein
+      Mensch es selbst baut. Der Punkt ist, dass jeder selbst entscheiden kann, welche Technik für welchen Anspruch und welchen Kontext
+      passt. Dieses kleine Beispiel zeigt, was dieses Spektrum bedeutet, mit echten Zahlen. Je weiter man die Leiter hochklettert,
+      desto mehr gewinnt man an Ausbaubarkeit, Iteration und Rückmeldung. Und desto weniger taugt sie für den schnellen Wurf: In Loops und
+      Graphen vibe-codet man nicht. Das wäre die unökonomischste Entscheidung von allen.</p>
+    <p class="last">Ein großer Versuchsaufbau für einen kleinen Rechner. Gelernt habe ich weniger über Loops als über die Frage, welcher Teil
+      meiner Arbeit übrig bleibt, wenn das Bauen nichts mehr kostet. Es ist der Teil, der Qualität erkennt, bevor sie jemand messen kann.</p>
+  </div>
+</section>
+
+<aside class="corner" id="corner" hidden>
+  <div class="corner-head"><span class="led" id="cornerLed"></span>Neubau, live<small id="cornerState">live</small></div>
+  <a class="corner-open" id="cornerOpen" target="_blank" title="Den Neubau in einem eigenen Fenster öffnen">Groß öffnen ↗</a>
+  <div class="corner-frame" id="cornerFrame"><iframe id="cornerApp" title="Rechner im Bau" allow="autoplay"></iframe></div>
+</aside>
+
+<dialog id="fileDialog">
+  <header><b id="fileTitle"></b><button id="fileClose" aria-label="Schließen">×</button></header>
+  <pre id="fileBody"></pre>
+</dialog>
+
+<footer class="colophon">
+  <div class="brand big"><span class="upmark">üp</span><span class="wordmark">überproduct</span></div>
+  <p>Ein Projekt von <strong>überproduct</strong> · Markus Andrezak · Agentic Loop Engineering am Beispiel eines Liebhaber-Nachbaus.<br>
+    Fertiger Rechner aus dem Original-Projekt <a href="http://localhost:4173" target="_blank">localhost:4173 ↗</a> · Neubau der Live-Werkstatt <a id="footRun" href="http://localhost:4273" target="_blank">localhost:4273 ↗</a> · Werkstatt-Dashboard <a href="http://localhost:4180" target="_blank">localhost:4180 ↗</a></p>
+</footer>
+
+<script src="/app.js?v=35"></script>
+</body>
+</html>

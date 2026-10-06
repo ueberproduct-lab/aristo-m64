@@ -1,0 +1,954 @@
+{
+  "loop": {
+    "status": "done",
+    "run": "demo-runs/run-20261003-1742",
+    "date": "2026-10-03",
+    "durationMin": 148,
+    "tokens": 4200000,
+    "tokensApprox": true,
+    "ids": {
+      "passed": 106,
+      "pending": 0,
+      "total": 106
+    },
+    "idsCore": {
+      "passed": 79,
+      "pending": 0,
+      "total": 79
+    },
+    "tests": {
+      "passed": 233,
+      "total": 233
+    },
+    "featuresGreen": {
+      "passed": 16,
+      "total": 16
+    },
+    "failedIds": [],
+    "metrics": {
+      "locTotal": 1138,
+      "cognitiveMax": 10,
+      "cognitiveTotal": 97,
+      "duplicationPct": 1.16,
+      "longFunctions": 0,
+      "unusedExports": 0,
+      "unusedCssClasses": 0,
+      "processComments": 0
+    },
+    "commits": 23,
+    "look": {
+      "score": 20,
+      "max": 20,
+      "perCriterion": [
+        {
+          "criterion": 1,
+          "score": 2,
+          "note": "Mit Hülle 396×792 px, also genau 2,0:1. Von oben nach unten: Kopfplatte (≈0,175), schmale Schalterleiste, flaches Display, großes 4×5-Tastenfeld, Fußplatte. Die Teilung entspricht dem M 85 S-Frontfoto. Ohne Hülle bleibt die Geometrie gleich, es gibt keinen Layout-Sprung."
+        },
+        {
+          "criterion": 2,
+          "score": 2,
+          "note": "Mit Hülle (current-device.png) läuft ein schmaler cremeweißer Rand rundum, links und rechts über die ganze Länge, oben und unten gleich breit. Ohne Hülle (current-device-nocase.png) ein rein schwarzes Gehäuse mit kleinen Eckenradien und Lichtkante an den Seiten, ohne jede Creme. Matt, kein Glas, keine bunten Verläufe. Kopfplatte mit Fase, Fußplatte mit Fuge abgesetzt. Die feine Narbung des Originals fehlt, das ist aber nur eine Kleinigkeit."
+        },
+        {
+          "criterion": 3,
+          "score": 2,
+          "note": "„ARISTO M 64“ hell, gesperrt, in geometrischer Schrift (Futura-Anmutung). Großes A, kleinere Kapitälchen „RISTO“, M und 64 in voller Versalhöhe wie am Original, zentriert und dezent. Breite und Wirkung treffen m64-front-detail.jpg gut."
+        },
+        {
+          "criterion": 4,
+          "score": 2,
+          "note": "Drei Cremeschieber auf heller Führung mit den Beschriftungen 0 K, F 2 und 0 I, hell und gut lesbar. Die Schieber ragen über die Führung hinaus, mit harter Kante zwischen heller Oberseite und dunklerer Vorderkante. K und F/2 haben einen leichten Grauschleier (Schieber gemessen ≈217 gegenüber 234 bei Ein/Aus). Ein/Aus steht klar auf I."
+        },
+        {
+          "criterion": 5,
+          "score": 2,
+          "note": "Breites, dunkles, rot getöntes Fenster mit dunkler Innenkante. Es wirkt eingelassen, die Mitte ist leicht heller als der Rand, also transluzent mit Tiefe wie am Detailfoto."
+        },
+        {
+          "criterion": 6,
+          "score": 2,
+          "note": "Rote 7-Segment-Ziffern, leicht kursiv und zierlich, mit dezentem Glühen. Die Geister-Segmente „8.“ schimmern kaum sichtbar durch, der Dezimalpunkt ist ein eigener Punkt (siehe „4.“ in current-display.png). Rechtsbündig, Minuszeichen in der Vorzeichenzelle."
+        },
+        {
+          "criterion": 7,
+          "score": 2,
+          "note": "Kleine quadratische, leicht erhabene Tasten mit Radius ≈15 %, weicher Unterkante, Schlagschatten und großzügigen schwarzen Abständen. Die gedrückte „5“ (current-pressed.png) sinkt sichtbar ein und verliert Kante und Schatten."
+        },
+        {
+          "criterion": 8,
+          "score": 2,
+          "note": "Weiß für Ziffern und Punkt, warmes Gelb-Orange für % √ ÷ × − = +, Rot-Orange für C und CE. Matte Kunststoffwirkung mit leichtem Verlauf nach unten, kein Hochglanz."
+        },
+        {
+          "criterion": 9,
+          "score": 2,
+          "note": "Fette schwarze Legenden in derselben geometrischen Schrift wie das Logo, mittig. CE so groß wie C, √ mit angeschlossenem Querstrich. Kleinigkeit: „×“ wirkt etwas kleiner und leichter als „+“ und „−“, ist aber noch nah am Original."
+        },
+        {
+          "criterion": 10,
+          "score": 2,
+          "note": "Wirkt wie das Gerät von 1974 auf ruhigem, warmgrauem Untergrund, nicht wie eine Flat-UI. Außer dem Gerät ist nichts zu sehen, kein sichtbarer Hüllen-Schalter (Easter Egg). Mobil (375 px) stimmig: das Gerät füllt die Breite, Hülle und Proportionen bleiben erhalten."
+        }
+      ],
+      "mustFix": [],
+      "summary": "Endabnahme: 20 von 20 Punkten, kein Kriterium unter 2. Die Schwelle (mindestens 17, kein Kriterium mit 0) ist erfüllt, mit und ohne Schutzhülle. Proportionen, Hülle, Schieber, Display und Tasten treffen die Referenzfotos. Es gibt keine mustFix und keine specConflicts. Bewertet habe ich die vorhandenen Bilder in demo-runs/run-20261003-1742/eval/artifacts/ (current-device.png, current-device-nocase.png, current-display.png, current-pressed.png, current-mobile.png, current-desktop.png). Für die Detailprüfung habe ich nur Ausschnitte im Scratchpad vergrößert, am Produkt nichts geändert und keinen Server gestartet. Zwei Punkte ohne Abzug: In current-device-nocase.png steht im Display „5.“ statt „0.“. Das kommt vermutlich aus der Reihenfolge der Aufnahmen und ist kein Fehler im Aussehen. Zweitens wirkt das Zeichen „×“ etwas kleiner und leichter als „+“ und „−“, das ist eine optionale Kleinigkeit."
+    },
+    "review": {
+      "score": 8.5,
+      "strengths": [
+        "Alle Messwerte der Aufräum-Regeln sind erfüllt (tools/code-metrics.mjs): 0 ungenutzte Exporte, 0 ungenutzte CSS-Klassen, 0 Baugeschichte-Kommentare, 0 überlange Funktionen, schwierigste Funktion 10 (Ziel höchstens 10), Doppelungen 1,16 % (Ziel höchstens 3 %). Gesamt gut 1.100 Zeilen Code.",
+        "Der Rechenkern src/engine.js ist sauber getrennt: reine Logik ohne Bildschirmbezug, kleine benannte Funktionen mit dem Zustand als Parameter (engine.js:65-180), Operatoren und Prozent-Varianten als Tabellen (engine.js:9-22) statt langer Verzweigungen. Benannte Konstanten (MAX_DIGITS, LIMIT) und knappe Kommentare, die das Warum erklären (z. B. engine.js:32, 36-37: Rundung und Übertrag).",
+        "Jede Datei hat genau eine Aufgabe: display.js (Anzeige zeichnen), keys.js (Tastendruck-Optik), keyboard.js (echte Tastatur), sound.js (Klang), config.js (versteckte Schalter), ui.js (verdrahten). Die Klangtabelle in sound.js:10-15 und die Glyphen-Maße in display.js:26-31 sind benannte Werte statt verstreuter Zahlen.",
+        "Testbarkeit ist sauber angebunden: playKeyClick(ctx, when, options) läuft mit echtem oder simuliertem Audio (sound.js:34), createEngine liefert eine kleine öffentliche Schnittstelle, window.m64.render ist ein ausdrücklicher Einstiegspunkt (ui.js:112). Es gibt keine Sonderwege im Produktcode, und die Eval-IDs stehen nicht in src/.",
+        "CSS: Alle Farben und Maße sind als Variablen auf :root geführt und leiten sich aus einer Grundbreite (--s) ab (style.css:4-61). Der Mehrfach-Verlauf ist über Variablen geteilt (--relief-head, --edge-light). Die Kommentare erklären Absicht und Optik, nicht die Bauhistorie.",
+        "Fehlerbehandlung ist ruhig und konsequent: Speicher und Audio fallen leise aus, der Rechner läuft dann stumm weiter (config.js:4-19, sound.js:72-83). Der Aufräum-Bericht und die Historie belegen 5 Runden ohne einen zurückgenommenen Schritt."
+      ],
+      "problems": [
+        "src/style.css ist mit 490 Zeilen die größte Datei und der klare Hotspot (12 Änderungen, Score 5208, etwa das Sechsfache der nächsten Datei). Es enthält viele rohe Hex-Farben und Schattenwerte direkt in Verläufen (style.css:44-57, 267-277, 299-308), also Magie-Zahlen für das Aussehen statt benannter Werte. Das wird das Weiterbauen am Look bremsen.",
+        "src/ui.js ist ein Skript mit Nebenwirkungen auf oberster Ebene statt einer aufrufbaren Startfunktion, und die Reihenfolge ist versteckt gekoppelt: press() (ui.js:55) nutzt `sound`, das erst in ui.js:103 angelegt wird. Das geht nur gut, weil press() erst später aufgerufen wird. Es ist nicht ohne Browser prüfbar.",
+        "ui.js:116 `export { keys }` wird von nichts gelesen und ist toter Rest (die Metrik erkennt es nicht, weil ui.js als Einstiegsskript gilt). Auch engine.isOn()/isError() dienen teils nur Tests (engine.js:187-188), was als Test-Schnittstelle vertretbar, aber nicht ausgewiesen ist.",
+        "Versteckte Kopplung zwischen JavaScript und Layout: ui.js:43 setzt \"4 Spalten\" und leitet die Tonhöhe aus der Reihenfolge der Tasten im HTML ab, während style.css:381 dieselbe 4 unabhängig führt. Ändert jemand das Raster, stimmt der Klang still nicht mehr.",
+        "keyboard.js bekommt zwar `target` übergeben, greift aber in Zeilen 53-54 direkt auf `window` und `document` zu. Das ist inkonsistent und erschwert isolierte Tests. Die Abspielhöhe und der Rechenablauf sind außerdem nur über die Browser-Prüfung abgedeckt, nicht über Tests direkt neben dem Code (Engine-Tests liegen in eval/unit).",
+        "src/index.html wiederholt 20 Tasten und 8 Anzeigezellen von Hand (index.html:55-78, 41-49), und zwei Schieber-Blöcke sind fast identisch. Das ist lesbar, aber bei Änderungen an der Tastenbelegung muss man drei Stellen anfassen (HTML, keyboard.js-Tabelle, engine.js).",
+        "engine.js: execute() und pressPercent() haben fast denselben Ablauf (Operator holen, op auf null, showResult), engine.js:98-102 gegen 161-163. Kleinigkeit, aber ein Kandidat für eine gemeinsame Hilfsfunktion. Die Funktion press() (engine.js:166) liegt mit Komplexität 10 genau an der Grenze, jeder neue Tastenfall würde das Ziel reißen."
+      ],
+      "stepsToTargets": 0,
+      "risk": "Gering. Alle Ziele der Aufräum-Regeln sind schon erreicht, es wäre nach der Regel nur ein einzelner Pfadfinder-Schritt fällig, etwa ui.js:116 entfernen oder execute()/pressPercent() zusammenführen. Der Prüfstand ist mit 106 von 106 grün, daher wäre jeder Schritt gut abgesichert. Das einzige echte Risiko liegt in style.css, weil dort das eingefrorene Aussehen hängt. Dort sollte man nur in kleinen Schritten mit Bildvergleich arbeiten.",
+      "verdict": "Der Code ist ordentlich aufgebaut und lässt sich ohne Vorarbeit weiterentwickeln. Jede Datei hat genau eine Aufgabe, der Rechenkern ist von der Darstellung getrennt, und alle sechs Ordnungsregeln des Projekts sind erfüllt (keine toten Reste, keine Baugeschichte in den Kommentaren, nichts Überlanges, kaum doppelter Code). Schwächen gibt es nur im Detail: Die Stylingdatei ist groß und voller roher Farbwerte, die Startdatei ui.js hat eine versteckte Reihenfolge-Abhängigkeit, und die Tonhöhe hängt unsichtbar an der Tastenreihenfolge im HTML. Das sind Arbeiten von Stunden, kein Umbau, und mit dem grünen Prüfstand kann man sie sicher angehen."
+    },
+    "shots": {
+      "device": "results/loop/device.png",
+      "nocase": "results/loop/nocase.png"
+    },
+    "notes": [
+      "Zwei Stufen (F1–F7, dann F8–F15), Modelle: Handwerker und Gutachter opus, Aufräumer sonnet, Prüfer haiku.",
+      "5 Aufräumrunden, 7 Schritte, 9 Regelverstöße beseitigt (docs/refactor-report-run-20261003-1742.md).",
+      "Zwei Halte durch Fehler im Kern (Aufräum-Prüfung, Golden-Auftauen), beide behoben und fortgesetzt.",
+      "Blinde Bewertung am 4.10.: Fotos 20/20 (die eigene Endabnahme am 3.10. gab 19/20 und bemängelte die Logo-Proportion, die der blinde Gutachter nun als originalgetreu lobt – ein Beispiel für die Streuung einzelner Urteile)."
+    ],
+    "recordedAt": "2026-10-04T07:28:52.326Z",
+    "reviewEarlier": {
+      "score": 8.5,
+      "note": "vergleichendes Gutachten vom 3.10. (Schleife und Direktbau nebeneinander)"
+    },
+    "lookEarlier": {
+      "score": 19,
+      "max": 20,
+      "note": "Endabnahme der Schleife selbst (3.10.)"
+    },
+    "probe": {
+      "score": 10,
+      "convention": "sofortige Ausführung (2 + 3 × 4 = ergibt 20)",
+      "rows": [
+        {
+          "n": 1,
+          "got": "19.",
+          "points": 1
+        },
+        {
+          "n": 2,
+          "got": "72.",
+          "points": 1
+        },
+        {
+          "n": 3,
+          "got": "12.5",
+          "points": 1
+        },
+        {
+          "n": 4,
+          "got": "Minus in der Vorzeichenzelle ganz links, rechtsbündig 3. (zusammen −3, wie bei alten LED-Anzeigen)",
+          "points": 1
+        },
+        {
+          "n": 5,
+          "got": "20. (sofortige Ausführung, wie damals)",
+          "points": 1
+        },
+        {
+          "n": 6,
+          "got": "9.",
+          "points": 1
+        },
+        {
+          "n": 7,
+          "got": "230. schon direkt nach %, mit = danach weiter 230.",
+          "points": 1
+        },
+        {
+          "n": 8,
+          "got": "E in der Vorzeichenzelle, Ziffern leer; die Seite läuft weiter, keine Seitenfehler",
+          "points": 1
+        },
+        {
+          "n": 9,
+          "got": "nach 123 C steht 0., nach 4 + 5 = steht 9.",
+          "points": 1
+        },
+        {
+          "n": 10,
+          "got": "12345679. (alle 8 Stellen da)",
+          "points": 1
+        }
+      ],
+      "summary": "Der Rechner hat alle 10 Zeilen der Funktionsprobe bestanden, also 10/10. Ich habe ihn bedient wie ein Mensch: Jede Taste habe ich über ihre sichtbare Beschriftung angeklickt (C, CE, ÷, ×, −, √, % usw.), ohne data-Attribute zu benutzen. Das Ergebnis habe ich von einem Bild der Anzeige abgelesen, je Zeile eins. Vor jeder Zeile wurde die Seite neu geladen. Jede Beschriftung gab es genau einmal, jede Taste ließ sich anklicken, und die Seite meldete keine Fehler. Halbe Punkte gab es deshalb nirgends.\n\nPunkt vor Strich rechnet der Rechner nicht: 2 + 3 × 4 = ergibt 20, er führt jede Rechnung sofort aus wie das Original. Prozent rechnet er kaufmännisch: Nach 200 + 15 % steht sofort 230, und = danach lässt es bei 230. Nach 1 ÷ 0 = erscheint links ein E und sonst nichts, ohne Absturz. 12345678 + 1 ergibt 12345679, keine Stelle geht verloren.\n\nBei −3 steht das Minus ganz links, die 3 rechtsbündig. Wie bei alten LED-Anzeigen sind die beiden weit auseinander, man liest es aber eindeutig. Das ist Stil, kein Fehler.\n\nNach der Spec habe ich den Rechner nicht beurteilt, nur nach dieser Probe. Am Produkt habe ich nichts geändert. Server: PORT=4274 node server.mjs, am Ende per PID beendet. git status zeigt Änderungen an eval/history.jsonl und progress.jsonl sowie ein neues free-rubric.md. Die stammen nicht von mir.\n\nSkript, Bilder und PID-Datei liegen in demo-runs/run-20261003-1742/eval/artifacts/free-probe/: probe.mjs, row1.png bis row10.png, row7b.png und row9b.png für die zweiten Schritte, page.png als Gesamtansicht, außerdem server.log und server.pid."
+    },
+    "assessedAt": "2026-10-04",
+    "maintainability": {
+      "score": 6.5,
+      "aspects": {
+        "structure": 7.5,
+        "coupling": 5,
+        "safetyNet": 6.5,
+        "clarity": 8
+      },
+      "wishes": [
+        {
+          "wish": "Wunsch 1: Speichertasten M+, M− und MR plus kleines „M“ in der Anzeige. Rechenlogik ist klein bis mittel: neues Feld `memory` in `initialState()` (engine.js:55), drei neue Tasten in `press()` (engine.js:166) mit eigenen Funktionen nach dem Muster von `pressSqrt`/`pressPercent`, dazu eine neue Auskunftsfunktion wie `hasMemory()` in `createEngine` (engine.js:182). MR muss den Wert wie eine getippte Zahl behandeln (`fresh = true`). Das ist sauber ergänzbar, weil die Zustandsübergänge schon einzelne benannte Funktionen sind. Der größere Teil ist die Oberfläche: Das 4×5-Raster ist fest verdrahtet (`index.html:55-79`, 20 Tasten, zugleich Maßgrundlage für `--key`, `--col-gap`, `--row-gap` und `--h-keypad` in `style.css:21-23,36`). Drei neue Tasten brauchen entweder eine sechste Reihe, was die Höhenanteile verschiebt, oder einen Umbau des Rasters. Außerdem hängt `pitchOf` in `ui.js:44-48` an der Tastenzahl (`Math.ceil(n/4)`), die Tonhöhe pro Reihe ändert sich also unbemerkt mit. Für das „M“ gibt es keinen Platz: Das Display ist als 1 Vorzeichen- plus 8 Ziffernzellen festgelegt (`index.html:40-50`, `display.js:153`). Es braucht ein neues Element samt Styling, am besten als eigene Anzeige-Leuchte neben dem Vorzeichen, und `render` kennt bisher nur Text. Gesamt: mittel bis groß, mittleres Risiko.",
+          "files": [
+            "src/engine.js",
+            "src/ui.js",
+            "src/index.html",
+            "src/style.css",
+            "src/display.js",
+            "src/keyboard.js"
+          ],
+          "size": "mittel",
+          "risk": "Die Rechenlogik ist gut abgesichert, die Oberfläche kaum. Eingefrorene Prüfungen verlangen genau 20 Tasten (`eval/e2e/look-structure.spec.mjs:25,63`, `eval/e2e/feel.spec.mjs:37`), feste Proportionen für Raster und Höhenanteile (`look-geometry`, `look-tokens`) und genau 8 Ziffernzellen. Mit drei zusätzlichen Tasten werden diese Prüfungen zwangsläufig rot, und die Goldbilder müssen neu eingefroren werden. Das sind Spezifikationsänderungen, keine Fehler. Die Prüfungen sagen dann nicht mehr, ob der Umbau Bestehendes zerstört hat. Es gibt keine Prüfung für Speicher, M-Anzeige oder Tastenklang pro Reihe nach dem Umbau. Das Tastaturkürzel-Mapping in `keyboard.js:4` müsste um neue Kürzel erweitert werden.",
+          "guarded": false
+        },
+        {
+          "wish": "Wunsch 2: 12 statt 8 Stellen, umschaltbar über den Schalter F/2. Die Zahl 8 steht an vier Stellen, ohne gemeinsame Quelle: `MAX_DIGITS` in engine.js:5 (daraus `LIMIT`, `formatResult`, `typeDigit`), `DIGIT_COUNT` in display.js:23, acht handgeschriebene Zellen in index.html:42-49 und in der Breitenrechnung `--cell` in style.css (`.cell` 0,07 × Breite bei 0,90 Fensterbreite). Die Engine kennt keine Einstellung, `createEngine()` nimmt keine Parameter, `MAX_DIGITS` und `LIMIT` sind Modulkonstanten. Man müsste sie in den Zustand verlegen (`state.digits`), `formatResult(value, digits)` und `typeDigit` anpassen und eine Methode wie `setDigits(n)` oder `press('F2')` ergänzen. Das ist klein bis mittel und gut machbar, weil es überall rein lokale Funktionen sind. Die Anzeige braucht dynamisch gebaute Zellen: `createDisplay` liest die Zellen aus dem HTML, `layoutText` nutzt die Konstante. Mit 12 Ziffern passen 13 Zellen nicht in das 0,90-breite Fenster, die Zellen müssen schmaler werden. Das stößt an die Ziffernproportionen, die der Look fest vorschreibt (Strichstärke, Ziffernhöhe, Abstände). Der Schalter F/2 ist mit `aria-disabled=\"true\"` stillgelegt und hat weder Klick noch Tastaturbedienung. Die Schaltlogik existiert nur als Sonderfall für den Ein/Aus-Schalter (`ui.js:76-90`), ist also nicht wiederverwendbar. Außerdem trägt F/2 beim Original die Bedeutung „Fließkomma/2 Nachkommastellen“, nicht „12 Stellen“, und das aria-label „Dezimalstellen“ (`index.html:26`) passt nicht zum Wunsch. Gesamt: mittel, an der Anzeige groß.",
+          "files": [
+            "src/engine.js",
+            "src/display.js",
+            "src/index.html",
+            "src/style.css",
+            "src/ui.js"
+          ],
+          "size": "mittel",
+          "risk": "Die Engine ist gut abgesichert. 82 Fälle laufen als Unit-Test direkt gegen `createEngine` (`eval/unit/engine.spec.mjs`) und nochmal über die Oberfläche. Ein Fehler beim Umbau der Rundung oder des Überlaufs fiele sofort auf. Wegen der Prüfung darauf, dass der 8-Stellen-Fall im Standard unverändert bleibt, ist das der sicherste der beiden Wünsche. Schwach abgesichert sind Anzeige und Aussehen: Die Prüfungen erwarten fest 8 Ziffernzellen (`display.spec.mjs:14,24,48`, `look-structure.spec.mjs:52`) und Maße, die zum 8er-Fenster passen. Ein umschaltbarer Modus ist damit nur testbar, wenn der Standardzustand 8 bleibt und die 12er-Variante neue Prüfungen bekommt. Die Zellen gegenseitig neu zu bauen, kann die Goldbilder verändern (`G-01`/`G-02`). Das Umschalten selbst (Zustand, Persistenz, Tastatur) hat keine Vorlage und keine Prüfung.",
+          "guarded": true
+        }
+      ],
+      "summary": "Der Rechner ist ein ordentlich gebauter Stand, auf dem man ohne Neuanfang weiterarbeiten kann. Die Rechenlogik ist in `engine.js` sauber von der Oberfläche getrennt und durch 82 automatische Rechenfälle gut abgesichert. Die vorhandenen Aufräummaße sind erfüllt (kein toter Code, kaum Doppelungen, keine übermäßig verschachtelte Funktion), und Kommentare erklären den Code statt seiner Entstehung. Schwächer ist die Oberfläche. Die Zahl der Tasten (20) und der Anzeigestellen (8) steht fest im HTML, im Stylesheet und in den eingefrorenen Prüfungen. Beide Wunschfunktionen, Speichertasten und 12 Stellen, greifen genau dort ein. Die Rechenlogik dafür ist leicht zu erweitern. Aber Layout, Maße und die eingefrorenen Prüfungen müssten mitgeändert werden, und dabei merkt keine Prüfung, ob etwas Bestehendes kaputtgeht. Der Schalter F/2 ist bisher nur Attrappe, und das Schalten wurde einmalig nur für den Ein/Aus-Schalter geschrieben."
+    }
+  },
+  "direct": {
+    "status": "done",
+    "run": "demo-runs/direct-20261003-2030",
+    "date": "2026-10-03",
+    "durationMin": 22,
+    "tokens": 360000,
+    "tokensApprox": true,
+    "ids": {
+      "passed": 103,
+      "pending": 2,
+      "total": 106
+    },
+    "idsCore": {
+      "passed": 77,
+      "pending": 1,
+      "total": 79
+    },
+    "tests": {
+      "passed": 232,
+      "total": 233
+    },
+    "featuresGreen": {
+      "passed": 15,
+      "total": 16
+    },
+    "failedIds": [
+      "L-26"
+    ],
+    "metrics": {
+      "locTotal": 1041,
+      "cognitiveMax": 13,
+      "cognitiveTotal": 125,
+      "duplicationPct": 0,
+      "longFunctions": 1,
+      "unusedExports": 2,
+      "unusedCssClasses": 0,
+      "processComments": 0
+    },
+    "commits": 2,
+    "look": {
+      "score": 17,
+      "max": 20,
+      "perCriterion": [
+        {
+          "criterion": 1,
+          "score": 1,
+          "note": "Gerät mit Hülle 388×774 px, also 2,0:1. Die Reihenfolge von oben nach unten (Kopf, Schalter, Display, Tastenfeld, Fuß) stimmt mit dem M 85 S-Foto überein, der Hüllenrand ist auf allen vier Seiten gleich. Sichtbar daneben ist die Lage des Tastenrasters im Tastenfeld: Zwischen Display-Fenster und erster Reihe liegen etwa 23 px, unter der letzten Reihe (0 · = +) nur etwa 3 px bis zur Kante der Fußplatte. Die Tasten stoßen dadurch fast an die Fußleiste. Am Original ist dort etwa eine halbe Tastenhöhe Luft. Gilt mit und ohne Hülle sowie mobil."
+        },
+        {
+          "criterion": 2,
+          "score": 2,
+          "note": "Mit Hülle: mattschwarzes Gerät in einer cremeweißen Wanne, der Rand ist links und rechts über die ganze Länge sowie oben und unten gleich breit sichtbar. Dazu gerundete Ecken und Lichtbänder an den Seitenkanten. Ohne Hülle: rein schwarzes Gehäuse mit kleinen Eckenradien, nirgends Creme, und kein Layout-Sprung. Kein Hochglanz, kein Glas-Effekt, keine bunten Verläufe."
+        },
+        {
+          "criterion": 3,
+          "score": 2,
+          "note": "„ARISTO M 64“ hell und gesperrt in einer geometrischen Futura-Anmutung. A in voller Höhe, RISTO als Kapitälchen, „M 64“ in voller Höhe wie am Original. Dezent und zentriert in der Kopfplatte."
+        },
+        {
+          "criterion": 4,
+          "score": 2,
+          "note": "Drei erhabene Cremeschieber auf heller Führung mit den Beschriftungen 0 K, F 2 und 0 I. Helle Oberseite, dunklere Vorderkante mit harter Kante, die Schieber ragen aus dem Schlitz heraus. K und F/2 tragen einen leichten Grauschleier, der Ein/Aus-Schieber steht hell auf I und ist klar erkennbar. Kommt dem Frontfoto nahe."
+        },
+        {
+          "criterion": 5,
+          "score": 2,
+          "note": "Breites, schmales Fenster, dunkel und rot getönt, mit schwarzer Einfassung und leichter Innentiefe. Wirkt eingelassen."
+        },
+        {
+          "criterion": 6,
+          "score": 1,
+          "note": "Rote 7-Segment-Ziffern, leicht kursiv, rechtsbündig. Der Dezimalpunkt ist ein eigener Punkt, Geister-Segmente und Vorzeichenzelle schimmern durch. Das Glühen ist bei 1:1 aber kaum wahrnehmbar: Die Segmente wirken wie dünne, flache rote Linien ohne den weichen Lichthof, den die LEDs auf m64-front-detail.jpg und m64-ohne-schutzhuelle.jpg haben. Die LED wirkt nicht leuchtend."
+        },
+        {
+          "criterion": 7,
+          "score": 2,
+          "note": "Kleine, fast quadratische Tasten mit weichen Ecken und dunklerer Unterkante, leicht erhaben. Großzügige schwarze Abstände. Die gedrückte 5 sinkt sichtbar um einige Pixel ein, die Unterkante wird schmaler (current-pressed.png)."
+        },
+        {
+          "criterion": 8,
+          "score": 2,
+          "note": "Ziffern und Punkt weiß, % √ ÷ × − = + gelb-orange, C und CE rot-orange, alles nach den Token-Werten. Matte Kunststoffanmutung mit dezentem Verlauf."
+        },
+        {
+          "criterion": 9,
+          "score": 1,
+          "note": "Ziffern, C, CE, % und √ (mit angeschlossenem Querstrich) sind fett, schwarz und mittig in geometrischer Grotesk, CE ist so groß wie C. Die Operator-Symbole ÷ × − = + sind aber deutlich zu klein und zu dünn: etwa 35–45 % der Ziffernhöhe, das × ist winzig. Am Original sind diese Symbole groß und kräftig, etwa in Ziffernhöhe."
+        },
+        {
+          "criterion": 10,
+          "score": 2,
+          "note": "Wirkt wie ein Gerät aus den 70ern auf ruhigem, warmgrauem Untergrund. Außer dem Gerät ist nichts zu sehen: keine Überschriften, Menüs oder Schalter für die Hülle. Mobil bei 375 px stimmig und vollständig. Keine Flat-UI-Anmutung."
+        }
+      ],
+      "mustFix": [
+        "Kriterium 1, [data-part=keypad]: Das Tastenraster vertikal zentrieren. Den Freiraum im Tastenfeld gleich auf oben und unten verteilen (padding-top = padding-bottom bzw. align-content: center), sodass zwischen Fenster und erster Reihe genauso viel Abstand liegt wie zwischen letzter Reihe (0 · = +) und Fußplatte. Heute sind es oben etwa 23 px und unten etwa 3 px. Tastengröße, Teilung und Höhenanteile nicht ändern, nur die Lage des Rasters.",
+        "Kriterium 6, leuchtende Segmente in [data-part=display]: einen deutlich sichtbaren, weichen roten Lichthof ergänzen, z. B. eine zweite Glühschicht (SVG feGaussianBlur mit etwa 1,5–2 px Radius bei 1:1, Deckkraft 0,5–0,7, Farbe --m64-led-on) unter den Segmenten. Ziel: Bei 1:1 wirken die Ziffern leuchtend statt wie dünne flache Linien. Segmentfarbe, Strichstärke und Geister-Segmente unverändert lassen.",
+        "Kriterium 9, Legenden der Operator-Tasten ÷ × − = +: Schriftgröße auf etwa das 1,4- bis 1,6-Fache anheben, sodass die Symbole optisch so hoch wie die Ziffern wirken. Dazu die Strichstärke an die fetten Ziffern angleichen (× und ÷ nicht dünner als die Ziffernstriche). Weiter zentriert, Schrift wie bei den Ziffern."
+      ],
+      "summary": "Endabnahme (mit und ohne Hülle): 17 von 20 Punkten, kein Kriterium mit 0, also knapp bestanden (Schwelle 17). Gehäuse, Hülle, Logo, Schalter, Fenster, Tastenform und -farben sowie der Gesamteindruck treffen das Original. Abzüge gibt es für das Tastenraster, das fast an der Fußplatte klebt (1), das kaum sichtbare LED-Glühen (6) und die zu kleinen Operator-Symbole ÷ × − = + (9). Keine Widersprüche zur Spec. Bewertet wurden die vorhandenen Bilder unter demo-runs/direct-20261003-2030/eval/artifacts/ (current-device.png, current-device-nocase.png, current-desktop.png, current-display.png, current-pressed.png, current-mobile.png), keine neuen Aufnahmen."
+    },
+    "review": {
+      "score": 8,
+      "strengths": [
+        "Kleine, klar getrennte Dateien: engine.js (reine Logik ohne Anzeige-Code), display.js (LED-Zeichnung), sound.js (Klang), ui.js (Verdrahtung). Insgesamt nur ca. 1040 Codezeilen, die Alarmgrenze von 1600 ist weit weg. Gemessen: keine Code-Duplikate (0 %), keine unbenutzten CSS-Klassen, keine Bau-Historie-Kommentare (0).",
+        "Kommentare erklaeren das Warum und nicht die Baugeschichte, zum Beispiel src/engine.js:19 (15 Stellen gegen Rechenrauschen wie 0.1+0.2), src/engine.js:162 (5 x = ergibt 25) und src/ui.js:83 (Safari erkennt pointerdown nicht als Audio-Geste).",
+        "Magiezahlen sind fast durchgehend benannt: MAX_DIGITS und LIMIT in src/engine.js:4-5; FLICKER_MS, SEMITONES_PER_ROW, COLUMNS und die Speicher-Schluessel in src/ui.js:7-11; die Segment-Geometrie in src/display.js:22-30; Klangpartialtabelle PARTIALS mit Erklaerung in src/sound.js:10-16. Alle Farben liegen als Variablen auf :root (src/style.css:3-27).",
+        "Gute Testbarkeit: Die Engine ist rein (engine.js:2), playKeyClick(ctx, when, opts) laeuft mit jedem AudioContext, auch offline (src/sound.js:29), und window.m64.render ist ein sauberer, eingefrorener Einstiegspunkt (src/ui.js:224). Die Elemente tragen data-part-Attribute und ARIA-Labels, daher braucht es keine Sonderwege.",
+        "Fehlerbehandlung ist bewusst und dokumentiert (try/catch um localStorage und Audio, src/ui.js:22-37, 95-104). Die Tastenzuordnung ist eine lesbare Tabelle (src/ui.js:13-20). Das Tastenfeld im HTML ist regelmaessig aufgebaut.",
+        "Zeichen der Sorgfalt: Die Engine-Funktionen apply und percentOf sind klein und einzeln lesbar (src/engine.js:43-61). Die Aufteilung der ui.js in beschriftete Abschnitte (Sound, Flicker, Tasten, Schalter) macht die 230 Zeilen gut navigierbar."
+      ],
+      "problems": [
+        "Zwei Exporte werden nirgends von aussen benutzt: toDisplay in src/engine.js:13 und PATTERNS in src/display.js:6. Das Ziel der Policy ist 0, Alarm ab 3, aktuell 2.",
+        "createEngine ist 160 Zeilen lang (src/engine.js:67-227). Es ist ein Zustands-Behaelter mit vielen kleinen, gut lesbaren Funktionen, aber die Metrik meldet es als lange Funktion (Ziel 0). Die Zustandsvariablen acc, op, entry, cur, curText, fresh und error haengen unsichtbar zusammen; reset() und fail() setzen sie doppelt und von Hand (src/engine.js:77-93). Wer einen Zustand ergaenzt, muss beide Stellen anpassen.",
+        "toDisplay hat die hoechste Komplexitaet (13, Ziel max. 10) in src/engine.js:13-41. Die Rundung per Zeichenketten-Rechnung ist schwer nachzuvollziehen, mit 8 Zwischenvariablen und der Magiezahl 53 als Zeichencode von '5' (src/engine.js:27).",
+        "ui.js:73 audioContext hat Komplexitaet 12, mit verschachtelten try/catch und Typpruefungen (src/ui.js:73-93). ui.js:161 (keydown) ist mit 6 mittel. display.js:90 parse hat 10 und engine.js:193 press hat 10, beide genau an der Grenze.",
+        "ui.js ist eine Datei mit Seiteneffekten auf Modulebene (document.querySelector, Event-Handler, show() am Ende, src/ui.js:39-230). Es gibt keine createUi()-Funktion. Das ist fuer 230 Zeilen noch ok, erschwert aber Unit-Tests von Pitch-Berechnung oder Audio-Verwaltung ohne Browser. Zustand liegt in losen Modul-Variablen (powered, soundOn, audio, flickerTimer, src/ui.js:59-62). Die Kopplung ueber das globale window.m64 ist nur ein Test-Haken.",
+        "CSS (src/style.css, 429 Zeilen) enthaelt viele rohe Farbwerte und Pixelzahlen direkt in Verlaeufen, die nicht benannt sind: #2a2a2c bis #0a0a0b in .head (style.css:140-148), die Verlaeufe in .foot (411-418), .sw-knob (210-215), .key-Schatten --ks (359, 364). Prozentfaktoren wie 0.175, 0.065, 0.075, 0.53, 0.105 stehen als Zahlen in den Regeln (style.css:135, 166, 253, 314, 407) statt als benannte Variablen, obwohl sie laut tokens.json feste Spec-Werte sind. Die Flicker-Dauer steckt doppelt im Code, 80ms in CSS (style.css:293) und FLICKER_MS = 90 in ui.js:9, und beide muessen zusammenpassen.",
+        "Kleinigkeiten: Zwei fast gleiche Tasten-Halte-Logiken (pointerHeld/keyHeld, src/ui.js:127-186) mit leicht unterschiedlichem Aufraeumen. Der Taste-Name 'sqrt' wird in ui.js:18 und engine.js:205 als lose Zeichenkette abgesprochen. Mehrere Paare der 'Einschalten/Ausschalten'-Umschaltung (ui.js:208-220) wiederholen dasselbe Muster, aber nur zweimal.",
+        "Eine Pruefung ist rot (L-26, Legenden fett, dunkel, mittig) und zwei sind offen. Das ist laut Auftrag nicht Teil der Bewertung, aber als Absicherung fuer Aufraeumen bleibt es ein kleiner Wermutstropfen."
+      ],
+      "stepsToTargets": 6,
+      "risk": "Niedrig bis mittel. Die Pruefsuite ist mit 103 von 106 Pruefpunkten gruen (1 rot, 2 offen), der Rest deckt Engine, Optik, Klang und Tastatur breit ab. Die meisten Schritte sind kleine, lokale Aenderungen (zwei Exporte entfernen, zwei Funktionen entflechten). Der riskanteste Schritt waere das Aufteilen der Engine (createEngine), denn dort haengen die Zustandsvariablen eng zusammen. Dafuer gibt es aber eine eigene Engine-Pruefung. Die CSS-Aenderungen sind durch die eingefrorenen Referenzbilder abgesichert, wuerden aber schnell auffallen, wenn ein Pixel kippt.",
+      "verdict": "Dieser Rechner ist insgesamt sauber gebaut. Der Code ist in vier klare Teile gegliedert (Rechenlogik, Anzeige, Klang, Verdrahtung), er ist mit gut 1000 Zeilen klein, und es gibt keine doppelten Stellen und keine Kommentare, die nur die Baugeschichte erzaehlen. Die Zahlenwerte tragen meistens sprechende Namen, die Kommentare erklaeren das Warum. Offen sind nur ein paar Kleinigkeiten, die die eigenen Regeln des Projekts noch bemaengeln: zwei Funktionen, die nach aussen angeboten, aber nirgends benutzt werden, drei Funktionen, die schwerer zu lesen sind als erlaubt (vor allem die Rundung der Zahlen), und die Rechenlogik als eine lange Funktion mit vielen zusammenhaengenden Merkern. Ich schaetze etwa sechs kleine Aufraeumschritte bis zum Ziel, mit niedrigem Risiko, weil fast alle Pruefungen gruen sind. Man kann hier sofort sicher weiterbauen."
+    },
+    "shots": {
+      "device": "results/direct/device.png",
+      "nocase": "results/direct/nocase.png"
+    },
+    "notes": [
+      "Ein Agent, ein Durchgang, mit voller Spec, Fotos und Feature-Liste, ohne Prüfungen beim Bauen.",
+      "Fünf Unklarheiten der Spec gemeldet: Bezugsbreite, Grauschleier gegen Beschriftung, Flachheit gegen Lichtband, Server-Port, spektraler Schwerpunkt.",
+      "Blinde Bewertung am 4.10.: Abzüge bei den Fotos für das Tastenraster (klebt fast an der Fußplatte), das kaum sichtbare LED-Glühen und zu kleine Operator-Symbole."
+    ],
+    "recordedAt": "2026-10-04T07:28:53.051Z",
+    "reviewEarlier": {
+      "score": 6.5,
+      "note": "vergleichendes Gutachten vom 3.10. (Schleife und Direktbau nebeneinander)"
+    },
+    "probe": {
+      "score": 10,
+      "convention": "sofortige Ausführung (2 + 3 × 4 = ergibt 20)",
+      "rows": [
+        {
+          "n": 1,
+          "got": "19.",
+          "points": 1
+        },
+        {
+          "n": 2,
+          "got": "72.",
+          "points": 1
+        },
+        {
+          "n": 3,
+          "got": "12.5",
+          "points": 1
+        },
+        {
+          "n": 4,
+          "got": "-3. (Minuszeichen in der Vorzeichenzelle ganz links, die Ziffer rechtsbündig)",
+          "points": 1
+        },
+        {
+          "n": 5,
+          "got": "20. (sofortige Ausführung wie beim Original)",
+          "points": 1
+        },
+        {
+          "n": 6,
+          "got": "9.",
+          "points": 1
+        },
+        {
+          "n": 7,
+          "got": "230. schon nach %; ein weiteres = lässt es bei 230.",
+          "points": 1
+        },
+        {
+          "n": 8,
+          "got": "E in der LED-Anzeige (vorgelesener Text: Fehler); kein Absturz, keine Konsolenfehler",
+          "points": 1
+        },
+        {
+          "n": 9,
+          "got": "9.",
+          "points": 1
+        },
+        {
+          "n": 10,
+          "got": "12345679. (alle 8 Stellen erhalten)",
+          "points": 1
+        }
+      ],
+      "summary": "Ergebnis der Funktionsprobe: 10 von 10 Punkten. Alle zehn Zeilen stimmen, halbe Punkte gab es keine.\n\nSo habe ich geprüft: Ein headless Playwright-Skript (Chromium) drückt die Tasten so, wie ein Mensch sie sieht. Es findet jede Taste über ihre genaue sichtbare Beschriftung (C, %, √, ÷, ×, −, +, =, Ziffern), nicht über data-Attribute. Vor jeder Zeile wird die Seite neu geladen, zwischen den Tasten wird kurz gewartet. Das Ergebnis habe ich vom Bild der 7-Segment-Anzeige abgelesen. Der vorgelesene Text der Anzeige (aria-live) diente nur zum Gegenlesen und stimmte jedes Mal mit dem Bild überein.\n\n- **Rechenweise:** sofortige Ausführung, also 2 + 3 × 4 = 20 wie beim Original.\n- **Prozent:** zeigt schon beim Druck auf % 230, ein weiteres = ändert daran nichts.\n- **1 ÷ 0:** Die Anzeige zeigt ein klares „E“, vorgelesen wird „Fehler“.\n- **Stabilität:** keine Seiten- oder Konsolenfehler, jede Taste ließ sich auf Anhieb klicken.\n\nDer Server lief als `PORT=4284 node server.mjs` mit PID 98100. Ich habe ihn am Ende über diese PID beendet, danach war der Port nicht mehr erreichbar. Am Produkt habe ich nichts geändert.\n\nDie Treue zu den Fotos habe ich nicht bewertet, weil dieser Auftrag nur die Funktionsprobe verlangte.\n\nAlle Dateien liegen in `demo-runs/direct-20261003-2030/eval/artifacts/free/`:\n- `probe.mjs` (Skript)\n- `results.json` (Ergebnisse)\n- `row-1.png` bis `row-10.png` sowie `row-7_5.png` (Bilder der Anzeige, 7_5 ist Zeile 7 mit zusätzlichem =)\n- `montage.png` (alle Anzeigen auf einem Bild)\n- `page.png` (die ganze Seite)\n- `server.log` und `server.pid` (Server-Ausgabe und PID)"
+    },
+    "assessedAt": "2026-10-04",
+    "maintainability": {
+      "score": 6.5,
+      "aspects": {
+        "structure": 8,
+        "coupling": 5.5,
+        "safetyNet": 6,
+        "clarity": 8
+      },
+      "wishes": [
+        {
+          "wish": "Wunsch 1, Speichertasten M+, M− und MR mit kleinem M in der Anzeige. Die Rechenlogik ist klein und gehört klar in die Engine. Dort kommen ein Speicherwert, drei neue Tastennamen in press() und eine Abfrage hasMemory() dazu. Das ist eine kleine bis mittlere Änderung. Aufwendiger ist die Oberfläche. Das 4×5-Tastenraster ist voll: 20 Tasten, alle in src/index.html:52-77. Es gibt also keinen Platz für drei neue Tasten, ohne das Raster umzubauen oder Tasten umzubelegen. Zusätzlich ist die Tastenhöhe an die Geräteproportionen gebunden. src/ui.js:51-57 leitet die Tonhöhe pro Reihe aus der Tastenzahl ab (COLUMNS=4). Eine neue Reihe verschiebt also still die Töne aller Tasten. Das M braucht eine neue Anzeigestelle: src/display.js:115-126 baut nur Vorzeichen plus 8 Ziffern, ein M-Zeichen gibt es dort nicht. Dazu kommen ein Tastenname im KEYBOARD-Objekt in ui.js:13 und CSS rund um src/style.css:247. Insgesamt mittel bis groß, Risiko mittel.",
+          "files": [
+            "src/engine.js",
+            "src/index.html",
+            "src/ui.js",
+            "src/display.js",
+            "src/style.css"
+          ],
+          "size": "mittel",
+          "risk": "Mittel. Die Logik ist leicht einzubauen und durch die Tabellentests gut abgesichert. Heikel ist das Layout: Die gesperrten Tests fordern genau 20 Tasten (look-tokens.spec.mjs:L-30) und feste Reihen- und Spaltenmaße. Neue Tasten würden diese Tests rot färben, obwohl nichts kaputt ist. Es gibt keine eingefrorenen Referenzbilder (eval/golden ist leer), also würde ein verschobener Look nicht automatisch auffallen.",
+          "guarded": true
+        },
+        {
+          "wish": "Wunsch 2, 12 statt 8 Stellen, umschaltbar über den Schalter F/2. Hier ist der Code schlechter vorbereitet. Die Stellenzahl steckt als feste Werte in drei Dateien. In src/engine.js:4-5 stehen MAX_DIGITS=8 und LIMIT=1e8 als Modulkonstanten. Sie hängen nicht an einer Engine-Instanz, und toDisplay() (engine.js:13-41) liest sie direkt. Die Engine braucht also einen Parameter wie createEngine({digits}) oder eine Methode setDigits(). Die Rundung ist dabei zum Glück schon sauber nach Stellenzahl gerechnet. In src/display.js:4 steht DIGITS=8, und die Zellen werden einmal beim Start gebaut (display.js:115-122). Man müsste 12 Zellen bauen und vier ausblenden, oder neu aufbauen. Die Anzeigebreite und die Ziffernzellen in src/style.css:249-290 sind auf 9 Zellen abgestimmt. In src/index.html:38 ist F/2 als bewusst funktionsloser Schalter markiert (aria-disabled), mit Grauschleier in style.css:230. Dieser Schalter hat in ui.js keinen Handler und müsste verdrahtet, entsperrt und optisch angepasst werden. Das ist eine mittlere bis große Änderung über Engine, Anzeige, Oberfläche und Stil hinweg. Die Kopplung ist hoch.",
+          "files": [
+            "src/engine.js",
+            "src/display.js",
+            "src/ui.js",
+            "src/index.html",
+            "src/style.css"
+          ],
+          "size": "groß",
+          "risk": "Hoch. Gesperrte Tests behaupten das Gegenteil des Wunsches. look-tokens.spec.mjs (L-29) verlangt, dass F/2 gesperrt ist und nichts tut. display.spec.mjs prüft genau 8 Ziffernzellen. Fall F-22 und F-05a in cases.mjs prüfen den Überlauf bei 8 Stellen. Diese Tests würden bei der Änderung zu Recht rot werden und müssten bewusst geändert werden, was sie im jetzigen Setup nicht zulassen. Für die neue 12-Stellen-Rechnung gibt es keinen eigenen Test. Ein kaputter Umbau der 8-Stellen-Rechnung würde aber sofort auffallen.",
+          "guarded": true
+        },
+        {
+          "wish": "Aufräumen vor dem Weiterbau. Die Funktion createEngine() in src/engine.js:67 ist 160 Zeilen lang und kapselt alle Zustandsvariablen in einer Closure. Das ist übersichtlich, aber Speicher und Stellenzahl kämen als weitere Zustandsvariablen dazu. Sinnvoll wäre, die Stellenzahl vorher als Konfiguration an toDisplay() und die Engine zu geben und den Speicher als eigenen kleinen Baustein zu führen. Außerdem sind zwei exportierte Dinge ungenutzt (display.js PATTERNS, engine.js toDisplay). Der eine rote Test L-26 (Wurzelzeichen nicht mittig genug) ist ein reines Stilproblem in src/style.css und gehört vorher grün, damit die Prüfsuite wieder als Frühwarnung taugt.",
+          "files": [
+            "src/engine.js",
+            "src/display.js",
+            "src/style.css"
+          ],
+          "size": "klein",
+          "risk": "Niedrig. Die Engine ist durch viele Tabellenfälle abgedeckt. Das Mittigstellen des Wurzelzeichens kann nur das Aussehen verändern.",
+          "guarded": true
+        }
+      ],
+      "summary": "Der Rechner ist sauber gebaut und gut lesbar. Rechenlogik, Anzeige, Klang und Bedienung stecken in je einer eigenen kleinen Datei. Es gibt kaum Doppelungen, keine Altlasten in den Kommentaren, und die Rechenlogik hängt nicht an der Oberfläche. Das ist eine gute Ausgangslage. Von 233 automatischen Prüfungen sind 232 grün, und die Rechenfälle werden einzeln geprüft. Wenn man beim Umbau eine bestehende Rechnung kaputt macht, merkt das sofort jemand. Die zwei geplanten Wünsche sind aber unterschiedlich leicht. Die Speichertasten lassen sich in der Rechenlogik einfach ergänzen, doch das Tastenfeld ist voll und das Layout eng an die Maße des Originals gebunden. Die 12 Stellen sind mühsamer, weil die Zahl 8 an drei Stellen fest eingebaut ist und die Prüfungen ausdrücklich verlangen, dass F/2 nichts tut und genau 8 Ziffern zu sehen sind. Diese Prüfungen müssten dafür bewusst geändert werden. Es fehlen außerdem Referenzbilder, die ein verrutschtes Aussehen automatisch melden würden. Fazit: ein ordentliches Fundament, das man mit etwas Vorbereitung gut weiterbauen kann. Das ist gut genug für Feinschliff, aber nicht für beliebige Umbauten."
+    }
+  },
+  "oneshot": {
+    "status": "done",
+    "run": "demo-runs/oneshot-20261004-0819",
+    "date": "2026-10-04",
+    "durationMin": 11,
+    "tokens": 342229,
+    "ids": null,
+    "idsCore": null,
+    "tests": null,
+    "featuresGreen": null,
+    "failedIds": [],
+    "metrics": {
+      "locTotal": 660,
+      "cognitiveMax": 8,
+      "cognitiveTotal": 55,
+      "duplicationPct": 0,
+      "longFunctions": 0,
+      "unusedExports": 4,
+      "unusedCssClasses": 0,
+      "processComments": 0
+    },
+    "commits": 2,
+    "look": {
+      "score": 14,
+      "max": 20,
+      "perCriterion": [
+        {
+          "criterion": 1,
+          "score": 1,
+          "note": "Das Hochformat passt mit etwa 340×700 px ≈ 2,06:1, und die Reihenfolge Kopf, Schalter, Display, Tastenfeld, Fuß stimmt. Die Fußplatte ist mit ca. 0,065 der Höhe aber deutlich flacher als am M 85 S-Foto (ca. 0,10). Das Tastenfeld nimmt dafür etwa 0,60 statt 0,53 ein. Zusätzlich ist der Hüllenrand ungleich: oben kaum 2 px, unten etwa 11 px."
+        },
+        {
+          "criterion": 2,
+          "score": 1,
+          "note": "Das Gerät ist mattschwarz, ohne Glanz und ohne Glas. Mit Hülle ist der cremefarbene Rand links und rechts als schmaler Streifen zu sehen. Oben ist er fast nicht vorhanden, unten breit, sodass oben eine schwarze Kappe entsteht. Eine Ansicht ohne Hülle gibt es nicht: Der Klick auf „MADE IN GERMANY“ ändert nichts, am Gerät steht kein data-case. Ein rein schwarzes Gehäuse ist daher nirgends zu sehen. current-device.png und current-device-nocase.png fehlen."
+        },
+        {
+          "criterion": 3,
+          "score": 1,
+          "note": "Die geometrische Futura-Anmutung stimmt, ebenso das große A mit kleineren Kapitälchen RISTO, die Sperrung und die Zentrierung. Die Strichstärke wirkt aber zu dünn (fast Light); am Original ist das Logo kräftiger. Außerdem stehen „M 64“ in voller Versalhöhe wie das A, am Original sind sie so hoch wie die Kapitälchen RISTO. Dadurch wirkt der Schriftzug zu groß und zu spitz."
+        },
+        {
+          "criterion": 4,
+          "score": 1,
+          "note": "Die drei Schieber mit 0 K, F 2 und 0 I sind da, Ein/Aus steht erkennbar auf I. Der Grauschleier über K und F/2 erscheint aber als scharf abgesetzte graue Kästen mit runden Ecken und nicht als leichter Schleier. Die Schieber sind runde, zylinderförmige Walzen mit weichem Verlauf und schmal (≈1,0× Schlitzhöhe). Am Original sind es kantige Cremeklötze mit harter Vorderkante, die aus dem Schlitz ragen."
+        },
+        {
+          "criterion": 5,
+          "score": 2,
+          "note": "Das Fenster ist schmal, breit, dunkel und rot getönt, mit feiner Innenkante. Es wirkt eingelassen und passt zum Original."
+        },
+        {
+          "criterion": 6,
+          "score": 1,
+          "note": "Die roten 7-Segment-Ziffern sind leicht kursiv, glühen, stehen rechtsbündig und haben einen eigenen Dezimalpunkt. Die Geistersegmente sind aber deutlich als „8.8.8.8.“ samt Punkten zu lesen. Am Original sind sie kaum sichtbar, die Anzeige wirkt dadurch unruhig."
+        },
+        {
+          "criterion": 7,
+          "score": 2,
+          "note": "Die Tasten sind klein, quadratisch und erhaben, mit weichen Kanten, sichtbarer Sockelkante und großzügigen schwarzen Abständen. Die gedrückte 8 sinkt sichtbar ein, die Sockelkante wird kürzer."
+        },
+        {
+          "criterion": 8,
+          "score": 2,
+          "note": "Die Ziffern und der Punkt sind weiß, % √ ÷ × − = + gelb-orange, C und CE rot-orange. Die Oberflächen wirken matt, die Farben treffen das Foto gut."
+        },
+        {
+          "criterion": 9,
+          "score": 2,
+          "note": "Die Legenden sind fette, schwarze, geometrische Grotesk und mittig gesetzt. √ hat den angeschlossenen Querstrich, CE ist so groß wie C, · ÷ × − + = % stimmen. Kleine Schwäche: Bei CE stehen die Buchstaben sehr eng."
+        },
+        {
+          "criterion": 10,
+          "score": 1,
+          "note": "Insgesamt wirkt es wie ein Gerät aus den 70ern und nicht wie eine Flat-UI, auch mobil auf 375 px passt es. Unter dem Gerät steht aber sichtbar die Zeile „Tastatur: 0–9 · Komma · … Entf = CE“, auf Desktop wie mobil. Die Rubrik verlangt, dass außer dem Gerät nichts zu sehen ist. Das Hüllen-Easter-Egg fehlt ganz."
+        }
+      ],
+      "mustFix": [
+        "Seite: Den Hinweistext p.hint („Tastatur: 0–9 · Komma …“) unter dem Gerät komplett entfernen, auf Desktop und mobil. Außer dem Gerät darf nichts zu sehen sein. Für Screenreader höchstens visuell versteckt (sr-only) oder per aria-keyshortcuts an den Tasten.",
+        "Schutzhülle als Easter Egg bauen: Klick auf den Schriftzug „MADE IN GERMANY“ im Fuß schaltet data-case=\"on|off\" am Gerät um. Kein Cursor-Wechsel, kein Hover-Effekt. Mit off zeigt das Gerät ein rein schwarzes Gehäuse mit kleinen Eckenradien und ohne jede Creme, ohne dass das Layout springt. Der Zustand wird in localStorage unter m64-case gespeichert (mit try/catch).",
+        "Hüllenrand: Den cremefarbenen Rand oben genauso breit machen wie unten und an den Seiten, statt etwa 2 px oben und 11 px unten. Am besten baut man die Hülle als eigenes Element (Wanne) und setzt das schwarze Gerät gleichmäßig eingerückt hinein, damit keine schwarze Kappe oben mehr entsteht.",
+        "Höhenanteile auf die Token-Werte bringen: Die Fußplatte ist sichtbar zu flach (≈0,065 statt 0,105 der Höhe). Den Fuß auf den Spec-Anteil erhöhen und das Tastenfeld entsprechend verkleinern (≈0,60 auf 0,53). Die Werte selbst nicht ändern.",
+        "Logo: Die Strichstärke von Light/Regular auf Medium (≈500) anheben. „M 64“ in der Höhe der Kapitälchen RISTO setzen statt in voller Versalhöhe wie das A. Nur das A bleibt groß.",
+        "Schalter: Die grauen Kästen hinter K und F/2 entfernen. Den Grauschleier stattdessen als leichte Abdunklung bzw. Entsättigung (etwa opacity 0,8–0,85) direkt auf Schieber und Beschriftung legen. Die Schieber kantig machen, ohne Zylinder-Verlauf: helle Oberseite, deutlich dunklere Vorderkante mit harter Kante, 1–2 px Schlagschatten, etwa 1,2–1,5× Schlitzhöhe hoch, damit sie aus dem Schlitz ragen.",
+        "LED-Anzeige: Die Geistersegmente und Geister-Dezimalpunkte stark zurücknehmen, sodass sie gegen den Fensterhintergrund nur knapp wahrnehmbar sind (ΔE etwa 3–8, also deutlich dunkler als jetzt). Leere Stellen dürfen nicht mehr als „8.8.8.“ lesbar sein."
+      ],
+      "summary": "Der Bau trifft das Gerät nur teilweise und besteht mit 14 von 20 Punkten nicht (nötig sind 17). Ein Kriterium mit 0 gibt es nicht. Die Bilder current-device.png und current-device-nocase.png gab es nicht. Bewertet habe ich deshalb current-desktop.png, current-mobile.png und eigene headless Aufnahmen in demo-runs/oneshot-20261004-0819/eval/artifacts/judge-*.png. Gut gelungen sind Tasten, Farben, Legenden und das Display-Fenster, jeweils 2 Punkte. Zu „ohne Hülle“: Diese Ansicht fehlt komplett, weil das Easter Egg auf „MADE IN GERMANY“ nicht gebaut ist. Ein Klick darauf ändert nichts, am Gerät steht kein data-case. Ein rein schwarzes Gehäuse ist also nirgends zu sehen. Mit Hülle stimmt der Rand nicht: Oben ist er kaum vorhanden, unten deutlich zu breit. Unter dem Gerät steht auf Desktop und mobil eine Hinweiszeile zur Tastatur, obwohl außer dem Gerät nichts zu sehen sein darf. Weitere Abzüge: Die Fußplatte ist zu flach, das Logo zu dünn und „M 64“ zu groß. K und F/2 haben graue Kästen statt eines leichten Schleiers, die Schieber sind rund statt kantig. Die Geistersegmente der Anzeige sind deutlich zu sehen statt kaum. Konflikte mit der Spec habe ich keine festgestellt."
+    },
+    "review": {
+      "score": 7.5,
+      "strengths": [
+        "Klare Aufteilung in drei kleine Module: demo-runs/oneshot-20261004-0819/src/calc.js (reine Rechenlogik ohne Bildschirm), display.js (LED-Anzeige) und app.js (Verdrahtung, nur 73 Zeilen). Jede Datei hat genau eine Aufgabe.",
+        "Messwerte liegen fast überall im Ziel: höchste Verschachtelungs-Komplexität 8 (Ziel höchstens 10), 0 % Doppelcode, 0 lange Funktionen, 0 ungenutzte CSS-Klassen, 0 Kommentare, die Baugeschichte erzählen. Gesamtumfang 660 Zeilen, weit unter der Alarmgrenze von 1600.",
+        "Die Rechenlogik ist gut testbar: calc.js:49 `Calculator` hat keinen Bildschirmbezug, Eingaben laufen über eine einzige Methode `press(key)` (calc.js:73), Ergebnis über `screen` (calc.js:65). Benannte Tabellen OPERATIONS und PERCENT (calc.js:8, 17) ersetzen verschachtelte Fallunterscheidungen.",
+        "Kommentare erklären das Warum, nicht die Bauhistorie, z. B. calc.js:16 (Prozent-Beispiele), calc.js:124 („5 × =“ rechnet 5 × 5), calc.js:24 (binäre Rundungsfehler). Rundung ist sauber gelöst (roundTo, calc.js:25).",
+        "Farben, Schriften und Tastenfarben stehen als benannte Werte auf :root (style.css:4-36); Tastenfarben laufen über drei Variablen pro Taste (style.css:236-275), nicht über Wiederholungen. Es gibt Rücksicht auf reduzierte Bewegung (style.css:328) und Bedienhilfen (aria-Beschriftungen in index.html, sr-only-Text in display.js:103).",
+        "display.js hält die Segmentgeometrie in Daten (SEGMENTS, GLYPHS, display.js:11-35) statt in Code, und `createDisplay` gibt eine einzelne render-Funktion zurück – einfach anzubinden und zu prüfen."
+      ],
+      "problems": [
+        "4 ungenutzte Exporte (Ziel 0): calc.js:5 `DIGITS`, calc.js:35 `formatNumber`, display.js:4 `CELLS`, display.js:54 `toCells`. Sie sind nach außen offen, werden aber nirgends gebraucht. Das ist eine kleine, aber die höchstpriorisierte Abweichung. Dass `toCells`/`formatNumber` exportiert sind, wirkt zudem wie Vorbereitung für Tests, die es nicht gibt.",
+        "Es gibt keine Tests für diesen Code und keine Einstiegspunkte für Prüfungen: Die Anzeige hat kein `data-value`, kein `window.m64.render`, keine `data-part`-/`data-color`-Markierungen (index.html komplett ohne `data-part`). Die Prüfungen in eval/ greifen daher nicht; Prüfstand 0/0 bedeutet, jede Änderung wäre erstmal ungesichert.",
+        "Magie-Zahlen in display.js: Koordinaten des Dezimalpunkts `cx: 41, cy: 61, r: 2.7` (display.js:89), `translate(${x + 4}` und `skewX(-7)` (display.js:83), Glühen `stdDeviation: '1.6'` und Verlaufsfarben (display.js:69-77) stehen ohne Namen mitten im Code. Das Gerüst dahinter (CELL_W, CELL_H, T) ist dagegen benannt, daher nur halb gelöst.",
+        "style.css ist mit 281 Zeilen die größte Datei und besteht fast nur aus Maßen in `cqw` ohne Namen, z. B. `5.4cqw` zweimal für die Schieberbreite (style.css:157 und 176), `11.5cqw`, `34cqw`, `13cqw`. Eine Änderung an der Schieberbreite muss an zwei Stellen erfolgen (versteckte Kopplung). Farben wie `#181818`, `#8e897d`, `#d6d1c5` stehen direkt in Verläufen statt als Variable (style.css:117, 147).",
+        "Kleinere Schönheitsfehler: `get actions()` (calc.js:87) baut bei jedem Tastendruck ein neues Objekt auf und ist als Getter ungewöhnlich; Zustand wie `acc`, `op`, `operand`, `entry`, `value` sind öffentlich veränderbar und nur durch Kommentare erklärt (calc.js:56-60); die Tastaturtabelle in app.js:12-32 wiederholt Groß- und Kleinbuchstaben statt sie zu normalisieren; die Zeitkonstante `110` (app.js:48) ist unbenannt und muss zur CSS-Dauer passen (style.css:261, dort 50ms).",
+        "Zustand und Fehlerdarstellung: `screen` liefert bei Fehler `text: '0'` und `error: true` (calc.js:66), die Anzeige zeichnet daraus dann das E über einen Sonderfall in `toCells` (display.js:61). Das ist funktional, aber die Verantwortung ist über zwei Dateien verteilt. Ohne Spezifikation der Tasten-Hooks gibt es zudem keinen Weg, das ohne Browser zu prüfen."
+      ],
+      "stepsToTargets": 3,
+      "risk": "Mittel bis gering. Die Schritte selbst sind klein und lokal (Exporte entfernen, ein paar benannte Werte, eine Schieberbreite als Variable). Weil die Prüfsuite 0 von 0 Prüfungen meldet und für diesen Code keine passenden Tests existieren, wäre jeder Schritt zunächst ungesichert. Die reine Rechenlogik in calc.js ist aber klein und leicht von Hand oder mit wenigen neuen Tests abzusichern. Das Risiko liegt vor allem im Aussehen (CSS-Maße, SVG-Zahlen), das man nur mit Auge oder Bildvergleich prüfen kann.",
+      "verdict": "Der Rechner ist sauber und übersichtlich gebaut: Rechnen, Anzeige und Bedienung liegen in getrennten, kurzen Dateien, nichts ist doppelt, und die Kommentare erklären wirklich, warum etwas so gemacht wird. Die Messwerte erfüllen bis auf vier nach außen sichtbare, aber unbenutzte Funktionen alle Vorgaben, man könnte also sofort weiterbauen. Schwächen sind die unbenannten Zahlen für Maße und Formen sowie die fehlenden Prüfungen: Es gibt keine automatischen Tests, die diesen Code absichern, daher wäre jeder Umbau am Anfang ein Blindflug. Fair gesagt: Dieser Stand ist deutlich kleiner und aufgeräumter als zu erwarten, dafür fehlen ihm die Prüf-Anschlüsse, die bei einem Stand mit Spezifikation vorhanden wären."
+    },
+    "probe": {
+      "score": 10,
+      "convention": "sofortige Ausführung",
+      "rows": [
+        {
+          "n": 1,
+          "got": "19",
+          "points": 1
+        },
+        {
+          "n": 2,
+          "got": "72",
+          "points": 1
+        },
+        {
+          "n": 3,
+          "got": "12.5 (LED zeigt 12.5, Text 12,5)",
+          "points": 1
+        },
+        {
+          "n": 4,
+          "got": "-3 (Minus ganz links, 3 rechts, wie beim Original)",
+          "points": 1
+        },
+        {
+          "n": 5,
+          "got": "20 (nach × steht schon 5 als Zwischenergebnis)",
+          "points": 1
+        },
+        {
+          "n": 6,
+          "got": "9",
+          "points": 1
+        },
+        {
+          "n": 7,
+          "got": "230 (direkt nach %, = lässt 230 stehen)",
+          "points": 1
+        },
+        {
+          "n": 8,
+          "got": "E links, 0. rechts (Text: Fehler)",
+          "points": 1
+        },
+        {
+          "n": 9,
+          "got": "9 (C setzt 123 auf 0)",
+          "points": 1
+        },
+        {
+          "n": 10,
+          "got": "12345679, 8 Stellen, keine verloren",
+          "points": 1
+        }
+      ],
+      "summary": "Funktionsprobe aus eval/free-rubric.md: 10 von 10 Punkten. Ich habe den One-Shot-Bau headless mit Playwright bedient. Die Tasten hat das Skript nur über ihre sichtbare Beschriftung gefunden. Die Wurzel-Taste trägt ein Symbol statt Text, deshalb hat es sie über ihre Lage gefunden: die nächste Taste rechts neben % in der obersten Reihe. Für jede Zeile habe ich die Anzeige als sichtbaren Text abgelesen und ein Bild gespeichert. Alle Tasten ließen sich direkt klicken, die Anzeige hat sich ohne Neuladen aktualisiert, und auf der Seite gab es keine Fehler. Halbe Punkte gab es deshalb nicht.\n\nDer Rechner rechnet mit sofortiger Ausführung: 2 + 3 × 4 = ergibt 20, nach × steht bereits 5 als Zwischenergebnis. Beim Prozent rechnet er wie ein Kaufmann: 200 + 15 % ergibt sofort 230, ein weiteres = lässt 230 stehen.\n\nDrei Ergebnisse sind anders formatiert als in der Tabelle der Rubrik. Ich habe sie trotzdem als richtig gezählt, weil der Wert stimmt:\n- Zeile 3: Das Leuchtziffern-Bild zeigt 12.5, der sichtbare Text 12,5 mit deutschem Komma.\n- Zeile 4: Das Minus steht ganz links, die 3 ganz rechts, wie beim Original.\n- Zeile 8: Bei 1 ÷ 0 zeigt die Anzeige links ein E und rechts 0. Der Text lautet „Fehler“. Das gilt als erkennbare Fehleranzeige, es gab keinen Absturz.\n\nZeile 10 zeigt alle 8 Stellen von 12345679, keine geht verloren.\n\nDen Server habe ich mit PORT=4274 node server.mjs im Hintergrund gestartet (PID 1874) und am Ende über diese PID beendet. Beim ersten Start war Port 4274 kurz belegt, beim zweiten Versuch war er frei.\n\nAm Produkt ist nichts verändert. git status zeigt nur progress.jsonl als ungetrackte Datei, und die lag schon vor der Prüfung dort (Zeitstempel 10:30).\n\nDateien:\n- Skript: demo-runs/oneshot-20261004-0819/eval/artifacts/free/probe.mjs\n- Bilder je Zeile: demo-runs/oneshot-20261004-0819/eval/artifacts/free/row-*.png\n- Zusätzlich gibt es row-7.1.png für 200 + 15 % =."
+    },
+    "evalApplies": false,
+    "shots": {
+      "device": "results/oneshot/device.png"
+    },
+    "notes": [
+      "Ein Agent (opus), ein Durchgang, nur mit dem Prompt aus briefing/ONESHOT-PROMPT.md und den fünf Fotos – keine Spec, keine Maße, keine Prüfungen.",
+      "Vier Unklarheiten gemeldet: Ein/Aus-Schalter mit Funktion, Prozentrechnung, Anzeigeformat (linke Stelle für Minus/E), Stellung des F/2-Schalters.",
+      "Blinde Bewertung am 4.10.: Fotos 14/20 – Schutzhülle-Easter-Egg fehlt, Hüllenrand oben fast null, Fußplatte zu flach, Hinweiszeile unter dem Gerät, Geistersegmente zu deutlich; Tasten, Farben, Legenden und Display-Fenster voll. Funktion 10/10. Versiegelte Prüfung entfällt (keine Prüf-Schnittstelle).",
+      "Gerätebild aus der Aufnahme des Gutachters (judge-device.png): Der Bau kennt die Markierungen für den automatischen Ausschnitt nicht. Ein Bild ohne Hülle gibt es nicht, weil die Hülle nicht abnehmbar gebaut ist."
+    ],
+    "recordedAt": "2026-10-04T08:33:09.089Z",
+    "maintainability": {
+      "score": 6,
+      "aspects": {
+        "structure": 7.5,
+        "coupling": 6,
+        "safetyNet": 1.5,
+        "clarity": 8
+      },
+      "wishes": [
+        {
+          "wish": "Wunsch 1, Speichertasten M+, M− und MR mit kleinem M in der Anzeige. Im Rechenwerk kommt ein neuer Speicherwert dazu. press() (calc.js:73) und die Tabelle actions (calc.js:87) bekommen drei neue Tasten. Der Zustand screen (calc.js:65) liefert ein Merker-Feld für das M. Der Speicher darf von clearAll (calc.js:55) nicht gelöscht werden, sonst löscht die Taste C ihn mit. Das ist die größte Stolperstelle. Außerdem braucht die Anzeige (display.js:54, :107) eine neue Stelle oder Marke für das M, und die Zeichentabelle GLYPHS (display.js:21) kennt kein M. Die Tasten brauchen Platz: Das 4×5-Raster in index.html:34-61 ist voll. Es muss eine Reihe oder Spalte dazu, und style.css rechnet die Höhen in festen Anteilen der Breite (z. B. 34cqw, 13cqw), also verschiebt sich das Gesamtbild. Die Tastatur-Zuordnung (app.js:12) wird um M-Tasten erweitert.",
+          "files": [
+            "src/calc.js",
+            "src/display.js",
+            "src/app.js",
+            "src/index.html",
+            "src/style.css"
+          ],
+          "size": "mittel",
+          "risk": "Mittel. Die Rechenlogik ist klein und sauber, aber das Zusammenspiel von Speicher, laufender Eingabe und Operator (entry, operand, acc) hat Randfälle, zum Beispiel MR mitten in einer Rechnung. Das größte Risiko liegt im Aussehen: Eine zusätzliche Tastenreihe verschiebt alle Proportionen. Nichts Automatisches fängt einen Fehler ab.",
+          "guarded": false
+        },
+        {
+          "wish": "Wunsch 2, 12 statt 8 Stellen, umschaltbar über den Schalter F/2. Die Stellenzahl steckt als feste Konstante in calc.js:5 (DIGITS) und wird in drei Stellen gelesen: LIMIT in Zeile 6, formatNumber in Zeile 40 und digit() in Zeile 93. Sie muss zu einem Wert des Rechners werden, den man umstellen kann. formatNumber ist eine freie Funktion und müsste die Stellenzahl als Parameter bekommen. In display.js sind CELLS=9, CELL_W und die viewBox fest (display.js:4, :6, :96). Der Streifen würde also auf 13 Stellen wachsen und die Ziffern im festen Fenster schrumpfen lassen. Der Schalter ist heute nur ein Div mit Klasse is-dead (index.html:22), ohne Klick-Logik und ohne Schieberstellung. Er muss wie der Ein/Aus-Schalter (app.js:65) zu einer Schaltfläche werden, und style.css braucht eine Stellung des Schiebers. Dazu kommt ein inhaltlicher Konflikt: Der Tooltip nennt F/2 „Fließkomma / 2 Nachkommastellen“, aber gewünscht ist eine Stellenumschaltung.",
+          "files": [
+            "src/calc.js",
+            "src/display.js",
+            "src/app.js",
+            "src/index.html",
+            "src/style.css"
+          ],
+          "size": "mittel",
+          "risk": "Mittel bis hoch. Die Anzeige ist an die neun Stellen fest verdrahtet, und kleinere Ziffern können den Look verändern, der Treue zum Foto ist wichtig. Beim Umschalten mitten in einer Rechnung muss ein bereits angezeigter Wert neu bewertet werden. Auch hier fängt kein Test einen Fehler ab.",
+          "guarded": false
+        },
+        {
+          "wish": "Vor beiden Wünschen: ein kleines, eigenes Prüfpaket für das Rechenwerk anlegen. Die Prüfungen im Ordner eval/ docken an Dinge an, die dieser Bau nicht hat: src/engine.js mit createEngine, die Marker data-part, data-key und data-value und window.m64. Im Quellordner gibt es null davon (Suche nach data-part: 0 Treffer). Calculator ist rein und ohne Bildschirm, deshalb reichen 20 bis 30 Zeilen Tests, um die zehn Fälle der Funktionsprobe, Überlauf und Prozent festzuhalten. Dazu gehört, die vier ungenutzten Exporte (DIGITS, formatNumber, CELLS, toCells) entweder zu entfernen oder als Prüf-Zugang zu nutzen. Die Richtlinie verlangt 0, gemessen sind 4.",
+          "files": [
+            "src/calc.js",
+            "src/display.js",
+            "eval/unit/engine.spec.mjs"
+          ],
+          "size": "klein",
+          "risk": "Gering. Es wird nur ergänzt, am Produkt ändert sich nichts. Es ist der billigste Schritt, der die beiden Wünsche vom Blindflug befreit.",
+          "guarded": false
+        },
+        {
+          "wish": "Fest verdrahtete Maße in display.js und style.css in benannte Werte fassen und die Tastenbelegung aus index.html ableiten. Heute stehen die Segmentkoordinaten (display.js:11-19) und die Farbverläufe der Linse (display.js:74-77) im Code. In style.css stehen viele Anteile als nackte Zahlen. Die Tasten sind 20 Mal von Hand in HTML geschrieben, und die Tastaturzuordnung steht noch einmal getrennt in app.js:12. Das erschwert eine Erweiterung um Tasten oder Stellen.",
+          "files": [
+            "src/display.js",
+            "src/style.css",
+            "src/index.html",
+            "src/app.js"
+          ],
+          "size": "mittel",
+          "risk": "Mittel. Rein optische Umbauten ohne Bildvergleich (kein eingefrorenes Referenzbild für diesen Bau) können das Aussehen unbemerkt verändern.",
+          "guarded": false
+        }
+      ],
+      "summary": "Der Rechner ist klein, aufgeräumt und gut lesbar. Das Rechnen, die Leuchtanzeige und die Verdrahtung liegen in drei getrennten Dateien, jede mit einer klaren Aufgabe. Die Kommentare erklären den Code statt die Baugeschichte. Die Messwerte liegen fast überall im Ziel, nur vier Funktionen sind überflüssig nach außen freigegeben. Die beiden gedachten Wünsche, Speichertasten und 12 Stellen, wären jeweils eine mittelgroße Änderung an fünf Dateien. Man weiß ziemlich genau, wo sie hingehören. Das große Manko ist die Absicherung: Die vorhandenen Prüfungen im Ordner eval/ passen nicht an diesen Bau, weil sie Bausteine erwarten, die es hier nicht gibt (eine Datei engine.js und bestimmte Markierungen im Seitentext). Sie würden also nichts über diesen Code sagen, und eigene Tests gibt es nicht. Wer weiterbaut, sollte zuerst ein kleines Prüfpaket für das Rechenwerk schreiben. Das ist leicht, weil das Rechenwerk keine Oberfläche braucht. Danach lässt sich sicher erweitern. Die Optik bleibt auch dann ungeschützt, und der Platz im Tastenfeld und in der Anzeige ist knapp."
+    }
+  },
+  "graph": {
+    "status": "done",
+    "run": "demo-runs/graph-20261005-0811",
+    "date": "2026-10-05",
+    "durationMin": 136,
+    "tokens": 4256899,
+    "ids": {
+      "passed": 106,
+      "pending": 0,
+      "total": 106
+    },
+    "idsCore": {
+      "passed": 79,
+      "pending": 0,
+      "total": 79
+    },
+    "tests": {
+      "passed": 233,
+      "total": 233
+    },
+    "featuresGreen": {
+      "passed": 16,
+      "total": 16
+    },
+    "failedIds": [],
+    "metrics": {
+      "locTotal": 1516,
+      "cognitiveMax": 10,
+      "cognitiveTotal": 163,
+      "duplicationPct": 1.16,
+      "longFunctions": 0,
+      "unusedExports": 2,
+      "unusedCssClasses": 0,
+      "processComments": 0
+    },
+    "commits": 67,
+    "look": {
+      "score": 20,
+      "max": 20,
+      "perCriterion": [
+        {
+          "criterion": 1,
+          "score": 2,
+          "note": "Mit Hülle Hochformat ca. 396x792, also 2,0:1 wie das M 85 S-Frontfoto. Die Teilung stimmt: hohe Kopfplatte, schmale Schalterleiste, flaches Display, großes 4x5-Tastenfeld und Fußplatte. Der Hüllenrand ist an allen vier Seiten gleichmäßig."
+        },
+        {
+          "criterion": 2,
+          "score": 2,
+          "note": "Mit Hülle (current-device.png) ist der schmale cremeweiße Rand links, rechts, oben und unten gleich breit und umrahmt das mattschwarze Gerät. Ohne Hülle (current-device-nocase.png) bleibt ein rein schwarzes Gehäuse mit kleinen Eckenradien, ohne jede Creme, und es gibt keinen Layout-Sprung. Die Seitenkanten tragen ein dezentes Lichtband. Kein Hochglanz, kein Glas, keine bunten Verläufe."
+        },
+        {
+          "criterion": 3,
+          "score": 2,
+          "note": "„ARISTO M 64“ ist hell, in breiter geometrischer Schrift und gesperrt. Das große A gibt die Kapitälchen-Anmutung wie im Detailfoto. Das Logo sitzt zentriert und dezent in der erhabenen Kopfplatte."
+        },
+        {
+          "criterion": 4,
+          "score": 2,
+          "note": "Drei cremefarbene Führungen, auf jeder ein erhabener Schieberklotz. Er ragt leicht aus dem Schlitz, hat eine harte Kante zwischen heller Oberseite und dunklerer Vorderkante und einen Schlagschatten. Die Beschriftung 0 K / F 2 / 0 I ist hell und gut lesbar. K und F/2 tragen einen leichten Grauschleier, Ein/Aus steht deutlich auf I."
+        },
+        {
+          "criterion": 5,
+          "score": 2,
+          "note": "Das Fenster ist breit, flach, dunkel und rot getönt. Es hat eine dunkle Innenkante, die Mitte ist leicht heller als der Rand. Dadurch wirkt es eingelassen und transluzent wie am M 64-Detailfoto."
+        },
+        {
+          "criterion": 6,
+          "score": 2,
+          "note": "Rote 7-Segment-Ziffern, zierlich, leicht kursiv und mit weichem Glühen. Die Geister-Segmente schimmern nur schwach durch, dazu kommen dezente Linsenkreise je Zelle wie bei der Bubble-LED. Der Dezimalpunkt ist ein eigener Punkt (siehe „4.“ in current-display.png und „0.“ als Startanzeige)."
+        },
+        {
+          "criterion": 7,
+          "score": 2,
+          "note": "Kleine, quadratische Tasten mit ca. 15 % Eckenradius, leicht erhaben mit dunklerer Unterkante und großzügigen schwarzen Abständen. Die gedrückte Taste 5 in current-pressed.png sinkt sichtbar ein, der Schatten wird kleiner."
+        },
+        {
+          "criterion": 8,
+          "score": 2,
+          "note": "Ziffern und Punkt sind cremeweiß, % √ ÷ × − = + warm gelb-orange, C und CE rot-orange. Die Oberflächen wirken matt, mit nur sehr dezentem Verlauf, wie Kunststoff."
+        },
+        {
+          "criterion": 9,
+          "score": 2,
+          "note": "Fette schwarze geometrische Grotesk, mittig. Die Symbole ÷ × − + = % · C sind wie am Original. Bei √ ist der Querstrich angeschlossen, CE ist so groß wie C und eng gesetzt wie im Foto."
+        },
+        {
+          "criterion": 10,
+          "score": 2,
+          "note": "Das Gerät steht allein auf ruhigem, neutralem Greige-Grund. Es gibt keine Überschriften, Menüs oder sichtbaren Schalter, die Hülle wird nur per Easter Egg umgeschaltet. Mit Relief, Fugen und mattem Kunststoff wirkt es wie das Gerät von 1974 und nicht wie eine Flat-UI. Auch mobil (375 px) ist es stimmig, mit sichtbarem Hüllenrand."
+        }
+      ],
+      "mustFix": [],
+      "summary": "Endabnahme bestanden: 20 von 20 Punkten, kein Kriterium unter 2, die Schwelle liegt bei 17. Bewertet habe ich die vorhandenen Bilder in demo-runs/graph-20261005-0811/eval/artifacts/, nichts neu fotografiert. Das sind current-device.png und current-device-nocase.png, dazu current-desktop.png, current-display.png, current-pressed.png und current-mobile.png. Verglichen habe ich sie mit den fünf Fotos in spec/reference/. Mit und ohne Schutzhülle trifft der Bau die Fotos in Proportionen, Material, Logo, Schiebern, transluzenter LED-Anzeige, Tasten, Farben und Legenden. Keine Pflichtkorrekturen und keine Spec-Konflikte. Zwei Kleinigkeiten, die ich bewusst nicht abgezogen habe. Erstens: Die Schieberklötze könnten noch etwas massiger aus dem Schlitz ragen, wie im Detailfoto. Zweitens: Das Gelb wirkt etwas heller als das senfige Original. Der Farbton steht aber in den Tokens fest, deshalb gilt er als gesetzt. Ohne Hülle zeigt das Bild im Display „5.“ statt der Startanzeige „0.“. Das ist ein anderer Zustand der Aufnahme, kein Fehler im Aussehen."
+    },
+    "review": {
+      "score": 7.5,
+      "strengths": [
+        "Die Rechenlogik ist sauber getrennt: demo-runs/graph-20261005-0811/src/engine.js (239 Zeilen) kennt keine Bildschirmteile. Der Zustand liegt in privaten Feldern der Klasse Engine, die Methoden sind kurz (#typeDigit, #pressOperator, #resolvePending). Rundungs-, Rechen- und Prozentregeln stecken in reinen Funktionen (formatResult:28, apply:47, percentResult:63), die sich einzeln prüfen lassen.",
+        "Die Messwerte liegen fast überall innerhalb der Policy-Ziele: 0 überlange Funktionen, 0 ungenutzte CSS-Klassen, 0 Bau-Kommentare, 1,16 % doppelter Code (Ziel 3 %), höchste Verschachtelungstiefe 10 (Ziel 10). Gesamt 1516 Zeilen bei einer Alarmgrenze von 1600.",
+        "Benannte Werte statt Zahlen im Code: MAX_DIGITS/LIMIT in engine.js:7-8, LAYERS/ATTACK/TAIL in sound.js:12-21, SEMITONES_PER_ROW/ROW_TOLERANCE in audio.js:38-42, FLICKER_*_MS in display.js:232-234, STORAGE_KEY in mute.js und case.js. In den CSS-Dateien stehen die Maße als Bruchteile von --fw/--fh, jede Zeile im Gitter hat einen kurzen Kommentar (housing.css:10-15).",
+        "Die Kommentare erklären das Warum, nicht die Bauhistorie. Beispiele: audio.js:1-9 (Audio-Kontext innerhalb der Nutzergeste erzeugen), display.js:226-231 (warum das Flackern nicht von der Arbeit im selben Tastendruck aufgezehrt werden darf), sound.js:1-10 (Aufbau des Klangs). Es finden sich keine Feature-Nummern oder Spec-Verweise im Code.",
+        "Tastatur-Halten (keypad.js) ist in kleine benannte Einheiten zerlegt (createPointerHolds, createHoldState, listenToPointers). Die Funktion initKeypad ist idempotent über eine WeakMap. Die Ausgabe von sound.js ist als reine Funktion für jeden Audio-Kontext planbar (live oder offline), also messbar.",
+        "Dateien haben jeweils eine klare Aufgabe (Anzeige, Tastenfeld, Schalter, Hülle, Ton, Stummschaltung). Der Server (server.mjs) ist klein und prüft den Pfad gegen Ausbrüche aus dem Ordner. Das Projekt kommt ohne Fremdbibliotheken aus."
+      ],
+      "problems": [
+        "Versteckte Kopplung: src/switches.js:7 ruft initKeypad(root) auf, obwohl die Datei nur Schieberegler behandelt. Der Kommentar in switches.js:2-3 räumt das selbst ein (\"because switches.js is the controls module the UI wiring loads\"). ui.js:57 ruft initKeypad ein zweites Mal auf und verlässt sich auf die WeakMap-Idempotenz. Wer switches.js entfernt oder ändert, verliert unbemerkt die Tastenhaptik.",
+        "Doppelter Code zwischen src/case.js:8-23 und src/mute.js:10-25: load() und save() sind bis auf Schlüssel und Standardwert identisch, ebenso das Muster aus Standardwert, Ein/Aus-Umschalter und Klick-Handler (case.js:25-52, mute.js:32-57). Das ist der eine gemessene Klon. Beides gehört in eine gemeinsame Hilfsfunktion für persistente Ein/Aus-Zustände.",
+        "Moduleigener Zustand und Wiring mit Nebenwirkung beim Import: src/ui.js:10-109 baut beim Laden sofort Engine, Listener und window.m64 auf und lässt sich weder einzeln starten noch testen. src/mute.js:8 und audio.js:11 halten Zustand auf Modulebene (let state, let ctx), display.js:31, 235-236 ebenso (cells, flickerTimer, flickerFrame). Mehrere Instanzen sind unmöglich, ein Zurücksetzen zwischen Tests ist nur über Neuladen möglich.",
+        "Zwei Zuständigkeiten für Strom: ui.js:11,14 führt ein eigenes powered neben dem #on in engine.js:79 (Engine.press prüft #on erneut, engine.js:208). Der Ausschaltzustand lebt an zwei Stellen und kann auseinanderlaufen.",
+        "Die Metrik meldet zwei ungenutzte Exporte (audio.js:77 keyClick, audio.js:82 confirmClick). Tatsächlich werden sie in ui.js:18 und ui.js:105 über den Namensraum audio.* genutzt, es ist also ein Fehlalarm. Das Ziel 0 der Policy ist trotzdem nominell offen. Der Fehlalarm lässt sich nur durch benannte Importe ausräumen.",
+        "display.js ist mit 274 Zeilen die größte Datei und vermischt vier Aufgaben: SVG-Geometrie (Z. 25-133), Einbinden und Mounten inklusive Stylesheet-Nachladen (Z. 135-178), Textlayout (Z. 180-207) und Flacker-Zeitsteuerung (Z. 226-274). Der Standalone-Pfad findOrCreateWindow (Z. 145-154) und ensureStylesheet (Z. 135-143) wird von der Seite nie gebraucht. Das ist Vorratscode. Die Flacker-Logik hat zwei Timer-Hilfen (endFlicker/endFlickerIn) mit leicht widersprüchlichem Verhalten (flicker() setzt Timer selbst zurück, Z. 257-260).",
+        "Magische Zahlen in display.js: Filter- und Linsenwerte (stdDeviation 2.2/7, slope 1.6, Offsets 60/88 %, Z. 74-101) und die DP-Faktoren 0.7/0.55 (Z. 128) stehen unbenannt im Code. audio.js:62-67 ist trotz Aufräumen schwer lesbar (Rückgabe 'Zeile von unten' mit Ausnahmefall und Suchlauf in einem Ausdruck). Die Layoutlogik liest bei jedem Tastendruck das gesamte Tastenfeld per getBoundingClientRect aus (audio.js:57-62), was beim Ton eine Layoutberechnung auslöst.",
+        "Kleinere Stolpersteine: keypad.js:102 und ui.js:22/KEY_SELECTOR in audio.js:39 wiederholen denselben Selektor [data-part=\"keypad\"] button[data-key] an drei Stellen. In ui.js:75 steht die Sonderbehandlung für den Ein-/Aus-Schalter mitten im allgemeinen Tastatur-Handler. mute.js:32 ('initMute') gibt ein get/set-Objekt zurück, das niemand nutzt (toter Rückgabewert, ebenso case.js:48-51)."
+      ],
+      "stepsToTargets": 3,
+      "risk": "Niedrig. Alle Kennzahlen sind schon fast an den Zielen, nur die zwei (eigentlich fehlalarmigen) ungenutzten Exporte stehen offen. Die drei bis vier kleinen Schritte (benannte Importe in ui.js, gemeinsame Hilfsfunktion für case.js und mute.js, Entkopplung von switches.js und keypad.js) sind örtlich begrenzt. Bei grünem Prüfstand von 106 von 106 Prüfungen ist jeder einzelne Schritt gut abgesichert. Größerer Umbau (display.js teilen, ui.js testbar machen) wäre optional und etwas riskanter, weil Optik und Zeitsteuerung des Flackerns an Browser-Takt hängen.",
+      "verdict": "Der Rechner ist in gutem, ordentlichem Zustand. Die Rechenlogik ist klar von der Optik getrennt, die Kommentare erklären das Warum, und fast alle Qualitätsmessungen liegen im Zielbereich. Die Schwächen sind überschaubar: zwei Dateien (Hülle und Stummschalter) enthalten dasselbe Speicher-Stück doppelt, der Schalter-Baustein startet heimlich auch die Tastenhaptik, und die Anzeige-Datei erledigt zu viele Dinge auf einmal. Zudem hängt viel an globalen Zuständen, was spätere Erweiterungen und Tests erschwert. Man könnte sofort weiterbauen und nach wenigen kleinen Aufräumschritten fast alle Ziele der Aufräum-Regeln erfüllen."
+    },
+    "probe": {
+      "score": 10,
+      "convention": "sofortige Ausführung (2 + 3 × 4 = 20)",
+      "rows": [
+        {
+          "n": 1,
+          "got": "19.",
+          "points": 1
+        },
+        {
+          "n": 2,
+          "got": "72.",
+          "points": 1
+        },
+        {
+          "n": 3,
+          "got": "12.5",
+          "points": 1
+        },
+        {
+          "n": 4,
+          "got": "-3. (Minus in der Vorzeichenzelle)",
+          "points": 1
+        },
+        {
+          "n": 5,
+          "got": "20. (sofortige Ausführung)",
+          "points": 1
+        },
+        {
+          "n": 6,
+          "got": "9.",
+          "points": 1
+        },
+        {
+          "n": 7,
+          "got": "230. (Kaufmanns-Prozent, ohne =)",
+          "points": 1
+        },
+        {
+          "n": 8,
+          "got": "E (Fehleranzeige links, kein Absturz)",
+          "points": 1
+        },
+        {
+          "n": 9,
+          "got": "9. (C löscht 123)",
+          "points": 1
+        },
+        {
+          "n": 10,
+          "got": "12345679. (alle 8 Stellen erhalten)",
+          "points": 1
+        }
+      ],
+      "summary": "Der Rechner hat die Funktionsprobe voll bestanden: 10 von 10 Punkten. Geprüft habe ich das headless mit Playwright, wie ein Mensch es tun würde. Das Skript findet jede Taste über ihre sichtbare Beschriftung (7, ×, ÷, −, √, %, C, =) und nicht über data-Attribute. Die Anzeige liest es aus den leuchtenden Segmenten der Siebensegment-Zellen. Jedes Ergebnis habe ich zusätzlich mit dem sichtbaren Text und einem Bild der Anzeige abgeglichen.\n\nAlle zehn Zeilen stimmen. Keine Taste klemmte, und keine Anzeige erschien erst nach einem Neuladen. Deshalb gibt es keine halben Punkte.\n- **Rechenweise:** Bei 2 + 3 × 4 rechnet der Rechner sofort aus, wie das Original von damals, und zeigt 20.\n- **Prozent:** 200 + 15 % ergibt 230, ohne dass man = drücken muss.\n- **Teilen durch null:** 1 ÷ 0 zeigt ein deutliches „E“ ganz links in der Anzeige und stürzt nicht ab.\n- **Stellenzahl:** 12345678 + 1 ergibt 12345679, alle acht Stellen bleiben erhalten.\n- **Minuszeichen:** Das Minus steht in einer eigenen Vorzeichenzelle links.\n- **Punkt hinter ganzen Zahlen:** Bei ganzen Ergebnissen leuchtet hinten ein Dezimalpunkt, zum Beispiel „19.“. Wie beim Original gilt das nicht als Fehler.\n\nAm Produkt habe ich nichts geändert. Den Server habe ich mit PORT=4274 gestartet und am Ende über seine PID beendet.\n\nDie Dateien liegen in demo-runs/graph-20261005-0811/eval/artifacts/free/:\n- probe.mjs (das Prüfskript)\n- case-1.png bis case-10.png (ein Bild der Anzeige je Zeile)\n- page-last.png (die ganze Seite nach dem letzten Test)"
+    },
+    "maintainability": {
+      "score": 6.5,
+      "aspects": {
+        "structure": 7,
+        "coupling": 5,
+        "safetyNet": 6.5,
+        "clarity": 8
+      },
+      "wishes": [
+        {
+          "wish": "Wunsch 1, Speichertasten M+, M−, MR mit kleinem M in der Anzeige. Die Rechenlogik gehört klar in src/engine.js: ein neues Speicherfeld neben #acc und #pending, drei neue Zweige in press() (engine.js:207-221), dazu eine Abfrage wie hasMemory() neben isError() (engine.js:229). Das wären etwa 30 bis 40 Zeilen und gut machbar. Die Tasten brauchen aber Platz. Das Tastenfeld in src/index.html:45-70 hat genau 4 mal 5 Tasten ohne freien Platz. Layout und Tastenfarben stehen in src/keypad.css, die Zeilen-Tonhöhe in src/audio.js:55-68 rechnet die Reihen aus der Geometrie. Das M-Zeichen muss in src/display.js (mount und render, Zeilen 156-224) und src/display.css hinzukommen, denn die Anzeige kennt nur ein Vorzeichen und acht Ziffernfelder. Außerdem müssen src/ui.js (Tastaturbelegung KEYBOARD, Zeilen 38-55, und die Weitergabe der Engine-Anzeige) und die Tastenzuordnung zusammen angepasst werden. Insgesamt ist das mittel: etwa 6 Dateien, die Logik ist einfach, das Aussehen ist der Aufwand.",
+          "files": [
+            "src/engine.js",
+            "src/index.html",
+            "src/keypad.css",
+            "src/display.js",
+            "src/display.css",
+            "src/ui.js",
+            "src/audio.js"
+          ],
+          "size": "mittel",
+          "risk": "Mittel. Die Rechenlogik ist durch 106 Prüfpunkte gut abgesichert (eval/cases.mjs gegen die Engine und gegen die Oberfläche). Eine fünfte Tastenreihe wird aber von den Layout-, Bild- und Goldstand-Prüfungen (eval/e2e/look-geometry, look-pixels, golden.spec.mjs, eval/golden/*.png) als Fehler gemeldet, und das ist so gewollt. Diese Prüfungen sind eingefroren und müssten bewusst neu freigegeben werden. Für das neue Verhalten selbst (Speicher, M-Anzeige) gibt es keine Prüfung, die müsste neu geschrieben werden.",
+          "guarded": true
+        },
+        {
+          "wish": "Wunsch 2, 12 statt 8 Stellen, umschaltbar über den Schalter F/2. Die 8 steckt an vier Stellen fest. MAX_DIGITS und LIMIT sind Modulkonstanten in src/engine.js:7-8 und werden in formatResult (Zeile 28), typeDigit (Zeile 122) und im Overflow-Test benutzt. DIGIT_CELLS = 8 in src/display.js:6 baut die Ziffernfelder einmal beim Start (mount, Zeile 171) und kürzt in layout() (Zeile 204). Zusätzlich hängen die Gerätebreite und das Display-Layout in src/display.css und src/housing.css an acht Feldern, und die Rundung nutzt toPrecision(12) (engine.js:31), was bei 12 Stellen zu knapp ist und das Rechenergebnis verfälschen kann. Der Schalter selbst ist in src/index.html:29 fest als aria-disabled markiert, und src/switches.js:6-14 kennt nur den Ein/Aus-Schalter, hier fehlt der Anschluss samt Weitergabe an die Engine und die Anzeige. Die Engine müsste Stellenzahl als Einstellung statt als Konstante bekommen, die Anzeige müsste neu aufgebaut werden können (heute nur einmal gebaut, siehe let cells in display.js:31). Das ist groß: der Umbau ist logisch klar, berührt aber Engine, Anzeige, Schalter, Verdrahtung und Layout zugleich.",
+          "files": [
+            "src/engine.js",
+            "src/display.js",
+            "src/display.css",
+            "src/housing.css",
+            "src/switches.js",
+            "src/index.html",
+            "src/ui.js"
+          ],
+          "size": "groß",
+          "risk": "Hoch. Mehrere eingefrorene Prüfungen legen den heutigen Zustand fest und würden bei einem richtigen Umbau rot: die Schalter-Regel L-29 (F/2 ist deaktiviert, Klick ändert nichts, SPEC.md:156), die Zahl der Felder (eval/e2e/display.spec.mjs:14, eval/e2e/look-geometry.spec.mjs:87) und die Fälle mit 8 Stellen in eval/cases.mjs (F-05, F-22, F-26). Das Sicherheitsnetz meldet also zu Recht Fehler, müsste aber vor dem Umbau von Hand angepasst werden, und nur der Standardmodus mit 8 Stellen bliebe geschützt. Ein Test für den 12-Stellen-Modus müsste ganz neu geschrieben werden. Dazu kommen die Bildvergleiche (Goldstand), falls die Breite der Anzeige sich ändert.",
+          "guarded": true
+        }
+      ],
+      "summary": "Der Rechner ist sauber in kleine, verständliche Teile gegliedert: Die Rechenlogik (engine.js) kennt keine Bildschirmdinge, die Anzeige, die Tastenhaptik, der Klang und die Schalter haben je eine eigene Datei. Die Messwerte liegen innerhalb der selbst gesetzten Ziele (keine überlangen Funktionen, kaum doppelter Code, kaum Baukommentare), die zwei gemeldeten ungenutzten Exporte sind Fehlalarme. Die Rechenlogik ist sehr gut durch automatische Prüfungen gesichert, alle 106 Prüfpunkte laufen grün. Die Speichertasten wären ein mittlerer, gut abgesicherter Ausbau, bei dem die eigentliche Arbeit im Platz auf dem Gerät und in der Anzeige liegt. Die 12 Stellen wären deutlich schwerer: Die Zahl 8 ist an vielen Stellen fest eingebaut, der Schalter F/2 ist bewusst stillgelegt und von Prüfungen so festgeschrieben, sodass diese Prüfungen erst bewusst geändert werden müssten. Das Sicherheitsnetz ist stark für Rechnen und Aussehen, aber starr gegenüber Funktionsänderungen am Gerät selbst."
+    },
+    "evalApplies": true,
+    "shots": {
+      "device": "results/graph/device.png",
+      "nocase": "results/graph/nocase.png"
+    },
+    "notes": [
+      "Erster Dokumentationslauf der Graph-Werkstatt (graph.js): beide Stufen, alle 15 Features, jedes Tor grün. Wellen Stufe 1: F4‖F1‖F2 → F5‖F3 → F6 → F7, Stufe 2: F10‖F8‖F9 → F11‖F12‖F14 → F13 → F15 – geschnitten und geplant vom Architekten.",
+      "Ehrlich: Die Abnahme direkt nach dem letzten Tor (106/106) ergab 100/106 (F-01, L-32, L-36, L-38, L-40, L-53), drei Minuten später ohne Änderung 106/106 – wackelige, zeitabhängige Prüfungen. Deshalb stoppte der Lauf vor der Dokumentation; die gemeinsame Bewertung wurde ohne neuen Bau nachgeholt (Eval 106/106). Seitdem wiederholt der Graph eine solche Abnahme einmal.",
+      "Merge-Queue im Einsatz: F11 machte das Tor rot, wurde zurückgenommen und vom Integrator repariert; F14 hatte echte Konflikte mit F12 (Referenzfotos, Schalter-CSS), vom Integrator gelöst, Referenz danach neu eingefroren."
+    ],
+    "recordedAt": "2026-10-05T11:07:01.800Z"
+  }
+}

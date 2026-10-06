@@ -1,0 +1,625 @@
+/* Aristo M 64 — look & layout. All colors come from spec/tokens.json (exposed on :root). */
+
+:root {
+  /* ---- tokens.colors (exact values from spec/tokens.json) ---- */
+  --m64-faceplate: #1c1c1d;
+  --m64-shell: #e8e6e0;
+  --m64-key-white: #f4f3ee;
+  --m64-key-yellow: #f2ae3a;
+  --m64-key-red: #d4532e;
+  --m64-legend: #151515;
+  --m64-logo: #e6e6e2;
+  --m64-display-window: #200806;
+  --m64-led-on: #ff3a24;
+  --m64-led-ghost: #3b0d08;
+  --m64-switch-knob: #edede9;
+
+  /* ---- page ---- */
+  --page-bg: #a29d94;
+  --page-bg-light: #b3aea5;
+
+  /* ---- shading around the tokens ---- */
+  --faceplate-top: #202022;         /* matte face under the lamp: a touch lighter on top */
+  --faceplate-bottom: #18181a;
+  --switch-guide: #d9d6cd;          /* cream slider rail inside the slot */
+  --switch-slot-frame: #0a0a0a;
+  --window-bezel: #0b0b0b;
+  --window-edge-top: #030101;       /* filter glass: almost black under the frame … */
+  --window-shade-top: #0d0302;
+  --window-glow: #2c0b08;           /* … deep red where the digits sit … */
+  --window-shade-bottom: #0b0302;
+  --window-edge-bottom: #050101;    /* … and dark again under the lower frame */
+  --foot-text: #cfcfca;
+
+  /* key-press flicker of the LED display (tokens.flicker: 40–120 ms); ui.js reads it too */
+  --flicker-ms: 90ms;
+
+  /* ---- master unit: 1u = 1 % of the shell width.
+     Shell is 100u × 200u (tokens.geometry.shellAspect 2.0, M 85 S front photo),
+     sized to 86 % of the viewport height on desktop (desktopShellHeightOfViewport). ---- */
+  --u: min(calc(86vh / 200), calc((100vw - 32px) / 100));
+
+  /* faceplate 95.4u × 195.4u (case rim 2.3u = tokens.case.rimOfShellWidth on all four sides) */
+  --fp-w: calc(95.4 * var(--u));
+  --fp-r: calc(3.4 * var(--u));          /* corner radius 0.036 of the width (detail.cornerRadius) */
+
+  /* key grid: key = 0.142 of the faceplate width, pitch like the M 64 photo */
+  --key: calc(13.55 * var(--u));         /* square keys, width = 0.142 × 95.4u */
+  --key-col-gap: calc(9.75 * var(--u));  /* column pitch 23.3u  = 1.72 × key */
+  --key-row-gap: calc(7.86 * var(--u));  /* row pitch    21.41u = 1.58 × key */
+
+  --sans: "Helvetica Neue", Helvetica, Arial, "Nimbus Sans", "Liberation Sans", system-ui, sans-serif;
+  /* broad geometric face of the original lettering (logo and key legends) — local fonts only */
+  --geo: "Avenir Next", Avenir, Futura, "Century Gothic", "URW Gothic", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* phones: let the device use the full width (keys stay ≥ 44 px) */
+@media (max-width: 560px) {
+  :root { --u: calc((100vw - 16px) / 100); }
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 42%, var(--page-bg-light), transparent 75%),
+    var(--page-bg);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+.stage {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+}
+
+/* ------------------------------------------------------------------ shell */
+
+/* The shell box (100u × 200u) is the device including its removable case. It never changes size,
+   so toggling the case moves nothing: the faceplate keeps its place in both states.
+   Case rim seen from the front: 2.3u on all four sides, like the M 85 S front photo.
+   Faceplate = 95.4u × 195.4u. */
+.shell {
+  position: relative;
+  flex: none;
+  width: calc(100 * var(--u));
+  height: calc(200 * var(--u));
+  padding: calc(2.3 * var(--u));
+}
+
+/* ------------------------------------------------------------------ protective case
+   The cream case is a tray under the black device: its own element behind the faceplate, with
+   rounded corners and walls that frame the device evenly — narrow side walls along the whole
+   length, equally wide end walls at top and bottom. */
+.case {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  border-radius: calc(5.7 * var(--u));   /* faceplate radius + rim: the wall runs parallel around the corner */
+  background: var(--m64-shell);
+  /* the narrow walls are a rounded plastic lip: a fine light seam just inside the outer edge
+     where the lip turns toward the light, a fine dark line just outside where it turns away;
+     lit from the upper left, a soft shade toward the lower right. Inside the lip the tray falls
+     away under the black body (its shadow: see .faceplate). Very soft drop onto the table. */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    inset 0 calc(0.35 * var(--u)) calc(0.5 * var(--u)) rgba(255, 255, 255, 0.5),
+    inset calc(0.3 * var(--u)) 0 calc(0.5 * var(--u)) rgba(255, 255, 255, 0.35),
+    inset 0 calc(-0.45 * var(--u)) calc(0.7 * var(--u)) rgba(60, 45, 25, 0.14),
+    0 0 0 1px rgba(70, 58, 40, 0.38),
+    0 calc(0.3 * var(--u)) calc(0.6 * var(--u)) rgba(40, 32, 20, 0.2),
+    0 calc(1.6 * var(--u)) calc(4.6 * var(--u)) rgba(40, 32, 20, 0.12);
+}
+
+.shell[data-case="off"] .case { display: none; }
+
+/* ------------------------------------------------------------------ faceplate
+   The black device itself. Same small corner radii with and without the case. */
+
+.faceplate {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 1;
+  border-radius: var(--fp-r);
+  /* matte black plastic under a lamp above the desk: the face is a touch lighter at the top
+     than at the bottom (±2 L*), averaging out to the faceplate token */
+  background: linear-gradient(180deg, var(--faceplate-top) 0%, var(--m64-faceplate) 50%, var(--faceplate-bottom) 100%);
+  /* the outermost pixel is the flank that turns away from the light (darker than the face) */
+  --faceplate-flank:
+    inset 0 0 0 1px rgba(0, 0, 0, 0.55),
+    inset 0 0 calc(0.5 * var(--u)) calc(0.05 * var(--u)) rgba(0, 0, 0, 0.45);
+  /* outside, the black body shades the inner edge of the cream tray it lies in */
+  box-shadow:
+    var(--faceplate-flank),
+    0 0 0 0.5px rgba(0, 0, 0, 0.45),
+    calc(0.1 * var(--u)) calc(0.2 * var(--u)) calc(0.75 * var(--u)) rgba(25, 18, 8, 0.42);
+}
+
+/* without case: a plain matte black body standing on the page */
+.shell[data-case="off"] .faceplate {
+  box-shadow:
+    var(--faceplate-flank),
+    0 0 0 0.5px rgba(0, 0, 0, 0.5),
+    0 calc(0.25 * var(--u)) calc(0.5 * var(--u)) rgba(30, 24, 16, 0.3),
+    0 calc(1.6 * var(--u)) calc(4.6 * var(--u)) rgba(30, 24, 16, 0.14);
+}
+
+/* Rounded body (like the M 64 front photo): all around, the black face rolls over a shoulder
+   into the side walls. The shoulder catches the light as a band: dark flank at the very edge
+   (see .faceplate), then a soft crest 3–5 px inside, then an ease-out fall into the flat face.
+   Drawn as a blurred ring that follows the corner radii, so the long sides, the top edge of the
+   head and the bottom edge of the foot are one continuous, rounded moulding. Lit from the upper
+   left: the left shoulder and the top edge are brightest, the right a little weaker, the bottom
+   edge faint. The long sides get an extra soft tail into the face (the wide radius of the sides).
+   It runs over head, groove, display section, keypad and foot, and stays clear of the keys. */
+.faceplate::before {
+  content: "";
+  position: absolute;
+  z-index: 4;
+  inset: calc(0.5 * var(--u));
+  border-radius: calc(var(--fp-r) - 0.5 * var(--u));
+  border-style: solid;
+  border-width: calc(0.95 * var(--u)) calc(1.25 * var(--u)) calc(0.8 * var(--u)) calc(1.3 * var(--u));
+  border-color: rgba(255, 255, 255, 0.15) rgba(255, 255, 255, 0.115) rgba(255, 255, 255, 0.06) rgba(255, 255, 255, 0.155);
+  background: linear-gradient(90deg,
+      rgba(255, 255, 255, 0.06) 0,
+      rgba(255, 255, 255, 0.035) calc(0.8 * var(--u)),
+      rgba(255, 255, 255, 0.012) calc(1.8 * var(--u)),
+      rgba(255, 255, 255, 0) calc(2.7 * var(--u)),
+      rgba(255, 255, 255, 0) calc(100% - 2.5 * var(--u)),
+      rgba(255, 255, 255, 0.009) calc(100% - 1.7 * var(--u)),
+      rgba(255, 255, 255, 0.026) calc(100% - 0.8 * var(--u)),
+      rgba(255, 255, 255, 0.045) 100%) padding-box;
+  filter: blur(calc(0.42 * var(--u)));
+  /* the blur must not spill over the silhouette onto the case or the page */
+  clip-path: inset(calc(-0.5 * var(--u)) round var(--fp-r));
+  pointer-events: none;
+}
+
+/* fine matte grain of the black plastic (inline SVG noise, no request): breaks up the flat
+   digital black so the face reads as moulded material — subtle enough to stay matte */
+.faceplate::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 1.2 -0.1'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 160px 160px;
+}
+
+/* Height fractions of the faceplate (195.4u): tokens.geometry.verticalFractions (M 85 S photo).
+   34.2 + 12.7 + (2.6 + 14.65 + 7.17) + 103.56 + 20.52 = 195.4 */
+.head     { flex: none; height: calc(34.2 * var(--u)); }    /* 0.175 */
+.switches { flex: none; height: calc(12.7 * var(--u)); }    /* 0.065 */
+.display  { flex: none; height: calc(14.65 * var(--u)); }   /* 0.075 — slim LED window */
+.keypad   { flex: none; height: calc(103.56 * var(--u)); }  /* 0.530 */
+.foot     { flex: none; height: calc(20.52 * var(--u)); }   /* 0.105 */
+
+/* ------------------------------------------------------------------ head / logo */
+
+.head {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* logo centred in the head block, a hair above the middle like on the original */
+  padding-bottom: calc(1.4 * var(--u));
+  /* raised head block: no colour of its own (the faceplate shows through), only light —
+     a whisper brighter on top, a chamfer along the lower edge that rolls down into the groove */
+  border-radius: var(--fp-r) var(--fp-r) 0 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0) 55%);
+  /* the block casts a short shadow into the switch groove */
+  box-shadow: 0 calc(0.35 * var(--u)) calc(0.6 * var(--u)) rgba(0, 0, 0, 0.55);
+}
+
+/* chamfer (Fase) at the bottom of the head block: catches the light, ends in a fine bright lip */
+.head::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: calc(1.8 * var(--u));
+  pointer-events: none;
+  background: linear-gradient(180deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.045) 40%,
+    rgba(255, 255, 255, 0.10) 78%,
+    rgba(255, 255, 255, 0.15) 92%,
+    rgba(255, 255, 255, 0.06) 100%);
+}
+
+.logo {
+  color: var(--m64-logo);
+  /* broad geometric face like the original lettering; local system fonts only */
+  font-family: var(--geo);
+  font-weight: 600;
+  font-size: calc(8.6 * var(--u));
+  text-transform: uppercase;
+  letter-spacing: 0.12em;  /* moderate tracking */
+  line-height: 1;
+  margin-right: -0.12em; /* compensate trailing tracking so the logo sits centered */
+  white-space: nowrap;
+  user-select: none;
+  /* the original lettering is a broad, slightly extended geometric face */
+  transform: scaleX(1.1);
+}
+
+/* real small caps: smaller capitals in the same weight as the full caps */
+.logo-sc {
+  font-size: 0.8em;
+  letter-spacing: 0.15em; /* same absolute tracking as the full caps (0.12em / 0.8) */
+}
+
+/* ------------------------------------------------------------------ switches */
+
+.switches {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  padding: 0 calc(6.2 * var(--u));
+  /* recessed groove below the head block: deep inner shadow under the head's lip on top,
+     a fine light ridge where it steps back up to the display plate */
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.16) 45%, rgba(0, 0, 0, 0.12));
+  box-shadow:
+    inset 0 calc(0.8 * var(--u)) calc(1.0 * var(--u)) rgba(0, 0, 0, 0.6),
+    inset 0 calc(-0.3 * var(--u)) calc(0.4 * var(--u)) rgba(0, 0, 0, 0.25),
+    0 calc(0.25 * var(--u)) 0 rgba(255, 255, 255, 0.07);
+}
+
+.switch {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  gap: max(2px, calc(0.75 * var(--u)));
+  margin: 0;
+  padding: calc(1 * var(--u)) calc(0.6 * var(--u));
+  border: 0;
+  background: none;
+  /* screen-printed labels like the original: light, in the logo colour, about half the logo size */
+  color: var(--m64-logo);
+  font-family: var(--geo);
+  font-size: calc(4.5 * var(--u));  /* 0.52 × the logo size (switchesF14.labelOfLogoMin 0.5) */
+  font-weight: 500;
+  line-height: 1;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+.switch[aria-disabled="true"] {
+  /* only a light grey veil on the non-functional switches: knob and guide lose a little
+     brightness and warmth, still clearly cream plastic; the power switch keeps the full
+     --m64-switch-knob */
+  filter: grayscale(0.7) brightness(0.87);
+  cursor: default;
+}
+
+.switch:focus-visible {
+  outline: 1px solid rgba(230, 230, 226, 0.6);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+.sw-label { display: inline-block; min-width: 0.6em; text-align: center; }
+
+.sw-track {
+  /* the long slot shows the light cream slider guide of the original (no black hole): a cream rail,
+     a little shaded under the slot's upper edge, in a fine dark frame with a lit lower lip.
+     Guide 0.15 of the faceplate width (switchesF14.slotOfWidth): 14.3u of 95.4u */
+  position: relative;
+  display: inline-block;
+  width: calc(14.3 * var(--u));
+  height: calc(3.4 * var(--u));
+  border-radius: calc(0.3 * var(--u));
+  background:
+    linear-gradient(180deg,
+      rgba(0, 0, 0, 0.38) 0%,
+      rgba(0, 0, 0, 0.14) 18%,
+      rgba(0, 0, 0, 0.05) 40%,
+      rgba(0, 0, 0, 0.02) 75%,
+      rgba(0, 0, 0, 0.10) 100%),
+    var(--switch-guide);
+  box-shadow:
+    inset 0 calc(0.2 * var(--u)) calc(0.3 * var(--u)) rgba(0, 0, 0, 0.45),
+    0 0 0 calc(0.18 * var(--u)) var(--switch-slot-frame),
+    0 calc(0.3 * var(--u)) 0 calc(0.06 * var(--u)) rgba(255, 255, 255, 0.10);
+}
+
+.sw-knob {
+  /* chunky cream block (1.35 × the slot height, 0.42 of the guide length). It sits on the floor
+     of the slot (bottom flush with the slot's lower edge) and stands proud of it only upward,
+     like the moulded slider on the original. Sharp-cut plastic: a lit top face with a very
+     subtle gradient (brightest toward the edge), a 1 px glint line, a HARD moulded edge, then the
+     front face (about a third of the height) in warm, slightly yellowed shadow that darkens to a
+     beige-brown at the bottom. Base colour is the knob token; the shading only lightens or
+     darkens it. */
+  position: absolute;
+  bottom: 0;
+  left: calc(0.15 * var(--u));
+  width: calc(6 * var(--u));
+  height: calc(4.6 * var(--u));
+  border-radius: 1px;
+  background:
+    linear-gradient(180deg,
+      /* top face: matte, faintly warm, a touch darker at the far (upper) end */
+      rgba(110, 85, 45, 0.07) 0%,
+      rgba(110, 85, 45, 0.03) 30%,
+      rgba(255, 251, 240, 0.10) calc(66% - 1px),
+      /* 1 px glint right above the edge */
+      rgba(255, 253, 246, 0.75) calc(66% - 1px),
+      rgba(255, 253, 246, 0.75) 66%,
+      /* hard edge — no soft transition — into the front face turned away from the light */
+      rgba(120, 86, 40, 0.32) 66%,
+      rgba(110, 76, 34, 0.50) 88%,
+      rgba(95, 64, 28, 0.58) 100%),
+    var(--m64-switch-knob);
+  /* crisp cut flanks (lit left, shaded right), and a short, crisp drop shadow (1–2 px) onto the
+     guide in the slot */
+  box-shadow:
+    inset 1px 0 0 rgba(255, 252, 244, 0.35),
+    inset -1px 0 0 rgba(90, 65, 30, 0.22),
+    calc(0.35 * var(--u)) calc(0.1 * var(--u)) calc(0.15 * var(--u)) rgba(0, 0, 0, 0.5),
+    0 0 0 0.5px rgba(40, 30, 15, 0.45);
+  transition: left 90ms ease-out;
+}
+
+.switch[aria-checked="true"] .sw-knob {
+  left: calc(100% - 6.15 * var(--u));
+}
+
+/* ------------------------------------------------------------------ display window */
+
+.display {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: calc(0.9 * var(--fp-w));       /* wide window: 0.90 of the faceplate (detail.windowWidthOfFaceplate) */
+  margin: calc(2.6 * var(--u)) auto calc(7.17 * var(--u));
+  padding-right: calc(8.4 * var(--u));  /* digit row centred in the window */
+  border-radius: calc(0.6 * var(--u));
+  /* dark red translucent filter with depth: almost black under the upper and lower frame,
+     the deep red of the filter glows through in the middle band where the digits sit */
+  background:
+    linear-gradient(180deg,
+      var(--window-edge-top) 0%,
+      var(--window-shade-top) 7%,
+      var(--m64-display-window) 15%,
+      var(--window-glow) 26%,
+      var(--window-glow) 74%,
+      var(--m64-display-window) 86%,
+      var(--window-shade-bottom) 96%,
+      var(--window-edge-bottom) 100%);
+  box-shadow:
+    0 0 0 calc(0.45 * var(--u)) var(--window-bezel),
+    0 calc(-0.5 * var(--u)) 0 calc(0.45 * var(--u)) rgba(0, 0, 0, 0.35),
+    0 calc(0.6 * var(--u)) 0 calc(0.45 * var(--u)) rgba(255, 255, 255, 0.07);
+}
+
+/* a faint reflection of the room on the filter glass: very soft, only in the upper half */
+.display::after {
+  content: "";
+  position: absolute;
+  left: calc(1.2 * var(--u));
+  right: calc(1.2 * var(--u));
+  top: calc(1.1 * var(--u));
+  height: calc(2.2 * var(--u));
+  border-radius: calc(1 * var(--u));
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 220, 210, 0.035), rgba(255, 220, 210, 0));
+}
+
+/* 7-segment cells (built by display.js as inline SVG). A cell is one digit position of the LED
+   strip; the small, fine glyph sits in its middle. Every cell shares the same SVG scale:
+   10 user units = 1u (digit viewBox 80 × 110 → 8u × 11u). */
+.cell {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  display: block;
+  height: calc(11 * var(--u));
+}
+.cell-digit { width: calc(8 * var(--u)); }
+.cell-sign  { width: calc(5 * var(--u)); }
+
+.cell-svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;   /* italic lean, decimal point and glow reach past the cell box */
+}
+
+.display-defs {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* unlit: ghost segments only just visible through the red filter */
+.seg {
+  fill: var(--m64-led-ghost);
+  fill-opacity: 0.9;
+}
+
+/* lit: LED red with halo + bloom (SVG filter #m64-led-glow) */
+.seg.lit {
+  fill: var(--m64-led-on);
+  filter: url(#m64-led-glow);
+}
+
+/* very light, very short "digital" flicker of the lit segments on a key press.
+   Stepped (no fades), dips to 0.88 / 0.93 of the brightness, --flicker-ms in total
+   (tokens.json → flicker: 40–120 ms, dip ≤ 0.95, never below 0.6). */
+.display.flicker .seg.lit {
+  animation: m64-flicker var(--flicker-ms) steps(1, end) 1 both;
+}
+@keyframes m64-flicker {
+  0%   { opacity: 0.88; }
+  25%  { opacity: 1; }
+  45%  { opacity: 0.93; }
+  65%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .display.flicker .seg.lit { animation: none; }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ------------------------------------------------------------------ keypad */
+
+.keypad {
+  display: grid;
+  grid-template-columns: repeat(4, var(--key));
+  grid-auto-rows: var(--key);
+  column-gap: var(--key-col-gap);
+  row-gap: var(--key-row-gap);
+  justify-content: center;
+  /* first row C % √ CE starts right under the display window; the spare room goes to the foot */
+  align-content: start;
+  padding-top: calc(2.2 * var(--u));
+}
+
+.keypad button {
+  --key-bg: var(--m64-key-white);
+  appearance: none;
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--key);
+  height: var(--key);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: calc(0.15 * var(--key));   /* ≈ 15 % of the key width, like the M 64 photo */
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0) 35%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.07)),
+    var(--key-bg);
+  color: var(--m64-legend);
+  font-family: var(--geo);                   /* same geometric face as the logo */
+  font-weight: 700;
+  font-size: calc(6.3 * var(--u));
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation; /* fast double taps count twice instead of zooming */
+  box-shadow:
+    inset 0 calc(0.25 * var(--u)) 0 rgba(255, 255, 255, 0.45),
+    inset 0 calc(-0.45 * var(--u)) 0 rgba(0, 0, 0, 0.16),
+    0 calc(0.6 * var(--u)) 0 rgba(0, 0, 0, 0.55),
+    0 calc(0.9 * var(--u)) calc(1.2 * var(--u)) rgba(0, 0, 0, 0.55);
+  transform: translateY(0);
+  transition: transform 50ms ease-out, box-shadow 50ms ease-out;
+}
+
+.keypad button[data-color="yellow"] { --key-bg: var(--m64-key-yellow); }
+.keypad button[data-color="red"]    { --key-bg: var(--m64-key-red); }
+
+.keypad button:active,
+.keypad button.pressed {
+  /* the key sinks into its well: the side skirt disappears, the drop shadow tightens */
+  transform: translateY(calc(0.6 * var(--u)));
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0) 70%, rgba(0, 0, 0, 0.08)),
+    var(--key-bg);
+  box-shadow:
+    inset 0 calc(0.2 * var(--u)) 0 rgba(255, 255, 255, 0.2),
+    inset 0 calc(-0.25 * var(--u)) 0 rgba(0, 0, 0, 0.14),
+    0 0 0 rgba(0, 0, 0, 0.55),
+    0 calc(0.2 * var(--u)) calc(0.4 * var(--u)) rgba(0, 0, 0, 0.6);
+}
+
+.keypad button:focus { outline: none; }
+.keypad button:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.55);
+  outline-offset: 2px;
+}
+
+.legend { display: block; pointer-events: none; }
+/* CE as large as C, just set a little tighter so it fits the key like on the original */
+.legend-small { letter-spacing: -0.05em; margin-right: -0.05em; }
+/* ÷ × − + = are drawn large and heavy on the original, as wide as a digit */
+.legend-op { font-size: 1.25em; transform: translateY(-0.04em); }
+.legend-dot { font-size: 1.5em; }
+.legend-sqrt {
+  position: relative;
+  font-size: 0.95em;
+  padding-right: 0.34em;
+  /* radical + vinculum together sit centred on the key */
+}
+.legend-sqrt::after {   /* the vinculum, joined to the top of the radical: √‾ */
+  content: "";
+  position: absolute;
+  left: 0.52em;
+  top: 0.06em;
+  width: 0.38em;
+  height: 0.1em;
+  background: currentColor;
+}
+
+/* ------------------------------------------------------------------ foot */
+
+.foot {
+  display: flex;
+  justify-content: center;
+  align-items: center;   /* lettering vertically centred in the short foot */
+  /* separate foot ledge: dark joint against the keypad plate, fine light edge on its front lip,
+     and a very gentle gradient (±3 % brightness) — no colour of its own */
+  border-radius: 0 0 var(--fp-r) var(--fp-r);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0) 45%, rgba(0, 0, 0, 0.03));
+  box-shadow:
+    inset 0 calc(0.45 * var(--u)) 0 rgba(0, 0, 0, 0.6),
+    inset 0 calc(0.9 * var(--u)) 0 rgba(255, 255, 255, 0.09),
+    0 calc(-0.3 * var(--u)) calc(0.5 * var(--u)) rgba(0, 0, 0, 0.25);
+}
+
+.foot-text {
+  color: var(--foot-text);
+  font-family: var(--geo);
+  font-size: calc(2.9 * var(--u));
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  margin-right: -0.2em;
+  white-space: nowrap;
+  user-select: none;
+  /* also the case easter egg: it must not give itself away — plain cursor, no hover,
+     no tap highlight */
+  cursor: default;
+  -webkit-tap-highlight-color: transparent;
+}

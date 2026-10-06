@@ -1,0 +1,260 @@
+{
+  "$comment": "Projekt-Anschluss an den allgemeinen Agentic-Loop-Kern (.claude/workflows/agentic-loop.js). Alles Projektspezifische steht hier, der Kern bleibt allgemein.",
+  "project": "Aristo M 64",
+  "owner": "Markus Andrezak · überproduct",
+  "spec": "SPEC.md",
+  "docs": [
+    "SPEC.md",
+    "spec/tokens.json",
+    "EVAL.md",
+    "LOOP.md"
+  ],
+  "writable": [
+    "src/",
+    "server.mjs",
+    "package.json"
+  ],
+  "frozen": [
+    "eval/",
+    "spec/",
+    "SPEC.md",
+    "EVAL.md",
+    "playwright.config.mjs",
+    ".claude/",
+    "tools/",
+    "loop.config.json",
+    "briefing/"
+  ],
+  "sourceDir": "src",
+  "commands": {
+    "lockCheck": "node eval/lock.mjs --check",
+    "evalUpTo": "npm run eval -- --feature {feature}",
+    "evalSelect": "npm run eval -- --select {features}",
+    "evalAll": "npm run eval",
+    "report": "eval/report.json",
+    "reportDetails": "eval/report.md",
+    "capture": "PORT={judgePort} npm run eval:capture",
+    "golden": "npm run eval:golden",
+    "thaw": "mkdir -p .thawed && mv -f eval/golden/*.png eval/golden.lock .thawed/ 2>/dev/null; true",
+    "metricsBefore": "node tools/refactor-record.mjs before",
+    "metricsAfter": "node tools/refactor-record.mjs after --label \"{label}\" --mode {mode} --steps <n> --reverts <n> --stop <stopReason> --green <true|false>",
+    "refactorReport": "node tools/refactor-report.mjs"
+  },
+  "refactor": {
+    "policy": "tools/refactor-policy.json",
+    "every": 3
+  },
+  "judge": {
+    "rubric": "eval/visual-rubric.md",
+    "references": "spec/reference/",
+    "screenshots": "eval/artifacts/current-*.png",
+    "finalCriteria": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "finalMinScore": 17,
+    "finalNote": "Bewerte mit UND ohne Schutzhülle (current-device.png und current-device-nocase.png).",
+    "freeRubric": "eval/free-rubric.md"
+  },
+  "guidance": {
+    "builder": "Look & Feel hat Vorrang: Der Rechner soll aussehen, klingen und sich anfühlen wie der Aristo M 64 (Fotos in spec/reference/). Die Zielwerte in spec/tokens.json gelten; Toleranzen sind Messtoleranz, kein Gestaltungsspielraum. Judge-Wünsche, die Spec-Werte verschieben würden, nicht umsetzen. Vanilla HTML/CSS/ES-Module, keine externen Requests. Treue zu den Fotos ist Pflicht: Wo die Spec schweigt oder mehrdeutig ist, entscheidet das Foto (spec/reference/).",
+    "judge": "Halte dich strikt an „Grenzen des Judges“ in eval/visual-rubric.md: keine mustFix für Werte, die SPEC/Tokens festlegen; Widersprüche nur als specConflicts. Treue zu den Fotos ist Pflicht: Wo die Spec schweigt oder mehrdeutig ist, entscheidet das Foto (spec/reference/).",
+    "golden": "G-02 (ohne Hülle) darf pending sein, solange F8 noch nicht gebaut ist."
+  },
+  "features": [
+    {
+      "id": "F1",
+      "title": "Gehäuse & Layout",
+      "ids": "L-01…L-14",
+      "look": true,
+      "criteria": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "focus": "Gehäuse (Schale + Frontplatte), Kopfplatte mit Logo, Schalterleiste (3 Schieber, K und F/2 dürfen schon den Grauschleier haben), Display-Fenster (noch ohne Ziffern ok, aber Platz für 1 Vorzeichen- + 8 Ziffernzellen), 4×5-Tastenraster mit Legenden, Fußplatte, alle CSS-Tokens auf :root."
+    },
+    {
+      "id": "F2",
+      "title": "7-Segment-LED-Anzeige",
+      "ids": "L-15…L-23",
+      "look": true,
+      "criteria": [
+        5,
+        6
+      ],
+      "focus": "src/display.js: SVG-7-Segment-Zellen (Vorzeichen + 8 Ziffern, je a–g + dp), leicht kursiv, rote LED mit Glühen, Geister-Segmente, rechtsbündig, window.m64.render(text) + data-value, Startanzeige \"0.\"."
+    },
+    {
+      "id": "F3",
+      "title": "Tasten-Look & Haptik",
+      "ids": "L-24…L-30",
+      "look": true,
+      "criteria": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "gate": "look-final",
+      "maxIter": 6,
+      "golden": true,
+      "focus": "Tastenfarben (data-color + gerenderte Farbe), matte erhabene Kunststofftasten, fette Legenden, Druck-Haptik (.pressed, ≥1px Hub, Schattenwechsel, ≤100ms), Grauschleier K und F/2, cursor."
+    },
+    {
+      "id": "F4",
+      "title": "Eingabe",
+      "ids": "F-01…F-07",
+      "look": false,
+      "focus": "src/engine.js (createEngine: press/display/isError/setPower) für Zifferneingabe, Punkt, 8-Stellen-Limit, C, CE; ui.js verdrahtet Klicks → Engine → Display."
+    },
+    {
+      "id": "F5",
+      "title": "Grundrechenarten",
+      "ids": "F-11…F-28",
+      "look": false,
+      "focus": "Sofortige Ausführung ohne Punkt-vor-Strich, Operatorwechsel, =, 8-Stellen-Rechenwerk (mit angezeigtem Wert weiterrechnen), Rundung, Fehler E bei ÷0/Überlauf, CE mit anstehendem Operator."
+    },
+    {
+      "id": "F6",
+      "title": "Wurzel & Prozent",
+      "ids": "F-31…F-43",
+      "look": false,
+      "focus": "√ auf Anzeige, √ negativ → E, % in allen vier Varianten + allein, Weiterrechnen nach %."
+    },
+    {
+      "id": "F7",
+      "title": "Bedienung & Feinschliff",
+      "ids": "F-50…F-54, L-31…L-33",
+      "look": true,
+      "criteria": [
+        10
+      ],
+      "focus": "Physische Tastatur (inkl. .pressed an der Bildschirmtaste), Ein/Aus-Schalter, Doppelklick zählt doppelt, mobile 375px, keine Konsolenfehler, aria. ACHTUNG: Der Desktop-Initial-Look ist per Golden Screenshot (G-01) eingefroren – nicht verändern."
+    },
+    {
+      "id": "F8",
+      "title": "Schutzhülle",
+      "ids": "L-34…L-37 (+ L-07 präzisiert)",
+      "look": true,
+      "criteria": [
+        1,
+        2,
+        10
+      ],
+      "minScore": 5,
+      "maxIter": 5,
+      "golden": true,
+      "focus": "Das Gerät ist schwarz, das Cremeweiße ist eine abnehmbare Schutzhülle (Wanne unter dem Gerät). Referenzen: spec/reference/m64-mit-schutzhuelle-seite.jpg und m64-ohne-schutzhuelle.jpg. (1) L-07 (Spec 1.2): In der Draufsicht umrahmt die Hülle das Gerät – links/rechts über die GANZE Länge, OBEN UND UNTEN sichtbar und GLEICH BREIT (±1 px). Eine schwarze Kappe oben ist falsch; die Hülle als eigenes Element mit sauberer Geometrie bauen statt überdecken. Proportionen/Höhenanteile (L-04, L-06) bleiben einzuhalten. (2) Spec 1.3: Umschalten als EASTER EGG – Klick auf den Schriftzug „MADE IN GERMANY“ ([data-part=\"foot\"] [data-config=\"case\"]); KEIN sichtbarer Schalter mehr (den bisherigen entfernen), kein Hinweis (kein pointer-Cursor, kein Hover-Effekt); data-case=\"on|off\" am Shell; ohne Hülle ein rein schwarzes Gehäuse mit kleinen Eckenradien; kein Layout-Sprung; Persistenz per localStorage (m64-case) mit try/catch. Der Golden Screenshot ist bis zur Abnahme von F8 pending und wird danach neu eingefroren (G-01 mit, G-02 ohne Hülle).",
+      "thaw": true
+    },
+    {
+      "id": "F9",
+      "title": "Display-Flackern",
+      "ids": "L-38…L-40",
+      "look": false,
+      "focus": "Bei jedem Tastendruck (Maus/Touch/physische Taste, Gerät an) ganz leichtes, sehr kurzes digitales Flackern der LED-Anzeige: Klasse flicker am Display für 40–120 ms, umgesetzt als CSS-Animation auf den leuchtenden Segmenten (Helligkeit dippt auf ≤ 0,95, nie unter 0,6). Kein Flackern bei render(), Easter Egg, Gerät aus, prefers-reduced-motion. Der statische Look (Golden G-01/G-02) darf sich nicht ändern."
+    },
+    {
+      "id": "F10",
+      "title": "Tastenklang",
+      "ids": "L-41…L-43",
+      "look": false,
+      "focus": "Sehr mechanische, satte Tastatur: src/sound.js exportiert playKeyClick(ctx, when) und synthetisiert per Web Audio ein kurzes, sattes Klack (Bass-Körper + Kunststoff-Resonanz + heller Anschlag-Transient, leichte Zufallsvariation je Anschlag). Messwerte in tokens.json → sound (Pegel, Anstieg, Dauer, Energie unter 600 Hz 40–90 %, über 2 kHz ≥ 3 %, Schwerpunkt 400–1500 Hz). AudioContext erst beim ersten Tastendruck, dann wiederverwenden. Still bei Laden, Gerät aus, Easter Egg, render(). Hör/miss selbst per OfflineAudioContext, bevor du abgibst."
+    },
+    {
+      "id": "F11",
+      "title": "Stummschalter & Lautstärke",
+      "ids": "L-44, L-45 + L-41 (leiser) + E-01",
+      "look": false,
+      "focus": "Spec 1.6: (1) Klang LEISER: Spitze 0,08–0,2 am Ausgang von playKeyClick (heute ≈0,4); bei mittlerer Systemlautstärke satt, aber nicht laut – außerdem einen Tick WENIGER BASSIG: Energie unter 600 Hz 35–60 % (heute 74 %), Schwerpunkt 1000–2000 Hz (heute 846 Hz) – Körper behalten, etwas heller/knackiger; Anstieg und Dauer wie gehabt. Keine zusätzliche Gain-Stufe hinter playKeyClick. (2) Stummschalter als EASTER EGG: Klick auf das Logo „ARISTO M 64“ ([data-part=head] [data-config=sound]) toggelt data-sound=on|off am Shell; kein Hinweis (kein pointer, kein Hover), kein Flackern, keine Rechnertaste; stummschalten ist still, wieder einschalten spielt EINEN Bestätigungsklick; Persistenz localStorage m64-sound mit try/catch. (3) E-01: keine Eval-IDs in src/ – auch nicht in Kommentaren (z. B. style.css „SPEC L-07“ entfernen). Der statische Look (Golden G-01/G-02) darf sich nicht ändern."
+    },
+    {
+      "id": "F12",
+      "title": "Feinschliff Look",
+      "ids": "L-46…L-48",
+      "look": true,
+      "criteria": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "minScore": 18,
+      "maxIter": 5,
+      "golden": true,
+      "focus": "Spec 1.7 – wertiger: (1) Logo: Sperrung 0,10–0,14 em, normale Wortabstände, breite geometrische Schrift (Futura/Avenir Next/Avenir/Century Gothic zuerst im Stack), Gewicht 400–600. (2) Schiebeschalter: [data-part=switch-slot]/[data-part=switch-knob] in jedem Schalter; kräftige erhabene Cremeschieber (≥ 85 % Schlitzhöhe), Verlauf Oberseite→dunklere Vorderkante, Schlagschatten; Grauschleier K, F/2 bleibt. (3) Relief: Kopfplatte als erhabener Block mit Fase, Schalterleiste als vertiefte Rinne (Innenschatten oben), Fußplatte als abgesetzte Leiste mit Kante (dunkle Fuge + feine Lichtkante) und dezentem Verlauf (nur ±3 % Helligkeit, keine neue Farbe). Alle Token-Farben und Maße bleiben. Die Goldens sind für F12 aufgetaut und werden nach Abnahme neu eingefroren. Ziel des Judges: ≥ 18/20.",
+      "thaw": true
+    },
+    {
+      "id": "F13",
+      "title": "Nah am Original",
+      "ids": "L-49…L-53 + Proportionen (L-04, L-06, L-07, L-10, L-27)",
+      "look": true,
+      "criteria": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "minScore": 18,
+      "maxIter": 6,
+      "golden": true,
+      "focus": "Spec 1.8 (Markus): (A) PROPORTIONEN nach spec/reference/m85s-front-proportionen.png, auch in der Breite: Gerät mit Hülle 2,0:1 (statt 2,45), Hüllenrand gleichmäßig ≈2,3 % der Breite auf allen 4 Seiten, Höhenanteile Kopf 0,175 / Schalter 0,065 / Display 0,075 / Tastenfeld 0,53 / Fuß 0,105 (Toleranz nur ±0,015), Tasten 0,142 der Gerätebreite, Spalten-Teilung 1,65–1,8, Reihen-Teilung ≈1,6 (1,5–1,68) – alles aus tokens.json. (B) DETAILS nach spec/reference/m64-front-detail.jpg – genau ansehen: gerundete Gehäuseecken (2,5–5 %) und gerundete Seitenkanten mit Lichtkante; Display breit (0,90 der Breite), dunkel-rot transluzent mit Tiefe (Mitte heller als Rand), kleine zierliche LED-Ziffern (Strich ≤0,13 Zellbreite, Höhe ≤55 % des Fensters), Geister kaum sichtbar (ΔE 3–8); Schalter: helle Cremeführung im Schlitz mit erhabenem Schieber darauf, Grauschleier auf K/F2 nur leicht; Tasten mit Radius ≈15 %, Legenden in derselben geometrischen Schrift wie das Logo, CE so groß wie C, √ mit angeschlossenem Querstrich. (C) KLANG (Spec 1.9): Pegel bleibt leise (Stufe A ist richtig), aber die scharfe SPITZE muss raus: weicher Anschlag 2,5–6 ms, ≤1,5 % Energie über 3 kHz, 3–12 % über 2 kHz, Schwerpunkt 900–2000 Hz, Bass 35–60 % – Körper aus ~200 Hz + Mitten 1,5–2 kHz, KEIN Rausch-Transient. Nicht länger nachklingen lassen. L-54 SAFARI: AudioContext in click/pointerup/keydown anlegen oder resume() dort aufrufen (Safari erkennt pointerdown nicht als Audio-Geste). L-53: hörbar am Ausgang. (D) L-49 verschärft: deutlich sichtbare Gehäuserundung an den Seiten – Lichtband entlang beider Seitenkanten (≥ 8 L* heller, ≥ 4 px breit), wie am M 64-Foto. Goldens sind aufgetaut. Ziel des Judges ≥ 18/20.",
+      "thaw": true
+    },
+    {
+      "id": "F14",
+      "title": "Schieber wie am Original",
+      "ids": "L-55…L-57",
+      "look": true,
+      "criteria": [
+        4
+      ],
+      "minScore": 2,
+      "maxIter": 5,
+      "golden": true,
+      "focus": "Spec 2.0, letzte Runde – NUR die drei Schiebeschalter, alles andere bleibt unverändert (Goldens sind nur dafür aufgetaut). Vorlage spec/reference/m64-front-detail.jpg: (1) Führung ≈ 15 % der Gerätebreite (heute 12,6 %), helle Cremeführung bleibt (L-51). (2) Schieber = kräftiger Cremeklotz, ragt aus dem Schlitz heraus (1,2–1,5 × Schlitzhöhe, heute 0,94), 35–50 % der Führungslänge breit. (3) Relief: helle Oberseite, deutlich dunklere Vorderkante (ΔL* ≥ 15) mit HARTER Kante dazwischen (kein weicher Verlauf), Schlagschatten 1–2 px in den Schlitz. Grauschleier auf K und F/2 leicht wie bisher. (4) Beschriftung 0 K / F 2 / 0 I ≥ 50 % der Logo-Schriftgröße (heute 42 %) und hell (L* ≥ 89, Richtung --m64-logo). Schalterleisten-Höhe (verticalFractions.switches) einhalten.",
+      "thaw": true
+    },
+    {
+      "id": "F15",
+      "title": "Tonhöhe pro Tastenzeile",
+      "ids": "L-58, L-59",
+      "look": false,
+      "focus": "Spec 2.1: playKeyClick(ctx, when, { pitch }) – pitch (Standard 1) multipliziert alle Frequenzen des Anschlags. ui.js: unterste Tastenreihe (0 · = +) pitch 1, jede Reihe darüber ¾ Halbton höher (Faktor 2^(0.75/12) pro Reihe), oberste Reihe 3 Halbtöne; physische Tasten wie ihre Bildschirmtaste. Die Klangkriterien aus L-41 müssen für tiefste UND höchste Reihe gelten – ggf. die obersten Schichten so ausbalancieren, dass auch bei +3 Halbtönen nichts über 3 kHz liegt und über 2 kHz 3–12 % bleiben. Look unverändert (Goldens eingefroren)."
+    }
+  ],
+  "parallel": {
+    "$comment": "Parallele Spuren (agentic-loop-parallel): Umgebung je Spur, erster Port, höchstens so viele Spuren gleichzeitig",
+    "env": "PORT={port}",
+    "basePort": 4310,
+    "maxLanes": 3
+  }
+}

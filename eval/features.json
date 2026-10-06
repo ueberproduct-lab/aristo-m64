@@ -1,0 +1,18 @@
+{
+  "F0": {"title": "Gerüst", "look": false, "ids": ["E-00", "E-01"]},
+  "F1": {"title": "Gehäuse & Layout", "look": true, "ids": ["L-01", "L-02", "L-03", "L-04", "L-05", "L-06", "L-07", "L-08", "L-09", "L-10", "L-11", "L-12", "L-13", "L-14"]},
+  "F2": {"title": "7-Segment-LED-Anzeige", "look": true, "ids": ["L-15", "L-16", "L-17", "L-18", "L-19", "L-20", "L-21", "L-22", "L-23"]},
+  "F3": {"title": "Tasten-Look & Haptik", "look": true, "ids": ["L-24", "L-25", "L-26", "L-27", "L-28", "L-29", "L-30", "G-01"]},
+  "F4": {"title": "Eingabe", "look": false, "ids": ["F-01", "F-02", "F-03", "F-04", "F-05", "F-06", "F-07"]},
+  "F5": {"title": "Grundrechenarten", "look": false, "ids": ["F-11", "F-12", "F-13", "F-14", "F-15", "F-16", "F-17", "F-18", "F-19", "F-20", "F-21", "F-22", "F-23", "F-24", "F-25", "F-26", "F-27", "F-28"]},
+  "F6": {"title": "Wurzel & Prozent", "look": false, "ids": ["F-31", "F-32", "F-33", "F-34", "F-35", "F-36", "F-37", "F-38", "F-39", "F-40", "F-41", "F-42", "F-43"]},
+  "F7": {"title": "Bedienung & Feinschliff", "look": true, "ids": ["F-50", "F-51", "F-52", "F-53", "F-54", "L-31", "L-32", "L-33"]},
+  "F8": {"title": "Schutzhülle", "look": true, "ids": ["L-34", "L-35", "L-36", "L-37", "G-02"]},
+  "F9": {"title": "Display-Flackern", "look": false, "ids": ["L-38", "L-39", "L-40"]},
+  "F10": {"title": "Tastenklang", "look": false, "ids": ["L-41", "L-42", "L-43"]},
+  "F11": {"title": "Stummschalter & Lautstärke", "look": false, "ids": ["L-44", "L-45"]},
+  "F12": {"title": "Feinschliff Look", "look": true, "ids": ["L-46", "L-47", "L-48"]},
+  "F13": {"title": "Nah am Original", "look": true, "ids": ["L-49", "L-50", "L-51", "L-52", "L-53", "L-54"]},
+  "F14": {"title": "Schieber wie am Original", "look": true, "ids": ["L-55", "L-56", "L-57"]},
+  "F15": {"title": "Tonhöhe pro Tastenzeile", "look": false, "ids": ["L-58", "L-59"]}
+}

@@ -1,0 +1,33 @@
+{
+  "$comment": "Übungsprojekt der Werkstatt: klein, schnell geprüft, mit Verträgen, Abhängigkeiten und einer eingefrorenen Referenz. Für Proben der Maschine (auch mit absichtlichen Störungen), nicht für Ergebnisse.",
+  "project": "Einkaufsliste",
+  "spec": "SPEC.md",
+  "docs": ["SPEC.md", "EVAL.md"],
+  "writable": ["src/"],
+  "frozen": ["eval/", "SPEC.md", "EVAL.md", "reference/", "loop.config.json", "package.json"],
+  "sourceDir": "src",
+  "seal": ["SPEC.md", "EVAL.md", "eval/"],
+  "sealFile": "eval/eval.seal",
+  "commands": {
+    "lockCheck": "node eval/seal.mjs --check",
+    "evalUpTo": "npm run eval --silent -- --feature {feature}",
+    "evalSelect": "npm run eval --silent -- --select {features}",
+    "evalAll": "npm run eval --silent",
+    "report": "eval/report.json",
+    "reportDetails": "eval/report.md",
+    "golden": "npm run eval:golden --silent"
+  },
+  "referenceIds": ["G-01"],
+  "guidance": {
+    "builder": "Reines Node.js mit ES-Modulen, keine Abhängigkeiten. Halte dich wörtlich an die Verträge in SPEC.md Abschnitt 1.",
+    "golden": "G-01 ist ausstehend, solange reference/render.txt fehlt."
+  },
+  "features": [
+    { "id": "F1", "title": "Einlesen", "ids": "P-01…P-04", "focus": "src/parse.mjs: parse(text) nach SPEC F1." },
+    { "id": "F2", "title": "Summen", "ids": "S-01…S-03", "focus": "src/totals.mjs: totals(items) nach SPEC F2." },
+    { "id": "F3", "title": "Ausgabe", "ids": "R-01…R-03, G-01", "focus": "src/render.mjs: render(items) nach SPEC F3, dazu src/cli.mjs (SPEC 1). Danach wird die Ausgabe als Referenz G-01 eingefroren.", "golden": true },
+    { "id": "F4", "title": "Kategorien", "ids": "K-01…K-03", "focus": "src/categories.mjs: categoryOf(name) nach SPEC F4." },
+    { "id": "F5", "title": "Gruppierte Ausgabe", "ids": "R-04, R-05", "focus": "render(items, { grouped: true }) nach SPEC F5; die CLI gruppiert. Die Referenz G-01 ändert sich dadurch und wird nach der Abnahme neu eingefroren.", "golden": true, "thaw": true }
+  ],
+  "parallel": { "env": "PORT={port}", "basePort": 4510, "maxLanes": 3 }
+}

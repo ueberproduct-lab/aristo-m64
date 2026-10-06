@@ -1,0 +1,81 @@
+[
+  {
+    "name": "Prüfstand erneut ohne grünes Ergebnis",
+    "situation": "Das Tor nach F3 lieferte zweimal kein einziges grünes Ergebnis. Die Regeln des Takts sind erschöpft.",
+    "actions": [
+      "retry",
+      "stop"
+    ],
+    "fallback": "stop",
+    "raw": {
+      "error": "kein frischer Bericht eval/report.json – die Prüfung lief nicht"
+    },
+    "prior": [
+      {
+        "action": "retry",
+        "situation": "Das Tor nach F3 lieferte kein einziges grünes Ergebnis."
+      }
+    ],
+    "expect": [
+      "stop"
+    ],
+    "folder": "Bau-Ordner mit kaputtem Prüfstand (eval-Skript zeigt auf eine fehlende Datei)"
+  },
+  {
+    "name": "Synchronisieren verweigert, Spur ungemergt, andere hängen davon ab",
+    "situation": "Spur F1 ließ sich nicht auf den Hauptstand bringen (lane.mjs sync), der Befehl wurde verweigert. Die Regeln des Takts sind erschöpft.",
+    "actions": [
+      "retry",
+      "skip",
+      "stop"
+    ],
+    "fallback": "stop",
+    "raw": {
+      "ok": false,
+      "blocked": true,
+      "note": "Permission denied: git fetch in .lanes/F1 blocked by policy",
+      "data": null
+    },
+    "expect": [
+      "stop"
+    ],
+    "folder": "angehaltener Bau: Spur F1 mit fertigem Commit, nicht zusammengeführt; F3 und F5 hängen von F1 ab"
+  },
+  {
+    "name": "Feature weder in Spur noch sequenziell baubar, andere hängen davon ab",
+    "situation": "F1 ließ sich weder in der Spur noch sequenziell im Hauptstand bauen. Die Regeln des Takts sind erschöpft.",
+    "actions": [
+      "skip",
+      "stop"
+    ],
+    "fallback": "stop",
+    "raw": {
+      "status": "aborted",
+      "feature": "F1",
+      "at": "build #1",
+      "note": "F3 und F5 hängen laut loop.plan.json von F1 ab"
+    },
+    "expect": [
+      "stop"
+    ],
+    "folder": "fertig gebauter Ordner (Plan: F3, F5 hängen von F1 ab)"
+  },
+  {
+    "name": "Feature weder in Spur noch sequenziell baubar, niemand hängt davon ab",
+    "situation": "F5 ließ sich weder in der Spur noch sequenziell im Hauptstand bauen. Die Regeln des Takts sind erschöpft.",
+    "actions": [
+      "skip",
+      "stop"
+    ],
+    "fallback": "stop",
+    "raw": {
+      "status": "aborted",
+      "feature": "F5",
+      "at": "build #2"
+    },
+    "expect": [
+      "skip"
+    ],
+    "folder": "fertig gebauter Ordner (Plan: nichts hängt von F5 ab)"
+  }
+]

@@ -1,0 +1,57 @@
+{
+  "$comment": "Pragmatic refactoring policy for loop-refactorer (v2: general, project-agnostic metrics). Tighten the numbers here later; the agent reads them every round.",
+  "version": 2,
+  "modes": {
+    "routine": {
+      "minSteps": 1,
+      "maxSteps": 8,
+      "$comment": "in the build loop after every N accepted features: a little order, every time"
+    },
+    "clean": {
+      "minSteps": 1,
+      "maxSteps": 25,
+      "$comment": "on demand when the alarm values are reached"
+    }
+  },
+  "stop": {
+    "noGainSteps": 2,
+    "maxReverts": 2,
+    "$comment": "stop after 2 consecutive steps without any metric gain, or after 2 steps reverted because tests turned red"
+  },
+  "targets": {
+    "unusedExports": 0,
+    "unusedCssClasses": 0,
+    "processComments": 0,
+    "longFunctions": 0,
+    "cognitiveMax": 10,
+    "duplicationPct": 3,
+    "$comment": "cognitiveMax: SonarSource default is 15; 10 keeps every function easy to read. duplicationPct over JS, CSS and HTML."
+  },
+  "priority": [
+    "unusedExports",
+    "unusedCssClasses",
+    "processComments",
+    "cognitiveMax",
+    "duplicationPct",
+    "longFunctions"
+  ],
+  "hotspotFirst": "Within a metric, start in the file with the highest hotspot score (changes × size, see code-metrics hotspots): refactoring pays off where code is both big and often changed.",
+  "alarm": {
+    "unusedExports": 3,
+    "unusedCssClasses": 3,
+    "processComments": 5,
+    "longFunctions": 2,
+    "cognitiveMax": 20,
+    "duplicationPct": 6,
+    "locTotalMax": 1600,
+    "$comment": "after a routine round: if any value is at or above its alarm value, the loop recommends a clean run"
+  },
+  "track": [
+    "cognitiveTotal",
+    "locTotal",
+    "changeCost",
+    "hotspots"
+  ],
+  "exceptions": [],
+  "boyScout": "If every target is met: do exactly ONE step — the most obvious local cleanup in the top hotspot file (e.g. lower the cognitive complexity of its most complex function, extract a duplicated block, clarify one name). No cross-module renames, no restructuring. Then stop with stopReason 'boy-scout'."
+}

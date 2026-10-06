@@ -1,0 +1,29 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "dashboard",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "tools/dashboard.mjs"
+      ],
+      "port": 4180
+    },
+    {
+      "name": "app",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "server.mjs"
+      ],
+      "port": 4173
+    },
+    {
+      "name": "experience",
+      "runtimeExecutable": "node",
+      "runtimeArgs": [
+        "experience/server.mjs"
+      ],
+      "port": 4191
+    }
+  ]
+}

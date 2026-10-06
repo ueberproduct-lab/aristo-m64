@@ -1,0 +1,12 @@
+node_modules/
+eval/artifacts/
+.refactor-backup/
+.refactor-metrics-before.json
+.DS_Store
+.metrics-cache/
+eval/report.json
+eval/report.md
+demo-runs/
+experience/state.json
+experience/direct-state.json
+experience/.listening

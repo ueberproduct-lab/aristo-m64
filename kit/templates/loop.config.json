@@ -1,0 +1,57 @@
+{
+  "$comment": "Projekt-Anschluss an den Agentic-Loop-Kern. Alles Projektspezifische steht hier. Felder mit <…> beim Bootstrap ausfüllen.",
+  "project": "<Projektname>",
+  "owner": "<Wer entscheidet Spec-Konflikte>",
+  "spec": "SPEC.md",
+  "docs": [
+    "briefing/BRIEFING.md",
+    "SPEC.md",
+    "EVAL.md"
+  ],
+  "writable": [
+    "src/"
+  ],
+  "frozen": [
+    "briefing/",
+    "SPEC.md",
+    "EVAL.md",
+    "eval/",
+    "loop.config.json",
+    ".claude/",
+    "tools/"
+  ],
+  "seal": [
+    "SPEC.md",
+    "EVAL.md",
+    "eval/"
+  ],
+  "sealFile": "eval/eval.seal",
+  "sourceDir": "src",
+  "commands": {
+    "lockCheck": "node eval/seal.mjs --check",
+    "evalUpTo": "<Befehl, der alle Prüfungen von F0 bis {feature} ausführt und den Bericht schreibt>",
+    "evalAll": "<Befehl für die komplette Suite>",
+    "report": "eval/report.json",
+    "reportDetails": "eval/report.md",
+    "metricsBefore": "node tools/refactor-record.mjs before",
+    "metricsAfter": "node tools/refactor-record.mjs after --label \"{label}\" --mode {mode} --steps <n> --reverts <n> --stop <stopReason> --green <true|false>",
+    "refactorReport": "node tools/refactor-report.mjs"
+  },
+  "refactor": {
+    "policy": "tools/refactor-policy.json",
+    "every": 3
+  },
+  "guidance": {
+    "builder": "<Projekthinweise an den Handwerker: Stack, Stil, was Vorrang hat>",
+    "tester": "",
+    "judge": ""
+  },
+  "features": [
+    {
+      "id": "F1",
+      "title": "<erstes Feature>",
+      "ids": "<IDs aus der Spec>",
+      "focus": "<was genau gebaut wird>"
+    }
+  ]
+}

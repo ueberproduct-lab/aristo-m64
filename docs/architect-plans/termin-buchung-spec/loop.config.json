@@ -1,0 +1,18 @@
+{
+  "project": "Termin-Buchung",
+  "spec": "SPEC.md",
+  "docs": ["SPEC.md"],
+  "writable": ["src/", "public/", "data/", "package.json"],
+  "sourceDir": "src",
+  "commands": { "evalUpTo": "node eval/run.mjs --feature {feature}", "evalSelect": "node eval/run.mjs --select {features}" },
+  "features": [
+    { "id": "F1", "title": "Server und Speicher", "ids": "B-01…B-02", "focus": "http-Server, /health, store.js" },
+    { "id": "F2", "title": "Öffnungszeiten und freie Slots", "ids": "B-03…B-05", "focus": "Slot-Berechnung" },
+    { "id": "F3", "title": "Buchen", "ids": "B-06…B-08", "focus": "POST /api/bookings, Outbox" },
+    { "id": "F4", "title": "Stornieren", "ids": "B-09…B-10", "focus": "DELETE mit Token" },
+    { "id": "F5", "title": "Praxis-Ansicht", "ids": "B-11…B-12", "focus": "Admin-API" },
+    { "id": "F6", "title": "Buchungsseite", "ids": "B-13…B-14", "focus": "public/index.html" },
+    { "id": "F7", "title": "Praxisseite", "ids": "B-15", "focus": "public/admin.html" },
+    { "id": "F8", "title": "Erinnerungen", "ids": "B-16", "focus": "src/remind.js" }
+  ]
+}

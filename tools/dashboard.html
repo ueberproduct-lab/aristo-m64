@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M 64 Loop</title>
+<style>
+  :root {
+    --bg: #f4f2ee; --panel: #fff; --ink: #1d1d1f; --muted: #6e6b66; --line: #e3dfd8;
+    --ok: #2f8a4c; --ok-bg: #e4f3e8; --bad: #c2412d; --bad-bg: #fbe6e2; --pend: #a77a12; --pend-bg: #fbf1d9;
+    --run: #2d5fc4; --run-bg: #e3ebfb;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161616; --panel: #1f1f1f; --ink: #ecebe8; --muted: #9a968f; --line: #2e2e2e;
+      --ok: #5cc27b; --ok-bg: #1d3324; --bad: #ef7a64; --bad-bg: #3a1f1a; --pend: #e0b44a; --pend-bg: #372d15;
+      --run: #7aa2ff; --run-bg: #1c2742;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  .wrap { display: grid; grid-template-columns: minmax(300px, 400px) minmax(0, 1fr); gap: 12px; padding: 12px; height: 100vh; grid-template-rows: auto auto minmax(0, 1fr); }
+  .app { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; display: flex; flex-direction: column; min-height: 0; }
+  .app header { padding: 8px 12px; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; color: var(--muted); }
+  .app .viewport { flex: 1; position: relative; overflow: hidden; background: #8a8580; min-height: 0; }
+  .app iframe { position: absolute; left: 50%; top: 0; width: 760px; height: 900px; border: 0; transform-origin: top center; }
+  .side { overflow: auto; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  h2 { margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+  .top { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+  .big { font-size: 22px; font-weight: 650; }
+  .muted { color: var(--muted); }
+  .chip { display: inline-block; padding: 1px 7px; border-radius: 99px; font-size: 11.5px; font-weight: 600; margin: 1px 2px 1px 0; font-variant-numeric: tabular-nums; }
+  .ok { background: var(--ok-bg); color: var(--ok); } .bad { background: var(--bad-bg); color: var(--bad); }
+  .pend { background: var(--pend-bg); color: var(--pend); } .run { background: var(--run-bg); color: var(--run); }
+  .none { background: transparent; color: var(--muted); border: 1px dashed var(--line); }
+  table { border-collapse: collapse; width: 100%; }
+  td { padding: 5px 6px; border-top: 1px solid var(--line); vertical-align: top; }
+  tr:first-child td { border-top: 0; }
+  .feat { white-space: nowrap; font-weight: 600; width: 1%; }
+  .events { display: flex; flex-direction: column; gap: 6px; max-height: 300px; overflow: auto; }
+  .ev { display: grid; grid-template-columns: 112px 1fr; gap: 8px; align-items: start; }
+  .ev .detail { color: var(--muted); overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+  .shots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+  .shots figure { margin: 0; }
+  .shots img { width: 100%; border-radius: 6px; border: 1px solid var(--line); background: #222; display: block; }
+  .shots figcaption { color: var(--muted); font-size: 11.5px; margin-top: 3px; }
+  pre { white-space: pre-wrap; margin: 4px 0 8px; font: 11.5px/1.4 ui-monospace, Menlo, monospace; background: var(--bg); padding: 6px 8px; border-radius: 6px; max-height: 120px; overflow: auto; }
+  .bars { display: flex; align-items: flex-end; gap: 2px; height: 46px; }
+  .bars div { flex: 1; min-width: 3px; border-radius: 2px 2px 0 0; }
+  .trail { margin-top: 3px; font: 11.5px/1.45 ui-monospace, Menlo, monospace; color: var(--muted); }
+  .trail div { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .trail div:first-child { color: var(--ink); }
+  .trail .tool { color: var(--run); font-weight: 600; }
+  .pulse { animation: pulse 1.4s ease-in-out infinite; } @keyframes pulse { 50% { opacity: .45; } }
+  @media (max-width: 900px) { .wrap { grid-template-columns: 1fr; grid-template-rows: none; height: auto; } .app { height: 600px; } .side { overflow: visible; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="panel top" style="grid-column: 1 / -1">
+    <span class="big" id="overall">…</span>
+    <span id="overallMeta" class="muted" style="flex:1 1 220px;min-width:0"></span>
+    <span id="golden"></span>
+    <span class="muted" style="margin-left:auto" id="clock"></span>
+  </div>
+  <div class="panel" style="grid-column: 1 / -1"><h2>Schleife – Agenten-Aktivität (live)</h2><div class="events" id="events"></div></div>
+  <section class="app">
+    <header><span>Live-App · localhost:4173</span><span id="appStamp"></span></header>
+    <div class="viewport" id="vp"><iframe id="app" src="http://localhost:4173/" title="Aristo M 64" allow="autoplay"></iframe></div>
+  </section>
+  <main class="side">
+    <div class="panel"><h2>Eval nach Feature <span id="scope" class="muted" style="text-transform:none;letter-spacing:0"></span></h2><table id="matrix"></table></div>
+    <div class="panel" id="failPanel"><h2>Fehlschläge (letzter Lauf)</h2><div id="fails"></div></div>
+    <div class="panel"><h2>Visueller Judge</h2><div id="judge" class="muted">noch keine Bewertung</div></div>
+    <div class="panel"><h2>Screenshots (Eval-Capture) vs. Referenz</h2><div class="shots" id="shots"></div></div>
+    <div class="panel"><h2>Refactoring – Wirkung, Sicherheit, Drift</h2><div id="refactors" class="muted">noch keine Refactor-Runde</div></div>
+    <div class="panel"><h2>Verlauf aller Eval-Läufe</h2><div class="bars" id="bars"></div><div class="muted" id="barsMeta"></div></div>
+  </main>
+</div>
+<script>
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? '').replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]);
+const ago = (ms) => { const s = Math.round((Date.now() - ms) / 1000); return s < 60 ? `vor ${s}s` : s < 3600 ? `vor ${Math.round(s / 60)} min` : `vor ${Math.round(s / 3600)} h`; };
+let lastSrc = 0;
+
+async function tick() {
+  let st;
+  try { st = await (await fetch('/api/state', { cache: 'no-store' })).json(); } catch { return; }
+  $('clock').textContent = new Date().toLocaleTimeString('de-DE');
+
+  // live app reload when src/ changes
+  if (st.srcMtime && st.srcMtime !== lastSrc) {
+    if (lastSrc) $('app').src = 'http://localhost:4173/?t=' + st.srcMtime;
+    lastSrc = st.srcMtime;
+  }
+  $('appStamp').textContent = st.srcMtime ? 'src geändert ' + ago(st.srcMtime) : '';
+
+  // overall
+  const r = st.report;
+  if (r) {
+    $('overall').innerHTML = r.pass ? '<span class="chip ok">GRÜN</span>' : '<span class="chip bad">ROT</span>';
+    $('overallMeta').textContent = `IDs ${r.summary.passed}/${r.summary.ids} · Tests ${r.summary.tests - r.summary.testsFailed}/${r.summary.tests} · Scope „${r.scope}“ · ${ago(Date.parse(r.timestamp))} · eval.lock ${r.lock.ok ? 'OK' : 'VERLETZT'}`;
+  }
+  $('golden').innerHTML = st.golden ? '<span class="chip ok">Golden eingefroren</span>' : '<span class="chip pend">Golden ausstehend</span>';
+  $('scope').textContent = r ? `· letzter Lauf: ${r.scope}` : '';
+
+  // workflow events (newest first)
+  const evs = (st.workflow?.events || []).slice(-40).reverse();
+  $('events').innerHTML = evs.length ? evs.map((e) => {
+    let cls = 'none', txt = '', detail = '';
+    if (e.running) {
+      cls = 'run pulse'; txt = 'läuft' + (e.lastActivity ? ` · letzte Aktion ${ago(Date.parse(e.lastActivity))}` : '…');
+      detail = '';
+      if (e.trail?.length) {
+        return `<div class="ev"><span><span class="chip ${cls}">${esc(e.label)}</span></span><span><b>${esc(txt)}</b>` +
+          `<div class="trail">${e.trail.slice().reverse().map((t) => `<div><span class="tool">${esc(t.tool)}</span> ${esc(t.what)}</div>`).join('')}</div></span></div>`;
+      }
+    }
+    else if (e.kind === 'test') { cls = e.pass ? 'ok' : 'bad'; txt = `Eval ${e.ids}`; detail = (e.failedIds || []).join(' '); }
+    else if (e.kind === 'judge') { const okish = !e.criteria.some((c) => c.score === 0); cls = okish && e.score >= e.max - 2 ? 'ok' : 'bad'; txt = `Judge ${e.score}/${e.max}`; detail = (e.mustFix || [])[0] || ''; }
+    else if (e.kind === 'build') { cls = 'ok'; txt = 'fertig'; detail = e.summary; }
+    else if (e.kind === 'aborted') { cls = 'bad'; txt = 'abgebrochen'; }
+    return `<div class="ev"><span><span class="chip ${cls}">${esc(e.label)}</span></span><span><b>${esc(txt)}</b> <span class="detail">${esc(detail)}</span></span></div>`;
+  }).join('') : '<span class="muted">kein Workflow gefunden</span>';
+
+  // matrix: per feature ids from latest report; features not in scope shown dashed
+  const F = st.features || {};
+  $('matrix').innerHTML = Object.entries(F).map(([fid, f]) => {
+    const rf = r?.features?.[fid];
+    const head = rf ? `<span class="chip ${rf.status === 'passed' ? 'ok' : 'bad'}">${fid}</span>` : `<span class="chip none">${fid}</span>`;
+    const ids = f.ids.map((id) => {
+      const s = rf?.ids?.[id];
+      return `<span class="chip ${s === 'passed' ? 'ok' : s === 'failed' ? 'bad' : s === 'pending' ? 'pend' : 'none'}">${id}</span>`;
+    }).join('');
+    return `<tr><td class="feat">${head} ${esc(f.title)}${f.look ? ' <span class="muted">· Look</span>' : ''}</td><td>${ids}</td></tr>`;
+  }).join('');
+
+  // failures
+  const fails = r?.failures || [];
+  $('failPanel').style.display = fails.length ? '' : 'none';
+  $('fails').innerHTML = fails.slice(0, 8).map((f) => `<div><span class="chip bad">${esc(f.id)}</span> ${esc(f.test)}<pre>${esc(f.error)}</pre></div>`).join('') + (fails.length > 8 ? `<div class="muted">… und ${fails.length - 8} weitere (eval/report.md)</div>` : '');
+
+  // judge: latest judge event from workflow, else eval/judge.json
+  const lastJudge = evs.find((e) => e.kind === 'judge');
+  if (lastJudge) {
+    $('judge').innerHTML = `<div><b>${esc(lastJudge.label)}: ${lastJudge.score}/${lastJudge.max}</b></div>` +
+      lastJudge.criteria.map((c) => `<span class="chip ${c.score === 2 ? 'ok' : c.score === 1 ? 'pend' : 'bad'}" title="${esc(c.note)}">K${c.criterion}: ${c.score}</span>`).join('') +
+      (lastJudge.mustFix?.length ? `<ul>${lastJudge.mustFix.map((m) => `<li>${esc(m)}</li>`).join('')}</ul>` : '');
+  }
+
+  // screenshots
+  const order = ['current-device', 'current-device-nocase', 'current-pressed', 'current-display', 'current-mobile'];
+  const shots = order.map((n) => st.shots.find((s) => s.f === n + '.png')).filter(Boolean);
+  $('shots').innerHTML = shots.map((s) => `<figure><img src="/artifacts/${s.f}?m=${s.m}" alt="${s.f}"><figcaption>${s.f.replace('current-', '').replace('.png', '')} · ${ago(s.m)}</figcaption></figure>`).join('') +
+    [['m64-computersammler.jpg', 'Referenz mit Hülle'], ['m64-mit-schutzhuelle-seite.jpg', 'Referenz Hülle seitlich'], ['m64-ohne-schutzhuelle.jpg', 'Referenz ohne Hülle']]
+      .map(([f, c]) => `<figure><img src="/reference/${f}" alt="${c}"><figcaption>${c}</figcaption></figure>`).join('');
+
+  // refactor rounds: effect (gap closed), safety (reverts, green), drift since the previous round
+  const rf = st.refactors || [];
+  if (rf.length) {
+    $('refactors').innerHTML = '<table><tr><td><b>Runde</b></td><td><b>Modus</b></td><td><b>Schritte</b></td><td><b>Stopp</b></td><td><b>Abstand zum Ziel</b></td><td><b>Drift</b></td><td><b>Eval</b></td></tr>' +
+      rf.slice().reverse().map((r) => `<tr><td>${esc(r.label)}<br><span class="muted">${new Date(r.t).toLocaleString('de-DE')}</span></td><td>${esc(r.mode)}</td>` +
+        `<td>${r.steps}${r.reverts ? ` <span class="chip bad">${r.reverts} zurück</span>` : ''}</td><td>${esc(r.stopReason)}</td>` +
+        `<td>${r.kpis.gapBefore} → <b>${r.kpis.gapAfter}</b> <span class="chip ${r.kpis.gapClosed > 0 ? 'ok' : 'none'}">−${r.kpis.gapClosed}</span> <span class="muted">${r.kpis.improved} besser${r.kpis.worsened ? `, ${r.kpis.worsened} schlechter` : ''}</span></td>` +
+        `<td>${r.kpis.drift === null ? '–' : `<span class="chip ${r.kpis.drift > 0 ? 'bad' : 'ok'}">${r.kpis.drift > 0 ? '+' : ''}${r.kpis.drift}</span>`}</td>` +
+        `<td><span class="chip ${r.green ? 'ok' : 'bad'}">${r.green ? 'grün' : 'rot'}</span></td></tr>`).join('') + '</table>';
+  }
+
+  // history bars
+  const h = st.history.filter((x) => x.scope !== 'judge' && x.ids);
+  $('bars').innerHTML = h.map((x) => `<div title="${esc(x.t)} · ${esc(x.scope)} · ${x.passed}/${x.ids}" style="height:${Math.max(4, 46 * x.passed / x.ids)}px;background:var(${x.pass ? '--ok' : '--bad'})"></div>`).join('');
+  $('barsMeta').textContent = h.length ? `${h.length} Läufe · zuletzt ${h[h.length - 1].scope}: ${h[h.length - 1].passed}/${h[h.length - 1].ids} IDs` : '';
+}
+// scale the 760×900 app viewport (desktop layout) to fit the panel
+function fit() {
+  const vp = $('vp'), k = Math.min(vp.clientWidth / 760, vp.clientHeight / 900);
+  $('app').style.transform = `translateX(-50%) scale(${k})`;
+}
+new ResizeObserver(fit).observe($('vp'));
+fit();
+tick();
+setInterval(tick, 5000);
+</script>
+</body>
+</html>

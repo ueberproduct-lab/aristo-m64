@@ -1,0 +1,24 @@
+{
+  "name": "aristo-m64",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Aristo M 64 als WebApp – gebaut im Spec→Eval-Muster",
+  "type": "module",
+  "scripts": {
+    "start": "node server.mjs",
+    "eval": "node eval/run-eval.mjs",
+    "eval:unit": "playwright test --project=unit",
+    "eval:look": "node eval/run-eval.mjs --look",
+    "eval:capture": "playwright test --project=capture",
+    "eval:judge": "node eval/judge.mjs",
+    "eval:golden": "node eval/golden.mjs",
+    "eval:lock": "node eval/lock.mjs --write"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "eslint": "^10.12.0",
+    "eslint-plugin-sonarjs": "^4.2.2",
+    "jscpd": "^5.4.0",
+    "pngjs": "^7.0.0"
+  }
+}

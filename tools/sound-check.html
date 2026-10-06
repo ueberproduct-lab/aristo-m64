@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M 64 Hörprobe</title>
+<style>
+  :root { --bg: #f4f2ee; --panel: #fff; --ink: #1d1d1f; --muted: #6e6b66; --line: #e3dfd8; --accent: #c2412d; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #161616; --panel: #1f1f1f; --ink: #ecebe8; --muted: #9a968f; --line: #2e2e2e; --accent: #ef7a64; } }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif; }
+  main { max-width: 560px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { color: var(--muted); margin: 0 0 16px; }
+  .row { display: flex; align-items: center; gap: 12px; padding: 12px 14px; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 10px; }
+  button { font: inherit; font-weight: 600; padding: 8px 14px; border-radius: 8px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); cursor: pointer; min-width: 120px; }
+  button:active { transform: translateY(1px); }
+  .desc { flex: 1; }
+  .desc small { display: block; color: var(--muted); }
+  #status { font: 13px ui-monospace, Menlo, monospace; color: var(--muted); white-space: pre-wrap; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-top: 16px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Hörprobe Tastenklang</h1>
+  <p>Systemlautstärke auf mittlere Stellung, dann nacheinander klicken. Welche Variante hörst du, und welche passt?</p>
+  <div class="row"><button data-play="tone">Testton</button><div class="desc">Neutraler Piepton, 0,3 s<small>Hörst du den nicht, blockiert der Browser Audio.</small></div></div>
+  <div class="row"><button data-play="0.14">A · leise</button><div class="desc">Klick wie heute (Spitze ≈ 0,14)<small>aktueller Stand nach F11</small></div></div>
+  <div class="row"><button data-play="0.25">B · mittel</button><div class="desc">Klick, Spitze ≈ 0,25<small>Kandidat</small></div></div>
+  <div class="row"><button data-play="0.4">C · laut</button><div class="desc">Klick, Spitze ≈ 0,40<small>wie in F10 („zu laut“)</small></div></div>
+  <div id="status">Status: noch nichts abgespielt</div>
+</main>
+<script type="module">
+import { playKeyClick } from '/src/sound.js';
+let ctx = null;
+const status = document.getElementById('status');
+const log = (msg) => { status.textContent = `Status: ${msg}\nAudioContext: ${ctx ? ctx.state + ', ' + ctx.sampleRate + ' Hz' : '–'}\nBrowser: ${navigator.userAgent.replace(/^.*\) /, '')}`; };
+
+async function rendered(target) {
+  // render the real key click offline, then scale it to the requested peak
+  const sr = ctx.sampleRate, off = new OfflineAudioContext(1, Math.round(sr * 0.2), sr);
+  playKeyClick(off, 0);
+  const buf = await off.startRendering(), d = buf.getChannelData(0);
+  let peak = 0; for (const v of d) peak = Math.max(peak, Math.abs(v));
+  return { buf, gain: peak ? target / peak : 1 };
+}
+
+document.querySelectorAll('[data-play]').forEach((b) => b.addEventListener('click', async () => {
+  try {
+    if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+    if (ctx.state !== 'running') await ctx.resume();
+    const what = b.dataset.play, t = ctx.currentTime + 0.01, g = ctx.createGain();
+    g.connect(ctx.destination);
+    if (what === 'tone') {
+      const o = ctx.createOscillator(); o.frequency.value = 660; g.gain.setValueAtTime(0.2, t); g.gain.setValueAtTime(0, t + 0.3);
+      o.connect(g); o.start(t); o.stop(t + 0.31);
+    } else {
+      const { buf, gain } = await rendered(Number(what));
+      const s = ctx.createBufferSource(); s.buffer = buf; g.gain.value = gain; s.connect(g); s.start(ctx.currentTime + 0.01);
+    }
+    log(`${b.textContent} abgespielt`);
+  } catch (e) { log('Fehler: ' + e); }
+}));
+log('bereit');
+</script>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Aristo M 64</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="module" src="ui.js"></script>
+</head>
+<body>
+  <main class="stage">
+    <div class="shell" data-part="shell" data-case="on" data-sound="on">
+      <!-- removable cream case: a tray the black device lies in; toggled by the foot lettering -->
+      <div class="case" aria-hidden="true"></div>
+      <div class="faceplate" data-part="faceplate">
+
+        <header class="head" data-part="head">
+          <span class="logo" data-part="logo" data-config="sound">A<span class="logo-sc">risto</span> M 64</span>
+        </header>
+
+        <div class="switches" data-part="switches">
+          <button type="button" class="switch" data-switch="k" role="switch" aria-checked="false" aria-disabled="true" aria-label="Konstante (ohne Funktion)">
+            <span class="sw-label">0</span><span class="sw-track" data-part="switch-slot" aria-hidden="true"><span class="sw-knob" data-part="switch-knob"></span></span><span class="sw-label">K</span>
+          </button>
+          <button type="button" class="switch" data-switch="dec" role="switch" aria-checked="false" aria-disabled="true" aria-label="Feste Dezimalstellen (ohne Funktion)">
+            <span class="sw-label">F</span><span class="sw-track" data-part="switch-slot" aria-hidden="true"><span class="sw-knob" data-part="switch-knob"></span></span><span class="sw-label">2</span>
+          </button>
+          <button type="button" class="switch" data-switch="power" role="switch" aria-checked="true" aria-label="Ein/Aus">
+            <span class="sw-label">0</span><span class="sw-track" data-part="switch-slot" aria-hidden="true"><span class="sw-knob" data-part="switch-knob"></span></span><span class="sw-label">I</span>
+          </button>
+        </div>
+
+        <div class="display" data-part="display" data-value="0." aria-live="polite" role="status" aria-label="Anzeige">
+          <!-- sign cell + 8 digit cells are built by display.js -->
+        </div>
+
+        <div class="keypad" data-part="keypad">
+          <button type="button" data-key="C" data-color="red" aria-label="Löschen"><span class="legend">C</span></button>
+          <button type="button" data-key="%" data-color="yellow" aria-label="Prozent"><span class="legend">%</span></button>
+          <button type="button" data-key="sqrt" data-color="yellow" aria-label="Wurzel"><span class="legend legend-sqrt">√</span></button>
+          <button type="button" data-key="CE" data-color="red" aria-label="Eingabe löschen"><span class="legend legend-small">CE</span></button>
+
+          <button type="button" data-key="7" data-color="white" aria-label="7"><span class="legend">7</span></button>
+          <button type="button" data-key="8" data-color="white" aria-label="8"><span class="legend">8</span></button>
+          <button type="button" data-key="9" data-color="white" aria-label="9"><span class="legend">9</span></button>
+          <button type="button" data-key="/" data-color="yellow" aria-label="geteilt durch"><span class="legend legend-op">÷</span></button>
+
+          <button type="button" data-key="4" data-color="white" aria-label="4"><span class="legend">4</span></button>
+          <button type="button" data-key="5" data-color="white" aria-label="5"><span class="legend">5</span></button>
+          <button type="button" data-key="6" data-color="white" aria-label="6"><span class="legend">6</span></button>
+          <button type="button" data-key="*" data-color="yellow" aria-label="mal"><span class="legend legend-op">×</span></button>
+
+          <button type="button" data-key="1" data-color="white" aria-label="1"><span class="legend">1</span></button>
+          <button type="button" data-key="2" data-color="white" aria-label="2"><span class="legend">2</span></button>
+          <button type="button" data-key="3" data-color="white" aria-label="3"><span class="legend">3</span></button>
+          <button type="button" data-key="-" data-color="yellow" aria-label="minus"><span class="legend legend-op">−</span></button>
+
+          <button type="button" data-key="0" data-color="white" aria-label="0"><span class="legend">0</span></button>
+          <button type="button" data-key="." data-color="white" aria-label="Komma"><span class="legend legend-dot">·</span></button>
+          <button type="button" data-key="=" data-color="yellow" aria-label="ist gleich"><span class="legend legend-op">=</span></button>
+          <button type="button" data-key="+" data-color="yellow" aria-label="plus"><span class="legend legend-op">+</span></button>
+        </div>
+
+        <footer class="foot" data-part="foot">
+          <span class="foot-text" data-config="case">Made in Germany</span>
+        </footer>
+
+      </div>
+    </div>
+  </main>
+</body>
+</html>

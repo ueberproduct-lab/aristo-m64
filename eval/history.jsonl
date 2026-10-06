@@ -1,0 +1,130 @@
+{"t":"2026-10-03T08:15:17.979Z","scope":"all","pass":false,"ids":78,"passed":0,"failed":78,"pending":0,"tests":0,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:17:03.595Z","scope":"all","pass":false,"ids":78,"passed":1,"failed":76,"pending":1,"tests":205,"testsFailed":203,"lockOk":true}
+{"t":"2026-10-03T08:23:22.101Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:23:57.221Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:24:27.068Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:27:16.703Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:27:43.628Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:28:08.884Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:34:03.002Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:34:25.898Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:37:31.557Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:37:55.145Z","scope":"up to F3","pass":false,"ids":32,"passed":24,"failed":7,"pending":1,"tests":32,"testsFailed":7,"lockOk":true}
+{"t":"2026-10-03T08:38:20.843Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:39:44.984Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:40:21.608Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:40:44.546Z","scope":"up to F1","pass":true,"ids":15,"passed":15,"failed":0,"pending":0,"tests":15,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:44:48.566Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:45:38.703Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:47:03.342Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:47:26.652Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:49:15.391Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:49:37.757Z","scope":"up to F2","pass":true,"ids":24,"passed":24,"failed":0,"pending":0,"tests":24,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:50:21.593Z","scope":"up to F3","pass":false,"ids":32,"passed":30,"failed":1,"pending":1,"tests":32,"testsFailed":1,"lockOk":true}
+{"t":"2026-10-03T08:50:41.192Z","scope":"up to F3","pass":true,"ids":32,"passed":31,"failed":0,"pending":1,"tests":32,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:51:42.823Z","scope":"up to F3","pass":true,"ids":32,"passed":31,"failed":0,"pending":1,"tests":32,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:52:07.020Z","scope":"up to F3","pass":true,"ids":32,"passed":31,"failed":0,"pending":1,"tests":32,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:54:15.644Z","scope":"up to F3","pass":true,"ids":32,"passed":32,"failed":0,"pending":0,"tests":32,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:55:35.530Z","scope":"up to F4","pass":true,"ids":39,"passed":39,"failed":0,"pending":0,"tests":64,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:55:48.502Z","scope":"up to F4","pass":true,"ids":39,"passed":39,"failed":0,"pending":0,"tests":64,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:56:20.200Z","scope":"up to F4","pass":true,"ids":39,"passed":39,"failed":0,"pending":0,"tests":64,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:56:51.762Z","scope":"up to F5","pass":true,"ids":57,"passed":57,"failed":0,"pending":0,"tests":156,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:57:18.834Z","scope":"up to F5","pass":true,"ids":57,"passed":57,"failed":0,"pending":0,"tests":156,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:57:50.653Z","scope":"up to F6","pass":true,"ids":70,"passed":70,"failed":0,"pending":0,"tests":196,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:58:20.979Z","scope":"up to F6","pass":true,"ids":70,"passed":70,"failed":0,"pending":0,"tests":196,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T08:58:56.457Z","scope":"up to F7","pass":false,"ids":78,"passed":75,"failed":3,"pending":0,"tests":205,"testsFailed":3,"lockOk":true}
+{"t":"2026-10-03T08:59:35.155Z","scope":"up to F7","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:00:15.572Z","scope":"up to F7","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:00:51.358Z","scope":"up to F7","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:01:38.362Z","scope":"up to F7","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:02:09.035Z","scope":"up to F7","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:02:39.385Z","scope":"all","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:04:07.849Z","scope":"all","pass":true,"ids":78,"passed":78,"failed":0,"pending":0,"tests":205,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:20:18.842Z","scope":"all","pass":false,"ids":83,"passed":76,"failed":5,"pending":2,"tests":210,"testsFailed":5,"lockOk":true}
+{"t":"2026-10-03T09:23:53.352Z","scope":"up to F8","pass":true,"ids":83,"passed":81,"failed":0,"pending":2,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:24:59.082Z","scope":"up to F8","pass":true,"ids":83,"passed":81,"failed":0,"pending":2,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:25:56.368Z","scope":"all","pass":false,"ids":83,"passed":80,"failed":1,"pending":2,"tests":210,"testsFailed":1,"lockOk":true}
+{"t":"2026-10-03T09:27:14.932Z","scope":"all","pass":false,"ids":83,"passed":76,"failed":5,"pending":2,"tests":210,"testsFailed":5,"lockOk":true}
+{"t":"2026-10-03T09:28:45.195Z","scope":"all","pass":false,"ids":86,"passed":76,"failed":8,"pending":2,"tests":213,"testsFailed":8,"lockOk":true}
+{"t":"2026-10-03T09:30:20.681Z","scope":"up to F8","pass":true,"ids":83,"passed":81,"failed":0,"pending":2,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:30:56.358Z","scope":"up to F8","pass":true,"ids":83,"passed":81,"failed":0,"pending":2,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:31:33.256Z","scope":"up to F8","pass":true,"ids":83,"passed":81,"failed":0,"pending":2,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:32:59.925Z","scope":"up to F8","pass":true,"ids":83,"passed":83,"failed":0,"pending":0,"tests":210,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:34:04.776Z","scope":"up to F9","pass":true,"ids":86,"passed":86,"failed":0,"pending":0,"tests":213,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:34:28.998Z","scope":"up to F9","pass":true,"ids":86,"passed":86,"failed":0,"pending":0,"tests":213,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:35:03.373Z","scope":"up to F9","pass":true,"ids":86,"passed":86,"failed":0,"pending":0,"tests":213,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:35:48.672Z","scope":"all","pass":false,"ids":89,"passed":86,"failed":3,"pending":0,"tests":216,"testsFailed":3,"lockOk":true}
+{"t":"2026-10-03T09:40:08.659Z","scope":"up to F10","pass":true,"ids":89,"passed":89,"failed":0,"pending":0,"tests":216,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:40:55.478Z","scope":"up to F10","pass":true,"ids":89,"passed":89,"failed":0,"pending":0,"tests":216,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:41:27.753Z","scope":"all","pass":true,"ids":89,"passed":89,"failed":0,"pending":0,"tests":216,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:43:36.990Z","scope":"all","pass":true,"ids":89,"passed":89,"failed":0,"pending":0,"tests":216,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:45:17.671Z","scope":"all","pass":false,"ids":92,"passed":88,"failed":4,"pending":0,"tests":219,"testsFailed":4,"lockOk":true}
+{"t":"2026-10-03T09:49:45.664Z","scope":"up to F11","pass":true,"ids":92,"passed":92,"failed":0,"pending":0,"tests":219,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:50:13.268Z","scope":"up to F11","pass":true,"ids":92,"passed":92,"failed":0,"pending":0,"tests":219,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:50:39.418Z","scope":"up to F11","pass":true,"ids":92,"passed":92,"failed":0,"pending":0,"tests":219,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:51:19.330Z","scope":"up to F11","pass":true,"ids":92,"passed":92,"failed":0,"pending":0,"tests":219,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:51:51.951Z","scope":"all","pass":true,"ids":92,"passed":92,"failed":0,"pending":0,"tests":219,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:53:34.818Z","scope":"all","pass":false,"ids":95,"passed":90,"failed":3,"pending":2,"tests":222,"testsFailed":3,"lockOk":true}
+{"t":"2026-10-03T09:56:59.890Z","scope":"up to F12","pass":true,"ids":95,"passed":93,"failed":0,"pending":2,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:58:00.113Z","scope":"up to F12","pass":true,"ids":95,"passed":93,"failed":0,"pending":2,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T09:59:03.471Z","scope":"up to F12","pass":true,"ids":95,"passed":93,"failed":0,"pending":2,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:01:12.286Z","scope":"up to F12","pass":true,"ids":95,"passed":95,"failed":0,"pending":0,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:01:45.381Z","scope":"all","pass":true,"ids":95,"passed":95,"failed":0,"pending":0,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:04:05.789Z","scope":"all","pass":true,"ids":95,"passed":95,"failed":0,"pending":0,"tests":222,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:13:35.136Z","scope":"all","pass":false,"ids":100,"passed":89,"failed":9,"pending":2,"tests":227,"testsFailed":9,"lockOk":true}
+{"t":"2026-10-03T10:25:34.481Z","scope":"up to F13","pass":false,"ids":100,"passed":89,"failed":9,"pending":2,"tests":227,"testsFailed":9,"lockOk":true}
+{"t":"2026-10-03T10:27:04.979Z","scope":"up to F13","pass":false,"ids":100,"passed":89,"failed":9,"pending":2,"tests":227,"testsFailed":9,"lockOk":true}
+{"t":"2026-10-03T10:35:34.042Z","scope":"all","pass":false,"ids":101,"passed":88,"failed":11,"pending":2,"tests":228,"testsFailed":11,"lockOk":true}
+{"t":"2026-10-03T10:46:01.630Z","scope":"up to F13","pass":false,"ids":101,"passed":98,"failed":1,"pending":2,"tests":228,"testsFailed":1,"lockOk":true}
+{"t":"2026-10-03T10:47:24.987Z","scope":"all","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:48:47.437Z","scope":"up to F13","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:49:38.510Z","scope":"up to F13","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:52:04.430Z","scope":"up to F13","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:58:52.571Z","scope":"up to F13","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T10:59:55.531Z","scope":"up to F13","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:02:56.036Z","scope":"all","pass":true,"ids":101,"passed":99,"failed":0,"pending":2,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:03:46.853Z","scope":"up to F13","pass":true,"ids":101,"passed":101,"failed":0,"pending":0,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:04:22.385Z","scope":"all","pass":true,"ids":101,"passed":101,"failed":0,"pending":0,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:05:51.729Z","scope":"all","pass":true,"ids":101,"passed":101,"failed":0,"pending":0,"tests":228,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:35:09.522Z","scope":"all","pass":false,"ids":104,"passed":99,"failed":3,"pending":2,"tests":231,"testsFailed":3,"lockOk":true}
+{"t":"2026-10-03T11:37:23.813Z","scope":"up to F14","pass":true,"ids":104,"passed":102,"failed":0,"pending":2,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:38:38.924Z","scope":"up to F14","pass":true,"ids":104,"passed":102,"failed":0,"pending":2,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:42:26.364Z","scope":"up to F14","pass":true,"ids":104,"passed":102,"failed":0,"pending":2,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:43:17.713Z","scope":"up to F14","pass":true,"ids":104,"passed":102,"failed":0,"pending":2,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:44:41.315Z","scope":"up to F14","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:45:15.320Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T11:46:28.000Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:11:45.808Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:13:13.574Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:13:44.676Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:14:42.836Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:15:13.238Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:15:53.854Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:16:30.545Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:17:44.732Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:18:23.092Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:18:56.689Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:19:31.751Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:20:12.218Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:20:53.269Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:21:27.052Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:21:58.313Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:22:30.452Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:23:15.552Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:23:54.923Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:24:52.166Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:25:31.143Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T15:27:32.916Z","scope":"all","pass":true,"ids":104,"passed":104,"failed":0,"pending":0,"tests":231,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:34:35.433Z","scope":"all","pass":false,"ids":106,"passed":104,"failed":2,"pending":0,"tests":233,"testsFailed":2,"lockOk":true}
+{"t":"2026-10-03T16:38:51.735Z","scope":"up to F15","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:40:50.897Z","scope":"up to F15","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:41:44.315Z","scope":"up to F15","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:42:31.359Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:43:02.035Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:43:41.763Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:44:25.051Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:45:10.587Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:46:03.785Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T16:47:03.031Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-03T20:48:49.201Z","scope":"select F0,F4","pass":true,"ids":9,"passed":9,"failed":0,"pending":0,"tests":34,"testsFailed":0,"lockOk":true}
+{"t":"2026-10-06T04:51:30.754Z","scope":"all","pass":true,"ids":106,"passed":106,"failed":0,"pending":0,"tests":233,"testsFailed":0,"lockOk":true}

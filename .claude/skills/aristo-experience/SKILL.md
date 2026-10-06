@@ -52,8 +52,8 @@ Wer selbst bauen will, drückt in der Werkstatt den Knopf einer Bauweise und bea
 Lade das Monitor-Tool (ToolSearch `select:Monitor`) und warte, bis die Seite einen Bau anfordert. Das Lebenszeichen sagt der Seite,
 dass jemand zuhört (ohne es bleiben ihre Knöpfe gesperrt):
 `until grep -q '"phase": "start-requested"' W/experience/state.json; do touch W/experience/.listening; sleep 3; done`
-Dann `requested` aus `run.mjs status` lesen, beim ersten Bau dieser Session Modelle und Umfang abfragen (unten) und den Weg bauen
-(Abschnitt 4). Danach wieder hierher.
+Dann `requested` aus `run.mjs status` lesen, **vor jedem Bau** Modelle und Umfang abfragen (unten, auch wenn in dieser Session
+schon einmal gefragt wurde; die Wahl von eben steht dann als erste Option mit „wie eben“) und den Weg bauen (Abschnitt 4). Danach wieder hierher.
 
 **Modelle und Umfang abfragen** (AskUserQuestion, zwei Fragen in einem Aufruf). Frage 1 „Modelle“:
 | Option | builder | judge | refactor | tester | helper |

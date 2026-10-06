@@ -1,6 +1,6 @@
 ---
 name: aristo-experience
-description: Startet das Aristo-M-64-Tutorial von überproduct über vier Bauweisen (Vibe-Coding One Shot, Direktbau, Agentic Loop Engineering, Graph/parallel). Öffnet die Erlebnisseite, hört auf ihre Startknöpfe und lässt den gewählten Weg live in einem frischen Bau-Ordner bauen. Verwenden, wenn der Nutzer das Tutorial, die Demo oder einen Live-Bau des Aristo-Rechners starten will; „/aristo-experience nur-tour“ ohne Bauen, „/aristo-experience dokumentieren <oneshot|direct|loop|graph>“ baut einen Weg und dokumentiert ihn mit der gemeinsamen Bewertung.
+description: Startet das Aristo-M-64-Tutorial von überproduct über vier Bauweisen (Vibe-Coding One Shot, Direktbau, Agentic Loop Engineering, Graph/parallel). Öffnet die Erlebnisseite, hört auf ihre Startknöpfe und lässt den gewählten Weg live in einem frischen Bau-Ordner bauen. Verwenden, wenn der Nutzer das Tutorial, die Demo oder einen Live-Bau des Aristo-Rechners starten will; „/aristo-experience dokumentieren <oneshot|direct|loop|graph>“ baut einen Weg und dokumentiert ihn mit der gemeinsamen Bewertung.
 ---
 
 # Aristo M 64 — vier Bauweisen, live
@@ -13,12 +13,13 @@ Arbeitsverzeichnis wechseln). Der fertige Rechner in `src/` (Port 4173) wird
 parallele Spuren ab 4310. Es läuft immer nur ein Bau zur Zeit.
 
 Argumente:
-- keins: Werkstatt öffnen und auf die Seite hören (Abschnitte 0–4).
-- `nur-tour`: Abschnitte 1–2, ohne Zuhören, ohne Bauen. Darf in jeder Session laufen.
-- `dokumentieren <variante>`: diesen Weg einmal bauen **und** mit der gemeinsamen Bewertung dokumentieren (Abschnitte 0, 1, 5).
+- keins: einrichten, Seite öffnen, zuhören und auf Knopfdruck bauen (Abschnitte 0–4). Das ist der einzige Weg für Besucher:
+  Wer nur schauen will, schaut; wer bauen will, drückt einen Knopf. Fragen kommen erst, wenn gebaut wird.
+- `dokumentieren <variante>`: diesen Weg einmal bauen **und** mit der gemeinsamen Bewertung dokumentieren (Abschnitte 0, 1,
+  die Fragen aus Abschnitt 3, dann 5).
   Das ist für die vordokumentierten Ergebnisse gedacht, nicht für Besucher.
 
-## 0. Eigene Session, Modelle, Umfang
+## 0. Eigene Session
 **Warum eine eigene Session:** Die Workflow-Laufzeit reicht jedem Agenten die Nachricht weiter, die den Lauf ausgelöst hat, mit
 Vorrang vor dem Skript. Gab es in dieser Session vor dem Aufruf schon andere Themen, dann **nicht hier bauen**: Bitte den
 Nutzer, eine neue Session direkt im Hauptordner des Repos zu öffnen und dort diesen Aufruf zu starten,
@@ -30,18 +31,6 @@ der Hauptordner des Repos selbst ist, nicht eine Arbeitskopie (git worktree, z. 
 Session in einer Arbeitskopie darf nicht in `demo-runs/` schreiben und keine Workflows aus dem Hauptordner starten. Prüfe das
 zuerst (`pwd`); liegt die Session woanders, bitte um eine neue Session im Hauptordner und beende hier. `spawn_task` legt immer
 eine Arbeitskopie an und taugt deshalb nicht zum Bauen.
-
-**Modelle und Umfang abfragen** (AskUserQuestion, zwei Fragen in einem Aufruf). Frage 1 „Modelle“:
-| Option | builder | judge | refactor | tester | helper |
-|---|---|---|---|---|---|
-| Ausgewogen (empfohlen) | opus | opus | sonnet | haiku | haiku |
-| Maximale Qualität | opus | opus | opus | opus | opus |
-| Sparsam | sonnet | sonnet | sonnet | haiku | haiku |
-| Wie diese Session | – | – | – | – | – |
-Speichern: `node W/experience/run.mjs models '<json>'` (bei „Wie diese Session“: `'{}'`).
-
-Frage 2 „Umfang“: „Beide Stufen (empfohlen, F1–F15)“ → `run.mjs scope both`, „Nur Stufe 1 (F1–F7)“ → `run.mjs scope stage1`.
-Die Spec liegt immer vollständig im Bau-Ordner; geprüft und gebaut wird der gewählte Umfang.
 
 ## 1. Server bereitstellen
 **Einrichtung beim ersten Start:** Fehlt `W/node_modules`, dann sag in einem Satz, dass du einmalig einrichtest, und führe in W aus:
@@ -57,14 +46,28 @@ Prüfe mit `curl -s -o /dev/null -w "%{http_code}" http://localhost:<port>/` und
 `node W/experience/run.mjs ready`, dann
 öffne `http://localhost:4191/` (den Anfang der Seite, nicht die Werkstatt: erst die Geschichte, dann die Bauweisen) im Standardbrowser (macOS `open <url>`, Linux
 `xdg-open <url>`, Windows `start <url>`) und nenne die Adresse im Chat.
-Sag in zwei Sätzen: Die Seite zeigt vier Bauweisen mit dokumentierten Ergebnissen; in jedem Tab startet ein Knopf den Live-Bau
-dieses Wegs. Bei `nur-tour` hier aufhören.
+Sag in zwei Sätzen: Die Seite erzählt, wie der Rechner entstanden ist, und zeigt vier Bauweisen mit dokumentierten Ergebnissen.
+Wer selbst bauen will, drückt in der Werkstatt den Knopf einer Bauweise und beantwortet dann hier zwei kurze Fragen.
 
 ## 3. Zuhören
 Lade das Monitor-Tool (ToolSearch `select:Monitor`) und warte, bis die Seite einen Bau anfordert. Das Lebenszeichen sagt der Seite,
 dass jemand zuhört (ohne es bleiben ihre Knöpfe gesperrt):
 `until grep -q '"phase": "start-requested"' W/experience/state.json; do touch W/experience/.listening; sleep 3; done`
-Dann `requested` aus `run.mjs status` lesen und den Weg bauen (Abschnitt 4). Danach wieder hierher.
+Dann `requested` aus `run.mjs status` lesen, beim ersten Bau dieser Session Modelle und Umfang abfragen (unten) und den Weg bauen
+(Abschnitt 4). Danach wieder hierher.
+
+**Modelle und Umfang abfragen** (AskUserQuestion, zwei Fragen in einem Aufruf). Frage 1 „Modelle“:
+| Option | builder | judge | refactor | tester | helper |
+|---|---|---|---|---|---|
+| Ausgewogen (empfohlen) | opus | opus | sonnet | haiku | haiku |
+| Maximale Qualität | opus | opus | opus | opus | opus |
+| Sparsam | sonnet | sonnet | sonnet | haiku | haiku |
+| Wie diese Session | – | – | – | – | – |
+Speichern: `node W/experience/run.mjs models '<json>'` (bei „Wie diese Session“: `'{}'`).
+
+Frage 2 „Umfang“: „Beide Stufen (empfohlen, F1–F15)“ → `run.mjs scope both`, „Nur Stufe 1 (F1–F7)“ → `run.mjs scope stage1`.
+Die Spec liegt immer vollständig im Bau-Ordner; geprüft und gebaut wird der gewählte Umfang.
+
 Sagt der Nutzer im Chat einen Weg an, gilt das wie ein Knopfdruck.
 
 ## 4. Einen Weg bauen

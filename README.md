@@ -36,25 +36,21 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
    ```bash
    git clone https://github.com/ueberproduct-lab/aristo-m64.git
    ```
-3. **Claude Code in diesem Ordner öffnen** und eine frische Session starten.
-4. **Erst den Überblick holen, ohne zu bauen:**
-   ```
-   /aristo-experience nur-tour
-   ```
-   Beim ersten Start richtet Claude das Repo selbst ein: `npm install`, `npx playwright install chromium` und einmal
-   `npm run eval` als Kurzcheck (ca. 30 Sekunden, keine Tokens, am Ende „106/106 grün“). Wer das lieber selbst macht, führt
-   diese drei Befehle vorher im Ordner aus.
-
-   Danach öffnet sich die Tutorial-Seite unter http://localhost:4191 und zeigt die vier Bauweisen mit ihren Ergebnissen.
-5. **Bei Bedarf selbst bauen:**
+   Oder auf GitHub über den grünen Knopf „Code“ → „Download ZIP“ und entpacken.
+3. **Claude Code in diesem Ordner öffnen, eine frische Session starten und eingeben:**
    ```
    /aristo-experience
    ```
-   Claude fragt nach Modellen und Umfang. Danach startet auf der Seite in jedem Tab ein Knopf den Live-Bau dieses Wegs. Gebaut wird
-   in einem frischen Ordner unter `demo-runs/`, der fertige Rechner in `src/` bleibt unberührt.
+   Beim ersten Start richtet Claude das Repo selbst ein: `npm install`, `npx playwright install chromium` und einmal
+   `npm run eval` als Kurzcheck (ca. 30 Sekunden, keine Tokens, am Ende „106/106 grün“). Danach öffnet sich die
+   Tutorial-Seite unter http://localhost:4191.
+4. **Lesen, schauen, und wer will: selbst bauen lassen.** In der Werkstatt hat jede Bauweise einen Knopf „Diese Bauweise selbst
+   bauen lassen“. Nach dem Drücken fragt Claude im Chat nach Modellen und Umfang, dann baut es live in einem frischen Ordner
+   unter `demo-runs/`. Der fertige Rechner in `src/` bleibt unberührt.
 
-**Wichtig beim Bauen:** Jeder Bau braucht eine eigene, frische Session im Hauptordner des Repos, keine Arbeitskopie (git
-worktree). In der Bau-Session nur Steuerbefehle geben, Fragen in einer anderen Session stellen.
+**Wichtig:** `/aristo-experience` braucht eine frische Session im Hauptordner des Repos, keine Arbeitskopie (git worktree).
+In dieser Session nur noch auf die Fragen antworten; eigene Fragen zum Projekt bitte in einer anderen Session stellen. Grund:
+Die Bau-Agenten bekommen die letzte Nachricht aus dem Chat mit und würden sie als Auftrag verstehen.
 
 ## Für eigene Projekte
 

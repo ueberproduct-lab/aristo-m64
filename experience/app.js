@@ -166,7 +166,7 @@ function render(st) {
   // the live workshop sits in the tab of the build that runs (or ran last)
   const hint = $('#startHint');
   hint.textContent = {
-    'start-requested': `Startsignal für ${VARIANTS[s.requested] || 'den Bau'} gesendet. Die Werkstatt legt los …`,
+    'start-requested': `Startsignal für ${VARIANTS[s.requested] || 'den Bau'} gesendet. Beantworte in Claude Code die zwei kurzen Fragen, dann geht es los.`,
     building: `${name} baut …`,
     stage1: 'Stufe 1 läuft: Der grobe Rechner entsteht.',
     'stage2-spec': 'Stufe 1 ist abgenommen. Die Spec wird verfeinert …',
@@ -370,8 +370,8 @@ function renderTriggers(st, phase, building) {
     const v = t.dataset.trigger;
     t.querySelector('button').disabled = !open;
     t.querySelector('.hint').textContent = !st.listening && !building && phase !== 'start-requested'
-      ? 'Die Werkstatt hört gerade nicht zu. In Claude Code „/aristo-experience“ starten, dann lässt sich hier jeder Weg live bauen.'
-      : phase === 'start-requested' ? `Angefragt: ${VARIANTS[s.requested] || ''}. Die Werkstatt legt gleich los.`
+      ? 'Die Werkstatt hört gerade nicht zu. In Claude Code in einer frischen Session „/aristo-experience“ starten, dann lässt sich hier jeder Weg live bauen.'
+      : phase === 'start-requested' ? `Angefragt: ${VARIANTS[s.requested] || ''}. Beantworte in Claude Code die zwei kurzen Fragen, dann geht es los.`
       : building ? `Gerade läuft: ${VARIANTS[s.variant] || 'ein Bau'}. Danach ist der nächste Lauf möglich.`
       : 'Die Werkstatt ist bereit.';
   });
@@ -381,7 +381,8 @@ function renderTriggers(st, phase, building) {
   document.querySelectorAll('[data-build-cta], [data-build-bar]').forEach((b) => b.classList.toggle('ready', ready && !busy));
   const state = $('[data-build-state]');
   if (state) {
-    state.innerHTML = busy ? `Gerade läuft: <b>${VARIANTS[s.variant || s.requested] || 'ein Bau'}</b>. Live zu sehen im Tab dieser Bauweise. Danach ist der nächste Lauf möglich.`
+    state.innerHTML = phase === 'start-requested' ? `<b>Startsignal für ${VARIANTS[s.requested] || 'den Bau'} gesendet.</b> Beantworte jetzt in Claude Code die zwei kurzen Fragen (Modelle und Umfang), dann geht es los.`
+      : busy ? `Gerade läuft: <b>${VARIANTS[s.variant || s.requested] || 'ein Bau'}</b>. Live zu sehen im Tab dieser Bauweise. Danach ist der nächste Lauf möglich.`
       : ready ? '<b>Die Werkstatt ist bereit.</b> Wähl unten eine Bauweise und drück „Diese Bauweise selbst bauen lassen“.'
       : BUILD_IDLE;
   }

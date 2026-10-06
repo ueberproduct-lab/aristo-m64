@@ -70,8 +70,9 @@ Die Spec liegt immer vollständig im Bau-Ordner; geprüft und gebaut wird der ge
 Sagt der Nutzer im Chat einen Weg an, gilt das wie ein Knopfdruck.
 
 ## 4. Einen Weg bauen
-1. `node …/experience/run.mjs init <variante>`. Das legt den Bau-Ordner an und setzt die Phase `building`.
-2. App-Server des Bau-Ordners: `lsof -ti tcp:4273 -sTCP:LISTEN | xargs -r kill`, dann im Hintergrund `node ./server.mjs` mit `cwd` = runDir.
+1. Zuerst einen alten App-Server beenden: `lsof -ti tcp:4273 -sTCP:LISTEN | xargs -r kill` (sonst zeigt die Seite kurz einen fremden Rechner).
+   Dann `node …/experience/run.mjs init <variante>`. Das legt den Bau-Ordner an und setzt die Phase `building`.
+2. App-Server des Bau-Ordners im Hintergrund starten: `node ./server.mjs` mit `cwd` = runDir.
 3. `config` = Inhalt von `<runDir>/loop.config.json`, `models` aus `run.mjs status`. Alle Workflows laufen im Hintergrund, nicht pollen.
    **Workflow-Skripte immer aus dem eigenen Arbeitsordner dieser Session** nehmen: `<cwd>/.claude/workflows/<name>.js`
    (in einer Arbeitskopie also deren Kopie, nicht die des Hauptordners). Workflows dürfen nur

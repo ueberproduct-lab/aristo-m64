@@ -179,6 +179,9 @@ function render(st) {
   $('#liveLed').className = `led ${building ? 'on' : phase === 'done' ? 'ok' : 'off'}`;
   const liveTab = variant && document.querySelector(`[data-live="${variant}"]`);
   if (liveTab && $('#liveArea').parentElement !== liveTab) liveTab.appendChild($('#liveArea'));
+  // the live build comes first in its tab, right under the start button; the documented run follows for comparison
+  const trig = liveTab && liveTab.parentElement.querySelector('.trigger');
+  if (trig && trig.nextElementSibling !== liveTab) trig.after(liveTab);
   $('#liveArea').querySelector('.stages').hidden = !STAGED.includes(variant);
   $('#navLive').className = `led ${building ? 'on' : phase === 'done' ? 'ok' : 'off'}`;
   renderTriggers(st, phase, building);
@@ -276,7 +279,7 @@ function render(st) {
 
   renderPlan($('#liveArea'), st.plan, runningFeatures, committed);
   renderTidy($('#liveArea'), st);
-  renderResults(st.results || {});
+  renderResults(st.results || {}, s);
   renderCourses(st.results || {});
   renderCompare(st.results || {}, building ? name : null);
 
@@ -286,11 +289,13 @@ function render(st) {
     buildingNow = building;
     placeCorner();
     const app = $('#cornerApp');
-    if (!app.src || (st.srcMtime && st.srcMtime !== lastSrc)) {
+    // reload on new code, on a new run, and whenever the app server comes (back) up: an old server may have answered first
+    const srcKey = `${s.run || ''}|${st.srcMtime || 0}|${st.appUp ? 1 : 0}`;
+    if (!app.src || srcKey !== lastSrc) {
       app.src = `http://localhost:${s.appPort}/?t=${st.srcMtime || 0}`;
       $('#cornerOpen').href = $('#footRun').href = `http://localhost:${s.appPort}/`;
       $('#footRun').textContent = `localhost:${s.appPort} ↗`;
-      lastSrc = st.srcMtime;
+      lastSrc = srcKey;
       fitCorner();
     }
     $('#cornerLed').className = `led ${building ? 'on' : st.appUp ? 'ok' : 'off'}`;
@@ -378,7 +383,7 @@ function renderTriggers(st, phase, building) {
   // the build call to action: hero and workshop banner show whether the workshop is listening
   const ready = open, busy = building || phase === 'start-requested';
   document.querySelectorAll('[data-build-led]').forEach((l) => { l.className = `led ${busy ? 'on' : ready ? 'ok' : 'off'}`; });
-  document.querySelectorAll('[data-build-cta], [data-build-bar]').forEach((b) => b.classList.toggle('ready', ready && !busy));
+  document.querySelectorAll('[data-build-cta], [data-build-bar]').forEach((b) => { b.classList.toggle('ready', ready && !busy); b.classList.toggle('busy', busy); });
   const state = $('[data-build-state]');
   if (state) {
     state.innerHTML = phase === 'start-requested' ? `<b>Startsignal für ${VARIANTS[s.requested] || 'den Bau'} gesendet.</b> Beantworte jetzt in Claude Code die zwei kurzen Fragen (Modelle und Umfang), dann geht es los.`
@@ -394,7 +399,7 @@ function renderTriggers(st, phase, building) {
   });
 }
 
-function renderResults(results) {
+function renderResults(results, s = {}) {
   document.querySelectorAll('[data-result]').forEach((el) => {
     const v = el.dataset.result, r = results[v];
     if (!done(r)) {
@@ -411,7 +416,7 @@ function renderResults(results) {
       ['Prüfung grün', r.evalApplies === false ? 'nicht anwendbar' : ratio(r.ids)],
     ];
     const img = r.shots && (r.shots.device || r.shots.desktop);
-    el.innerHTML = `<div class="result-card">
+    el.innerHTML = `<p class="result-label">Dokumentierter Lauf vom ${esc(r.date || '')}${s.variant === v ? ', zum Vergleich mit dem Neubau oben' : ''}</p><div class="result-card">
       <div class="result-tiles">${tiles.map(([k, x]) => `<div><span>${esc(x)}</span><small>${k}</small></div>`).join('')}</div>
       ${img ? `<figure><img src="${esc(img)}" alt="${VARIANTS[v]}"><figcaption>${VARIANTS[v]} · ${esc(r.date || '')}</figcaption></figure>` : ''}
       <div class="result-text">

@@ -362,6 +362,7 @@ const mio = (t) => (t ? (t >= 1e6 ? `${fmt(t / 1e6)} Mio.` : `${Math.round(t / 1
 const ratio = (x) => (x ? `${x.passed}/${x.total}` : '–');
 const done = (r) => r && r.status === 'done';
 
+const BUILD_IDLE = ($('[data-build-state]') || {}).innerHTML || '';
 function renderTriggers(st, phase, building) {
   const open = st.listening && ['ready', 'done', 'failed'].includes(phase);
   const s = st.state || {};
@@ -374,6 +375,16 @@ function renderTriggers(st, phase, building) {
       : building ? `Gerade läuft: ${VARIANTS[s.variant] || 'ein Bau'}. Danach ist der nächste Lauf möglich.`
       : 'Die Werkstatt ist bereit.';
   });
+  // the build call to action: hero and workshop banner show whether the workshop is listening
+  const ready = open, busy = building || phase === 'start-requested';
+  document.querySelectorAll('[data-build-led]').forEach((l) => { l.className = `led ${busy ? 'on' : ready ? 'ok' : 'off'}`; });
+  document.querySelectorAll('[data-build-cta], [data-build-bar]').forEach((b) => b.classList.toggle('ready', ready && !busy));
+  const state = $('[data-build-state]');
+  if (state) {
+    state.innerHTML = busy ? `Gerade läuft: <b>${VARIANTS[s.variant || s.requested] || 'ein Bau'}</b>. Live zu sehen im Tab dieser Bauweise. Danach ist der nächste Lauf möglich.`
+      : ready ? '<b>Die Werkstatt ist bereit.</b> Wähl unten eine Bauweise und drück „Diese Bauweise selbst bauen lassen“.'
+      : BUILD_IDLE;
+  }
   document.querySelectorAll('[data-chip]').forEach((c) => {
     const v = c.dataset.chip, r = (st.results || {})[v];
     const live = s.variant === v && building;

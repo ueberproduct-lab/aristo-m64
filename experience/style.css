@@ -634,3 +634,29 @@ dialog pre { margin: 0; padding: 20px; overflow: auto; max-height: calc(86vh - 5
 }
 @media (prefers-reduced-motion: reduce) { * { animation: none !important; scroll-behavior: auto !important; } }
 @media (max-width: 600px) { .examples { grid-template-columns: 1fr; } }
+
+/* ── build call to action: hero card and workshop banner ── */
+.build-cta { display: grid; gap: 8px; padding: 20px 24px; background: var(--color-blue); color: var(--color-chalk); box-shadow: 6px 6px 0 var(--color-ink); max-width: 56ch; transition: transform .15s; }
+.build-cta:hover { color: var(--color-chalk); transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--color-ink); }
+.build-cta code { background: rgba(250,250,248,.18); color: var(--color-chalk); }
+.bc-kicker { display: flex; align-items: center; gap: 10px; font: 900 24px/1 var(--font-display); letter-spacing: .04em; text-transform: uppercase; }
+.bc-text { font: 400 16px/1.5 var(--font-sans); }
+.bc-go { font: 700 13px var(--font-mono); letter-spacing: .12em; text-transform: uppercase; }
+.build-cta .led.off, .build-bar .led.off { background: rgba(250,250,248,.45); }
+.build-cta .led.ok, .build-bar .led.ok { background: #3BE07A; box-shadow: 0 0 8px #3BE07A; }
+
+.build-bar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr); gap: 12px 40px; align-items: start; margin: 0 0 56px; padding: 28px 32px; background: var(--color-blue); color: var(--color-chalk); box-shadow: 6px 6px 0 var(--color-chalk); }
+.bb-head { display: flex; align-items: center; gap: 12px; font: 900 34px/1 var(--font-display); letter-spacing: .03em; text-transform: uppercase; grid-row: span 2; }
+.bb-head .led { width: 12px; height: 12px; }
+.bb-state { margin: 0; font: 400 17px/1.5 var(--font-sans); }
+.build-bar code { background: rgba(250,250,248,.18); color: var(--color-chalk); }
+.bb-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 24px; font: 400 14px/1.4 var(--font-sans); }
+.bb-steps b { display: inline-grid; place-items: center; width: 22px; height: 22px; margin-right: 8px; background: var(--color-chalk); color: var(--color-blue); font: 900 14px var(--font-display); }
+.build-bar.ready .bb-steps { display: none; }
+@media (max-width: 860px) { .build-bar { grid-template-columns: 1fr; } .bb-head { grid-row: auto; } }
+
+/* the per-tab start button: visible even while the workshop is not listening */
+.trigger { padding: 20px 24px; border: 2px solid var(--color-blue); margin-bottom: 40px; }
+.trigger .hint { font: 400 15px/1.5 var(--font-sans); letter-spacing: 0; text-transform: none; color: var(--color-chalk); }
+.trigger .btn-primary:disabled { background: transparent; color: var(--color-chalk); box-shadow: inset 0 0 0 2px var(--color-blue); opacity: .75; }
+.hero-device .build-cta { margin-top: 28px; max-width: none; }

@@ -59,8 +59,14 @@
     <figure class="hero-device">
       <div class="photo-pair">
         <div class="ph"><img src="/img/reference/m64-front-detail.jpg" alt="Das Original: Aristo M 64"><span class="cap">Original · 1974</span></div>
-        <div class="ph clone"><img src="/img/finished/current-device.png" alt="Der Nachbau im Browser"><span class="cap">Fertiger Nachbau · <a href="http://localhost:4173" target="_blank">localhost:4173 ↗</a></span></div>
+        <div class="ph clone"><img src="/finished-device.png" alt="Der Nachbau im Browser"><span class="cap">Fertiger Nachbau · <a href="http://localhost:4173" target="_blank">localhost:4173 ↗</a></span></div>
       </div>
+      <a class="build-cta" href="#bauweisen" data-build-cta>
+        <span class="bc-kicker"><span class="led off" data-build-led></span>Selbst bauen lassen</span>
+        <span class="bc-text">Jede der vier Bauweisen lässt sich hier auf deinem Rechner noch einmal live bauen. In Claude Code
+          <code>/aristo-experience</code> starten, Bauweise wählen, Knopf drücken.</span>
+        <span class="bc-go">Zur Werkstatt →</span>
+      </a>
     </figure>
   </div>
 </header>
@@ -165,6 +171,12 @@
       unterwegs geprüft wird. Am Ende muss jeder Rechner durch dieselbe versiegelte Prüfung, und derselbe Gutachter und derselbe Aufräumer
       bewerten Aussehen und Code, ohne zu wissen, wie er entstanden ist.</p>
   </div>
+  <div class="build-bar" data-build-bar>
+    <div class="bb-head"><span class="led off" data-build-led></span><b>Selbst bauen lassen</b></div>
+    <p class="bb-state" data-build-state>In Claude Code in diesem Ordner <code>/aristo-experience</code> starten (eine frische Session, nicht
+      <code>nur-tour</code>). Dann schalten sich unten in jedem Tab die Knöpfe frei und du kannst jede Bauweise live nachbauen lassen.</p>
+    <ol class="bb-steps"><li><b>1</b>In Claude Code <code>/aristo-experience</code> starten</li><li><b>2</b>Modelle und Umfang wählen</li><li><b>3</b>Hier einen Tab wählen und „Diese Bauweise selbst bauen lassen“ drücken</li></ol>
+  </div>
   <div class="table-wrap matrix-wrap">
     <table class="matrix">
       <thead><tr><th></th><th>One Shot</th><th>Direktbau</th><th>Agentic Loop</th><th>Graph</th></tr></thead>
@@ -191,12 +203,12 @@
       <div class="tab-how"><b>So arbeitet sie</b><ol><li>liest den Auftrag und die Fotos</li><li>baut alles in einem Durchgang</li><li>meldet, wo er unsicher war</li></ol></div>
       <div class="tab-gets"><b>Was sie bekommt</b><ul><li>das Briefing wörtlich und die zwei Klarstellungen</li><li>die Referenzfotos</li><li>sonst nichts: keine Spec, keine Maße, keine Rechenregeln, keine Prüf-Schnittstelle</li><li><a class="file" data-file="briefing/ONESHOT-PROMPT.md">Den Prompt ansehen</a></li></ul></div>
     </div>
+    <div class="trigger" data-trigger="oneshot"><button class="btn-primary">Diese Bauweise selbst bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 10–20 Minuten. Bewertet wird von Gutachtern: Treue zu den Fotos, Funktion von Hand, Code. Die versiegelte Prüfung passt nicht, er kennt ihre Schnittstelle nicht.</p></div>
     <div class="result" data-result="oneshot"></div>
     <details class="course" data-course="oneshot" open>
       <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
       <div class="course-body"></div>
     </details>
-    <div class="trigger" data-trigger="oneshot"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 10–20 Minuten. Bewertet wird von Gutachtern: Treue zu den Fotos, Funktion von Hand, Code. Die versiegelte Prüfung passt nicht, er kennt ihre Schnittstelle nicht.</p></div>
     <div class="tab-live" data-live="oneshot"></div>
   </section>
   <section class="tab-panel" id="tab-direct" data-variant="direct" role="tabpanel" hidden>
@@ -205,12 +217,12 @@
       <div class="tab-how"><b>So arbeitet sie</b><ol><li>liest Spec, Maße und Fotos</li><li>baut alles in einem Durchgang</li><li>liest den eigenen Code einmal kritisch durch</li></ol></div>
       <div class="tab-gets"><b>Was sie bekommt</b><ul><li>Briefing und Fotos</li><li>die komplette Spec mit Anforderungen, Maßen und Feature-Liste</li><li>keine Prüfungen beim Bauen, kein Gutachter, kein Aufräumer</li></ul></div>
     </div>
+    <div class="trigger" data-trigger="direct"><button class="btn-primary">Diese Bauweise selbst bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 20–30 Minuten.</p></div>
     <div class="result" data-result="direct"></div>
     <details class="course" data-course="direct" open>
       <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
       <div class="course-body"></div>
     </details>
-    <div class="trigger" data-trigger="direct"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Etwa 20–30 Minuten.</p></div>
     <div class="tab-live" data-live="direct"></div>
   </section>
   <section class="tab-panel" id="tab-loop" data-variant="loop" role="tabpanel" hidden>
@@ -219,12 +231,12 @@
       <div class="tab-how"><b>So arbeitet sie</b><ol><li>baut ein Feature</li><li>Prüfer und Gutachter kontrollieren</li><li>rot heißt nachbessern, grün heißt festhalten</li><li>alle drei Features wird aufgeräumt</li><li>in zwei Stufen: erst der grobe Rechner, dann die verfeinerte Spec</li></ol></div>
       <div class="tab-gets"><b>Was sie bekommt</b><ul><li>Briefing, Fotos und die komplette Spec</li><li>die versiegelte Prüfung nach jedem Schritt</li><li>Gutachter, Nachbessern mit Fehlerbericht, Aufräumer</li></ul></div>
     </div>
+    <div class="trigger" data-trigger="loop"><button class="btn-primary">Diese Bauweise selbst bauen lassen →</button><p class="hint"></p><p class="cost">Beide Stufen etwa 2–3 Stunden und einige Millionen Tokens, nur Stufe 1 etwa eine Stunde.</p></div>
     <div class="result" data-result="loop"></div>
     <details class="course" data-course="loop" open>
       <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
       <div class="course-body"></div>
     </details>
-    <div class="trigger" data-trigger="loop"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Beide Stufen etwa 2–3 Stunden und einige Millionen Tokens, nur Stufe 1 etwa eine Stunde.</p></div>
     <div class="tab-live" data-live="loop"></div>
   </section>
   <section class="tab-panel" id="tab-graph" data-variant="graph" role="tabpanel" hidden>
@@ -233,12 +245,12 @@
       <div class="tab-how"><b>So arbeitet sie</b><ol><li>der Architekt schneidet Einheiten und plant die Abhängigkeiten</li><li>der Takt prüft den Plan und bildet Wellen</li><li>in jeder Welle bauen bis zu drei Spuren gleichzeitig, geprüft wird nur, was betroffen ist</li><li>zusammenführen, dann alles prüfen</li></ol></div>
       <div class="tab-gets"><b>Was sie bekommt</b><ul><li>alles, was die Schleife bekommt</li><li>dazu einen Architekten, der den Rechner selbst in Einheiten schneidet</li><li>parallele Spuren mit eigener Arbeitskopie</li></ul></div>
     </div>
+    <div class="trigger" data-trigger="graph"><button class="btn-primary">Diese Bauweise selbst bauen lassen →</button><p class="hint"></p><p class="cost">Beide Stufen etwa 2–2½ Stunden und gut 4 Millionen Tokens, kaum schneller als die Schleife.</p></div>
     <div class="result" data-result="graph"></div>
     <details class="course" data-course="graph" open>
       <summary><span class="tech">Protokoll</span> So lief der dokumentierte Lauf</summary>
       <div class="course-body"></div>
     </details>
-    <div class="trigger" data-trigger="graph"><button class="btn-primary">Diese Bauweise live bauen lassen →</button><p class="hint"></p><p class="cost">Noch nicht gemessen. Erwartet: deutlich kürzer als die Schleife, bei gleicher Prüfung.</p></div>
     <div class="tab-live" data-live="graph"></div>
   </section>
   <div id="liveHolder" hidden>

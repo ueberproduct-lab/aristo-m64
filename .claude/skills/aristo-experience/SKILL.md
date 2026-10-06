@@ -55,7 +55,7 @@ Prüfe mit `curl -s -o /dev/null -w "%{http_code}" http://localhost:<port>/` und
 
 ## 2. Seite öffnen
 `node W/experience/run.mjs ready`, dann
-öffne `http://localhost:4191/#bauweisen` im Standardbrowser (macOS `open <url>`, Linux
+öffne `http://localhost:4191/` (den Anfang der Seite, nicht die Werkstatt: erst die Geschichte, dann die Bauweisen) im Standardbrowser (macOS `open <url>`, Linux
 `xdg-open <url>`, Windows `start <url>`) und nenne die Adresse im Chat.
 Sag in zwei Sätzen: Die Seite zeigt vier Bauweisen mit dokumentierten Ergebnissen; in jedem Tab startet ein Knopf den Live-Bau
 dieses Wegs. Bei `nur-tour` hier aufhören.
@@ -101,7 +101,7 @@ Sagt der Nutzer im Chat einen Weg an, gilt das wie ein Knopfdruck.
 
 ## 5. Dokumentieren (`dokumentieren <variante>`)
 Wie Abschnitt 4, ohne auf die Seite zu warten. Ohne Server gibt es keine Live-Ansicht: Abschnitt 1 (Server) gilt auch hier.
-Gleich nach `run.mjs init`: die Seite wie in Abschnitt 2 öffnen und im Chat in einem Satz sagen, wo der Lauf live
+Gleich nach `run.mjs init`: `http://localhost:4191/#bauweisen` wie in Abschnitt 2 öffnen und im Chat in einem Satz sagen, wo der Lauf live
 zu verfolgen ist: http://localhost:4191/#bauweisen, Tab der Bauweise. Danach die **gemeinsame Bewertung**, gleich für alle vier Wege:
 1. `run.mjs phase assessing`, dann Workflow `assess` (`…/.claude/workflows/assess.js`) mit
    `args: { root, config, judgePort: 4274, models, tests: <false bei oneshot, sonst true> }`. Gutachter und Aufräumer bewerten blind:

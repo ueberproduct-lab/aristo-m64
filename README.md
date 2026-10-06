@@ -52,10 +52,10 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
 bitte in einer anderen Session stellen. Grund: Die Bau-Agenten bekommen die letzte Nachricht aus dem Chat mit und würden sie
 als Auftrag verstehen. Die Session muss im Ordner des Repos selbst laufen, nicht in einer Arbeitskopie (git worktree).
 
-## Für eigene Projekte
+## Der Kern in `kit/`
 
-Der Kern in `kit/` ist nicht an den Taschenrechner gebunden. `/agentic-loop neu <Ordner>` setzt aus einem Briefing ein
-eigenes Spec-Eval-Projekt auf, `/agentic-loop bauen <Ordner>` baut es. Details in [`kit/README.md`](kit/README.md).
+Der Kern in `kit/` ist allgemein gebaut und zeigt, wie man das Muster auf andere Projekte überträgt. Er ist Anschauungsmaterial
+für dieses Experiment, kein gepflegtes Werkzeug. Details in [`kit/README.md`](kit/README.md).
 
 ## Referenzfotos
 

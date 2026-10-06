@@ -31,12 +31,21 @@ const SHOWABLE = [
   'briefing/ONESHOT-PROMPT.md', '.claude/workflows/one-pass.js', '.claude/workflows/assess.js',
 ];
 
+// "up" means: the server on the port answers with THIS run's index.html. After a new run starts, the old run's
+// server may still answer for a moment; it must not count, or the live preview keeps showing the old calculator.
 const appUp = {};
-function checkApp(port) {
+function checkApp(port, run) {
   const a = (appUp[port] ||= { at: 0, up: false });
   if (Date.now() - a.at < 3000) return a.up;
   a.at = Date.now();
-  const req = get({ host: '127.0.0.1', port, path: '/', timeout: 800 }, (r) => { a.up = r.statusCode === 200; r.resume(); });
+  let want = null;
+  try { want = readFileSync(join(run, 'src/index.html'), 'utf8'); } catch { /* no index yet */ }
+  const req = get({ host: '127.0.0.1', port, path: '/', timeout: 800 }, (r) => {
+    let body = '';
+    r.setEncoding('utf8');
+    r.on('data', (c) => { body += c; });
+    r.on('end', () => { a.up = r.statusCode === 200 && (want === null || body === want); });
+  });
   req.on('error', () => { a.up = false; });
   req.on('timeout', () => { req.destroy(); a.up = false; });
   return a.up;
@@ -81,7 +90,7 @@ function state() {
     commits: run ? sh('git log --format=%h%x09%s%x09%cI -n 30', run).trim().split('\n').filter(Boolean).map((l) => { const [h, s, t] = l.split('\t'); return { h, s, t }; }) : [],
     shots: run && existsSync(join(run, 'eval/artifacts')) ? readdirSync(join(run, 'eval/artifacts')).filter((f) => f.endsWith('.png')).map((f) => ({ f, m: statSync(join(run, 'eval/artifacts', f)).mtimeMs })) : [],
     workflow: wf,
-    appUp: run ? checkApp(st.appPort) : false,
+    appUp: run ? checkApp(st.appPort, run) : false,
     results: readJson(RESULTS) || {},
     listening: listening(),
     srcMtime: run ? srcMtime(run) : 0,

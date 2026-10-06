@@ -370,7 +370,7 @@ function renderTriggers(st, phase, building) {
     const v = t.dataset.trigger;
     t.querySelector('button').disabled = !open;
     t.querySelector('.hint').textContent = !st.listening && !building && phase !== 'start-requested'
-      ? 'Die Werkstatt hört gerade nicht zu. In Claude Code in einer frischen Session „/aristo-experience“ starten, dann lässt sich hier jeder Weg live bauen.'
+      ? 'Die Werkstatt hört gerade nicht zu. In Claude Code „/aristo-experience“ starten, dann lässt sich hier jeder Weg live bauen.'
       : phase === 'start-requested' ? `Angefragt: ${VARIANTS[s.requested] || ''}. Beantworte in Claude Code die zwei kurzen Fragen, dann geht es los.`
       : building ? `Gerade läuft: ${VARIANTS[s.variant] || 'ein Bau'}. Danach ist der nächste Lauf möglich.`
       : 'Die Werkstatt ist bereit.';

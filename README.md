@@ -37,7 +37,7 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
    git clone https://github.com/ueberproduct-lab/aristo-m64.git
    ```
    Oder auf GitHub über den grünen Knopf „Code“ → „Download ZIP“ und entpacken.
-3. **Claude Code in diesem Ordner öffnen, eine frische Session starten und eingeben:**
+3. **Claude Code in diesem Ordner öffnen und eingeben:**
    ```
    /aristo-experience
    ```
@@ -48,9 +48,9 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
    bauen lassen“. Nach dem Drücken fragt Claude im Chat nach Modellen und Umfang, dann baut es live in einem frischen Ordner
    unter `demo-runs/`. Der fertige Rechner in `src/` bleibt unberührt.
 
-**Wichtig:** `/aristo-experience` braucht eine frische Session im Hauptordner des Repos, keine Arbeitskopie (git worktree).
-In dieser Session nur noch auf die Fragen antworten; eigene Fragen zum Projekt bitte in einer anderen Session stellen. Grund:
-Die Bau-Agenten bekommen die letzte Nachricht aus dem Chat mit und würden sie als Auftrag verstehen.
+**Wichtig:** Nach `/aristo-experience` in dieser Session nur noch auf Claudes Fragen antworten. Eigene Fragen zum Projekt
+bitte in einer anderen Session stellen. Grund: Die Bau-Agenten bekommen die letzte Nachricht aus dem Chat mit und würden sie
+als Auftrag verstehen. Die Session muss im Ordner des Repos selbst laufen, nicht in einer Arbeitskopie (git worktree).
 
 ## Für eigene Projekte
 

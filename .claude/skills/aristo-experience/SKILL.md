@@ -19,12 +19,11 @@ Argumente:
   die Fragen aus Abschnitt 3, dann 5).
   Das ist für die vordokumentierten Ergebnisse gedacht, nicht für Besucher.
 
-## 0. Eigene Session
-**Warum eine eigene Session:** Die Workflow-Laufzeit reicht jedem Agenten die Nachricht weiter, die den Lauf ausgelöst hat, mit
-Vorrang vor dem Skript. Gab es in dieser Session vor dem Aufruf schon andere Themen, dann **nicht hier bauen**: Bitte den
-Nutzer, eine neue Session direkt im Hauptordner des Repos zu öffnen und dort diesen Aufruf zu starten,
-sag in einem Satz warum, und beende hier. Sag zu Beginn: **Hier nur Steuerbefehle** (fortsetzen, Entscheidung nach einem Halt).
-Fragen und Ideen gehören in eine andere Session.
+## 0. Ab jetzt nur Steuerbefehle
+**Ab dem Aufruf nur noch Steuerbefehle.** Die Workflow-Laufzeit reicht jedem Agenten die letzte Nachricht des Nutzers weiter,
+mit Vorrang vor dem Skript. Das ist ab jetzt dieser Aufruf (oder eine Antwort auf deine Fragen); was vorher in der Session
+besprochen wurde, spielt keine Rolle. Schick niemanden in eine neue Session. Sag zu Beginn in einem Satz: Ab jetzt hier nur noch
+auf meine Fragen antworten oder einen Lauf fortsetzen; Fragen zum Projekt bitte in einer anderen Session.
 
 **Nur im Hauptordner bauen.** Bauen und Dokumentieren laufen ausschließlich in einer Session, deren Arbeitsordner
 der Hauptordner des Repos selbst ist, nicht eine Arbeitskopie (git worktree, z. B. `…/.claude/worktrees/…`). Eine

@@ -4,7 +4,7 @@ Ein Taschenrechner von 1974, viermal von KI-Agenten nachgebaut: vom schnellen On
 Ergebnisse wurden blind mit denselben Maßstäben bewertet. Dieses Repo enthält alles, um die Ergebnisse anzusehen und jeden
 Weg selbst noch einmal bauen zu lassen.
 
-Das Video dazu: [Kann ein Non-Coder Loop-Engineering?](https://youtu.be/HDWxSmRVGV8)
+Das Video dazu: [Loop-Engineering für Non-Coder](https://youtu.be/HDWxSmRVGV8)
 
 Die Geschichte dazu: [Ein Taschenrechner, vier Bauweisen](https://ueberproduct.de/ein-taschenrechner-vier-bauweisen/)
 

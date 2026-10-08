@@ -36,7 +36,8 @@ Wer selbst baut, sollte mit ähnlichen Größenordnungen rechnen.
    ```bash
    git clone https://github.com/ueberproduct-lab/aristo-m64.git
    ```
-   Oder auf GitHub über den grünen Knopf „Code“ → „Download ZIP“ und entpacken.
+   Oder auf GitHub über den grünen Knopf „Code“ → „Download ZIP“ und entpacken. Wer eigene Änderungen ausprobieren will,
+   forkt das Repo vorher („Fork“ oben rechts) und klont den Fork.
 3. **Claude Code in diesem Ordner öffnen und eingeben:**
    ```
    /aristo-experience
